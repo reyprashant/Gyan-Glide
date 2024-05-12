@@ -20,9 +20,7 @@
 }
 body{
     background-color: rgb(230, 235, 235);
-    background: linear-gradient(180deg, #f6fdc3 9.77%, #cdfadb 110.16%);
-    /* background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,102,97,1) 50%, rgba(0,212,255,1) 100%); */
+    /* background: linear-gradient(180deg, #f6fdc3 9.77%, #cdfadb 110.16%); */
 }
 .navbar{
     background-color: white;
