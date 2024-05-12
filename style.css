@@ -195,10 +195,13 @@ body{
 /*footer*/
 footer{
   background-color: black;
+  border-bottom: none;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
 }
 .footerContainer{
   width:100% ;
-  padding: 70px 30px 20px;
+  padding: 0px 30px 20px;
 }
 .socialIcons{
   display: flex;
@@ -251,8 +254,46 @@ footer{
 .footerNav ul li a:hover{
   opacity: 1;
 }
-.footerBottom{
+/* .footerBottom{
   background-color: black;
   padding: 20px;
   text-align: center;
+} */
+.reverse_admission{
+  height: 500px;
+  background-image: url(images/theme1.png);
+  object-fit: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  border-radius: 50px;
+  margin: 50px 10px 10px 10px;
+}
+.join_with_us{
+  height: 500px;
+  background-color: rgb(255, 230, 200);
+  object-fit: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  border-radius: 50px;
+  margin: 50px 10px 10px 10px;
+}
+.learnmore:hover{
+  transform: translateY(-10px);
+  transition: 0.5s;
+}
+.facts{
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.to_display{
+  margin-top: 30px;
+  height: 150px;
+
 }
