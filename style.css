@@ -19,7 +19,7 @@
     text-transform: capitalize;
 }
 body{
-    background-color: rgb(230, 235, 235);
+    background-color: rgb(173, 255, 255);
     /* background: linear-gradient(180deg, #f6fdc3 9.77%, #cdfadb 110.16%); */
 }
 .navbar{
@@ -143,6 +143,7 @@ body{
   display: flex;
   flex-direction: column;
 }
+
 .properties-container .box:hover {
   transform: translateY(-20px);
   transition: 0.5s;
@@ -196,8 +197,9 @@ body{
 footer{
   background-color: black;
   border-bottom: none;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
+  margin-top: 30px;
+  /* border-top-left-radius: 50px;
+  border-top-right-radius: 50px; */
 }
 .footerContainer{
   width:100% ;
