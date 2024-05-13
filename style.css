@@ -25,7 +25,7 @@ body{
 .navbar{
     background-color: white;
     width: 1000px;
-    height: 80px;
+    height: 70px;
     border: 10px transparent;
     border-radius: 1000px;
     margin-top: 30px;
@@ -34,7 +34,7 @@ body{
     justify-content: space-between;
     position:fixed;
     top:0;
-    padding: 20px; /* Add padding to the navigation bar */
+    padding-right : 10px; /* Add padding to the navigation bar */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     margin-bottom: 10px;
     z-index: 1000;
@@ -43,18 +43,25 @@ body{
 }
 .logo{
     object-fit: cover;
-    height: 350px;
+    height: 360px;
     width: 180px;
 }
 .getstarted{
     height: 50px;
     width: 150px;
-    border: 10px;
-    border-color: black;
+    border: 1px solid black;
     border-radius: 100px;
-    background-color: rgb(0, 251, 255);
     font-size: medium;
     font-family: fantasy;
+    background-color: whitesmoke;
+    cursor: pointer;
+    box-shadow: inset;
+}
+.getstarted:hover{
+  background-color: rgb(173, 255, 255);
+  transform: translateY(-5px);
+  transition: 0.5s;
+
 }
 .intro{
     display: flex;
