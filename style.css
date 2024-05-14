@@ -170,13 +170,13 @@ body{
 }
 .join_with_us{
   height: 500px;
-  background-color: rgb(255, 230, 200);
+  background-color: rgb(255, 210, 200);
   object-fit: cover;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   border-radius: 50px;
   margin: 50px 10px 10px 10px;
 }
