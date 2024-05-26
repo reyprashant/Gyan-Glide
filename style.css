@@ -55,18 +55,22 @@ body{
     width: 180px;
 }
 .getstarted{
-    height: 50px;
-    width: 150px;
+    height: 45px;
+    width: 130px;
     border: 1px solid black;
     border-radius: 100px;
     font-size: medium;
     font-family: fantasy;
-    background-color: whitesmoke;
+    border: 3px solid white;
+    background-color: rgb(0, 0, 0);
     cursor: pointer;
     box-shadow: inset;
+    color: white;
 }
 .getstarted:hover{
-  background-color: rgb(173, 255, 255);
+  /* background-color: rgb(255, 255, 255);
+  color: #111; */
+  
   transform: translateY(-5px);
   transition: 0.5s;
 
