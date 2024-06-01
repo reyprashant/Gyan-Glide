@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+
+:root{
+  --main-color: #2288ff;
+  --second-color: #192f6a;
+  --text-color: #314862;
+  --bg-color: #ffff;
+  --box-shadow: 2px 2px 18px rgb(14 52 54 / 15%);
+
+}
+*{
+    margin:0;
+    padding:0;
+    font-family:'Itim';
+    box-sizing: border-box;
+    outline:none;
+    border: none;
+    text-decoration: none;
+    transition: .2s linear;
+    text-transform: capitalize;
+}
+body{
+    background-color: rgb(173, 255, 255);
+    /* background: linear-gradient(180deg, #f6fdc3 9.77%, #cdfadb 110.16%); */
+}
+.navbar{
+    background-color: white;
+    width: 1000px;
+    height: 70px;
+    border: 10px transparent;
+    border-radius: 1000px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:fixed;
+    top:0;
+    padding-right : 10px; /* Add padding to the navigation bar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin-bottom: 10px;
+    z-index: 1000;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.logo{
+    object-fit: cover;
+    height: 360px;
+    width: 180px;
+}
+.getstarted{
+    height: 45px;
+    width: 130px;
+    border: 1px solid black;
+    border-radius: 100px;
+    font-size: medium;
+    font-family: fantasy;
+    border: 3px solid white;
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    box-shadow: inset;
+    color: white;
+}
+.getstarted:hover{
+  /* background-color: rgb(255, 255, 255);
+  color: #111; */
+  
+  transform: translateY(-5px);
+  transition: 0.5s;
+
+}
+
+
+
+.container {
+  margin-top: 100px;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.content {
+  max-width: 50%;
+}
+
+.content h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: #ff9900;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #cc7a00;
+}
+
+.image img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-left: 100px;
+}
+
+.section {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: left;
+}
+
+.section h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.2em;
+  color: #4a5568;
+}
+
+
+
+
+
+
+
+footer{
+    background-color: black;
+    border-bottom: none;
+    margin-top: 30px;
+    /* border-top-left-radius: 50px;
+    border-top-right-radius: 50px; */
+  }
+  .footerContainer{
+    width:100% ;
+    padding: 0px 30px 20px;
+  }
+  .socialIcons{
+    display: flex;
+    justify-content: center;
+  }
+  .socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+  }
+  
+  .socialIcons a i{
+    font-size: 2em;
+    color:black ;
+    opacity: 0.9;
+  }
+  
+  /*hover effects on Social Media Icons*/
+  .socialIcons a:hover{
+    background-color: #111;
+    transition: 0.5s;
+  
+  }
+  
+  .socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+  }
+  
+  .footerNav{
+    /* margin: 30px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  

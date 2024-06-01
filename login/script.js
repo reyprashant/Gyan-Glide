@@ -33,26 +33,26 @@ const container = document.querySelector(".container"),
         container.classList.remove("active");
     });
 
-  // Hardcoded username and password
-  const hardcodedUsername = 'admin';
-  const hardcodedPassword = 'password';
+//   // Hardcoded username and password
+//   const hardcodedUsername = 'admin';
+//   const hardcodedPassword = 'password';
 
  
-  function handleLogin() {
-    // Get the input values
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
+//   function handleLogin() {
+//     // Get the input values
+//     const username = document.getElementById('username').value;
+//     const password = document.getElementById('password').value;
+//     const errorMessage = document.getElementById('error-message');
 
 
-    if (username === hardcodedUsername && password === hardcodedPassword) {
+//     if (username === hardcodedUsername && password === hardcodedPassword) {
 
-     window.location.href = './webpage.html';
-    } else {
-      // Incorrect login, display an error message
-      errorMessage.textContent = 'Incorrect username or password!';
-    }
-  }
+//      window.location.href = './webpage.html';
+//     } else {
+//       // Incorrect login, display an error message
+//       errorMessage.textContent = 'Incorrect username or password!';
+//     }
+//   }
 
   // Attach the login form submission handler to the login button
   document.getElementById('login-form').addEventListener('click', function(event) {
