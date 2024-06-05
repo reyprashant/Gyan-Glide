@@ -16,11 +16,11 @@
                 <span class="title">Login to Gyan-Glide</span>                
                 <form action="loginpage.php" method="post">
                     <div class="input-field">
-                        <input type="text" id="username" placeholder="Enter your email" required>
+                        <input type="text" id="username" name="username" placeholder="Enter your email" required>
                         <!-- <i class="uil uil-envelope icon"></i> -->
                     </div>
                     <div class="input-field">
-                        <input type="password"  id="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" name="password" id="password" class="password" placeholder="Enter your password" required>
                         <!-- <i class="uil uil-lock icon"></i> -->
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" id="login-form" value="Login">
+                        <input type="submit" name="login" id="login-form" value="Login">
                     </div>
 
                     <div id="error-message" class="error-message"></div>
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" value="Signup" name="signup">
+                        <input type="submit" value="Signup" name="signup">
                     </div>
                 </form>
 
@@ -137,7 +137,7 @@
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                echo "<script>window.location.href = 'innerhome.html';</script>";
+                echo "<script>window.location.href = './innerhome/innerhome.html';</script>";
             } else {
                 echo "<script>alert('Invalid email or password');</script>";
             }

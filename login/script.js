@@ -56,6 +56,6 @@ const container = document.querySelector(".container"),
 
   // Attach the login form submission handler to the login button
   document.getElementById('login-form').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
-    handleLogin(); // Call the login function
+    // event.preventDefault(); // Prevent the form from submitting
+    // handleLogin(); // Call the login function
   });
