@@ -1,3 +1,11 @@
+<?php
+@include 'connectionSetup.php';
+session_start();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +32,7 @@
         <div class="main-content">
             <header>
                 <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-                <h1>Hi <span id="loggedUsername">Prashant</span></h1>
+                <h1>Hi <span id="loggedUsername"><?php echo $_SESSION['current_user'];?></span></h1>
             </header>
             <div class="content">
                 <h2>Welcome to your college journey.</h2>
@@ -45,7 +53,6 @@
     </div>
     <script>
         
-        document.querySelector('#loggedUsername').innerHTML = "hayabusa";
         function toggleSidebar() {
             document.querySelector('.sidebar').classList.toggle('active')
         }

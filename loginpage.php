@@ -1,7 +1,7 @@
 <?php
 
  require 'connectionSetup.php';
-
+session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['signup'])) {
             // Signup form data
@@ -33,7 +33,9 @@
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                echo "<script>window.location.href = './innerhome/innerhome.html';</script>";
+                $row = mysqli_fetch_array($result);
+                $_SESSION['current_user'] = $row['c_name'];
+                echo "<script>window.location.href = './innerhome/innerhome.php';</script>";
             } else {
                 echo "<script>alert('Invalid email or password');</script>";
             }
