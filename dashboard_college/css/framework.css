@@ -1,0 +1,228 @@
+/*flex*/
+.d-flex{
+display: flex;
+}
+.align-center{
+    align-items: center;
+}
+.justify-center{
+    justify-content: center;
+}
+.space-between{
+    justify-content: space-between;
+}
+.flex-center{ 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+}
+.column{
+    flex-direction: column;
+}
+.wrap{
+flex-wrap: wrap;
+}
+/*grid*/
+.grid{
+display: grid;
+}
+ 
+/*padding and margin */
+.p-5{
+    padding: 5px;
+}
+.pl-5{
+    padding-left: 5px;
+}
+
+
+.p-20{
+    padding:20px;
+}
+.pt-20{
+    padding-top: 20px;
+}
+.pb-20{
+    padding-bottom: 20px;
+}
+.p-10{
+    padding: 10px;
+}
+.pt-10{
+    padding-top: 10px;
+}
+.pb-10{
+    padding-bottom: 10px;
+}
+.pt-20{
+    padding-top: 20px;
+}
+.pb-20{
+    padding-bottom: 20px;
+}
+.pl-20{
+    padding-left: 20px;
+}
+.pr-20{
+    padding-right: 20px;
+}
+.pb-30{
+    padding-bottom: 30px;
+}
+.m-auto{
+    margin:auto;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.ml-5{
+    margin-left: 5px;
+}
+.mb-5{
+    margin-bottom: 5px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+.mt-15{
+    margin-top: 15px;
+}
+.mr-15{
+    margin-right: 15px;
+}
+.m-20{
+    margin: 20px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.ml-20{
+    margin-left: 20px;
+}
+.mt-20{
+    margin-right: 20px;
+}
+.mt-25{
+    margin-top: 25px;
+}
+.mt-30{
+    margin-top: 30px;
+}
+/*colors*/
+.c-black{
+color:black;
+}
+.c-gray{
+    color: #888;
+}
+.c-white{
+    color:white;
+}
+.c-green{
+    color: #22c55e;
+}
+.c-red{
+   color: #f44336;
+}
+.bg-white{
+    background-color:white;
+}
+.c-blue{
+    color: #0075ff;
+}
+.c-orange{
+    color:#f59e0b;
+}
+.bg-blue{
+    background-color: #0075ff;
+}
+.bg-orange{
+    background-color: #f59e0b;
+}
+.bg-red{
+    background-color: #f44336;
+}
+.bg-f6{
+    background-color: #f6f6f6;
+}
+.bg-gray{
+    background-color: #ddd;
+}
+.bg-green{
+    background-color: #22c55e;
+
+}
+/*display*/
+.d-block{
+    display: block;
+}
+/*POSITION*/
+
+.p-relative{
+    position: relative;
+}
+.p-absolute{
+    position: absolute;
+}
+/*font*/
+.fs-12{
+    font-size: 12px;
+}
+.fs-14{
+    font-size: 14px;
+}
+.fs-15{
+    font-size: 15px;
+}
+.fs-18{
+    font-size: 18px;
+}
+.fs-20{
+    font-size: 20px;
+}
+.txt-c{
+    text-align: center;
+}
+@media (max-width:767px) {
+    .txt-c-mobile{
+        text-align: center;
+    }
+}
+
+/*border*/
+.rad-6{
+    border-radius: 6px;
+}
+.rad-10{
+border-radius: 10px;
+}
+.rad-50{
+    border-radius: 50%;
+}
+/*width*/
+.f-width{
+    width:100%;
+}
+.f-height{
+    height:100%;
+}
+.fit-width{
+    width: fit-content;
+}
+/*componenets*/
+.between-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

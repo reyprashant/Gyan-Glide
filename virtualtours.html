@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="articles/findperfect.css">
+    <link rel="stylesheet" href="articles/virtualtours.css">
+    
 </head>
 <body>
     <div class="container">
@@ -21,8 +23,102 @@
             <img src="images/logo.png" alt="logo" class="logo">
             <a href="loginpage.php" target="_self"><button class="getstarted">GET STARTED</button></a>
         </div>
+        <div class="content-container">
+            <div class="content">
+                <h1>What a college looks like?</h1>
+                <p>Starting to think about college? What your college look like?<br> Take Virtual Tours Instead.</p>
+                <a href="loginpage.php" style="width: 200px;"><button class="btn">Take Virtual Tours</button></a>
+            </div>
+            <div class="image">
+                <img src="images/tour.png" alt="Student studying">
+            </div>
+        </div>
+        </div>
+
+        <section class ="slider_container">
+            <h1 style="text-align: center; font-size: 40px;">Colleges with us</h1>
+            <div class="container">
+                <div class="swiper card_slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/amarsingh.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/kma.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/sos.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/motherland.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/samata.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/sos.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/amarsingh.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="img_box">
+                        <img src="images/kma.jpeg" class="custom-image">
+                    </div>
+                    </div>
+                      
+         </div>
+                    <!-- for arrow-->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!--for pagination-->
+                    <div class="swiper-pagination"></div>
+          </div>
+            </div>
+            </div>
+          </section>
+        <!--swiper js-->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <!--initialize swiper-->
+        <script type="text/javascript">
+            var swiper = new Swiper(".card_slider", {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              loop: true,
+              speed: 1000,
+           // autoplay:{delay:2000, },-->//
+        
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+              },
+            //iuiuhiu
+              navigation:{
+                nextEl:".swiper-button-next",
+                prevEl:".swiper-button-prev",
+              },
+              
+            });
+        
+        
+        </script>
         
     <script src="script.js"></script>
+    
 </body>
 <footer>
     <div class="footerContainer">
