@@ -1,3 +1,52 @@
+<?php
+
+ require 'connectionSetup.php';
+session_start();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['signup'])) {
+            // Signup form data
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $cpassword = $_POST['cpassword'];
+
+            // Insert data into the signup table
+            if ($password === $cpassword) {
+                $sql = "INSERT INTO signup (c_name, email, upassword, ucpassword) VALUES ('$name', '$email', '$password', '$cpassword')";
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script>alert('Signup successful');</script>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            } else {
+                echo "<script>alert('Passwords do not match');</script>";
+            }
+        }
+
+        if (isset($_POST['login'])) {
+            // Login form data
+            $email = $_POST['username'];
+            $password = $_POST['password'];
+
+            // Check user credentials
+            $sql = "SELECT * FROM signup WHERE email='$email' AND upassword='$password'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = mysqli_fetch_array($result);
+                $_SESSION['current_user'] = $row['c_name'];
+                echo "<script>window.location.href = './innerhome/innerhome.php';</script>";
+            } else {
+                echo "<script>alert('Invalid email or password');</script>";
+            }
+        }
+    }
+
+    $conn->close();
+    ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,61 +140,7 @@
         </div>
     </div>
 
-    <?php
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "project";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['signup'])) {
-            // Signup form data
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $cpassword = $_POST['cpassword'];
-
-            // Insert data into the signup table
-            if ($password === $cpassword) {
-                $sql = "INSERT INTO signup (c_name, email, upassword, ucpassword) VALUES ('$name', '$email', '$password', '$cpassword')";
-                if ($conn->query($sql) === TRUE) {
-                    echo "<script>alert('Signup successful');</script>";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            } else {
-                echo "<script>alert('Passwords do not match');</script>";
-            }
-        }
-
-        if (isset($_POST['login'])) {
-            // Login form data
-            $email = $_POST['username'];
-            $password = $_POST['password'];
-
-            // Check user credentials
-            $sql = "SELECT * FROM signup WHERE email='$email' AND upassword='$password'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                echo "<script>window.location.href = './innerhome/innerhome.html';</script>";
-            } else {
-                echo "<script>alert('Invalid email or password');</script>";
-            }
-        }
-    }
-
-    $conn->close();
-    ?>
 <script src="./login/script.js"></script>      
 </body>
 </html>
