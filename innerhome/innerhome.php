@@ -1,7 +1,6 @@
 <?php
 @include 'connectionSetup.php';
 session_start();
-
 ?>
 
 
@@ -17,9 +16,10 @@ session_start();
 <body>
     <div class="container">
         <nav class="sidebar">
-            <img src="logo.png" alt="logo" style="width: 400px; align-self: center; margin-right: 500px;">
+            <h1>Gyan-Glide</h1>
+            <!-- <img src="logo.png" alt="logo" style="width: 400px; align-self: center; margin-right: 500px;"> -->
             <ul>
-                <li><a href="#">Home</a></li>
+                <li style="margin-top: 50px;"><a href="#">Home</a></li>
                 <li><a href="#">Colleges</a></li>
                 <li><a href="#">Graduate Schools</a></li>
                 <li><a href="#">My College List</a></li>

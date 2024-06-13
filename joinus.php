@@ -21,7 +21,19 @@
             <img src="images/logo.png" alt="logo" class="logo">
             <a href="loginpage.php" target="_self"><button class="getstarted">GET STARTED</button></a>
         </div>
-        
+        <div class="formcontent" style="display: flex; align-items: center; justify-content: space-around;">
+            <img src="images/joinus.png" alt="joinus" style="width: 400px;">
+                <form action="joinus.php" method>
+                    <input type="text" placeholder="institute name" name="institute_name" style="width: 400px; height: 40px; font-size: 30px; margin: 10px" ><br>
+                    <input type="text" placeholder="email" name="institute_name" style="width: 400px; height: 40px; font-size: 30px; margin: 10px" ><br>
+                    <input type="password" placeholder="password" name="institute_name" style="width: 400px; height: 40px; font-size: 30px; margin: 10px" ><br>
+                    <input type="password" placeholder="confirm password" name="institute_name" style="width: 400px; height: 40px; font-size: 30px; margin: 10px" ><br>
+                    <input type="submit" value="signin" name="signin" style="border-radius: 10px; width: 100px; height:30px; color: red;">
+                </form>
+                <a href=""></a>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 <footer>
