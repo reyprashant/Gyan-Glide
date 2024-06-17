@@ -89,8 +89,11 @@ $conn->close();
                     <div class="checkbox-text">
                         <div class="checkbox-content">
                             <input type="checkbox" id="termCon">
-                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                            <label for="termCon" class="text">I accepted all <a href="terms.html">terms and conditions</a></label>
                         </div>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    <span id="checkboxError" class="error"></span>
                     </div>
                     <div class="input-field button">
                         <input type="submit" value="Signup" name="signup">
