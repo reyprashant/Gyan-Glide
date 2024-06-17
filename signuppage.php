@@ -1,7 +1,7 @@
 <?php
-$nameError = "";
+// require_once 'validation.php';
+
 $emailError = "";
-$passwordError = "";
 require 'connectionSetup.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['signup'])) {
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $cpassword = $_POST['cpassword'];
+        $cpassword = $_POST['confirmPassword'];
 
 //         $pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
@@ -18,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // } else {
 //     echo "The email address '$email' is considered invalid.";
 // }
-
+        
 
 
         if (!empty($email)) {
+
             $sql = "SELECT * FROM signup WHERE email='$email'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -61,20 +62,29 @@ $conn->close();
                 <span class="title">Register to Gyan-Glide</span>
                 <form id="signupform" action="signuppage.php" method="post">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                        <span><?php echo $nameError; ?></span>
+                        <input type="text" placeholder="Enter your name" id="name" name="name" required>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    <span id="nameError" class="error"></span>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" name="email" required>
-                        <span><?php echo $emailError; ?></span>
+                        <input type="text" placeholder="Enter your email" id="email" name="email" required>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    <span id="emailError" class="error"></span>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Create a password" name="password" required>
-                        <span><?php echo $passwordError; ?></span>
+                        <input type="password" id="password" class="password" placeholder="Create a password" name="password" required>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    <span id="passwordError" class="error"></span>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Confirm a password" name="cpassword" required>
+                        <input type="password" class="password" placeholder="Confirm a password" id="confirmPassword"name="confirmPassword" required>
                         <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div id="error-message" class="error-message">
+                    <span id="confirmPasswordError" class="error"></span>
                     </div>
                     <div class="checkbox-text">
                         <div class="checkbox-content">
@@ -98,5 +108,6 @@ $conn->close();
         </div>
     </div>
     <script src="./login/script.js"></script>
+    <script src="./login/formValidation.js"></script>
 </body>
 </html>
