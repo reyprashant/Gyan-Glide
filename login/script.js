@@ -26,12 +26,11 @@ const container = document.querySelector(".container"),
     })
 
     // js code to appear signup and login form
-    signUp.addEventListener("click", ( )=>{
-        container.classList.add("active");
-    });
-    login.addEventListener("click", ( )=>{
-        container.classList.remove("active");
-    });
+
+
+    // login.addEventListener("click", ( )=>{
+    //     container.classList.remove("active");
+    // });
 
 //   // Hardcoded username and password
 //   const hardcodedUsername = 'admin';
@@ -55,7 +54,7 @@ const container = document.querySelector(".container"),
 //   }
 
   // Attach the login form submission handler to the login button
-  document.getElementById('login-form').addEventListener('click', function(event) {
+ // document.getElementById('login-form').addEventListener('click', function(event) {
     // event.preventDefault(); // Prevent the form from submitting
     // handleLogin(); // Call the login function
-  });
+ // });

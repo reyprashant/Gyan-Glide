@@ -24,7 +24,7 @@ body{
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0 20px;
 }
 
@@ -46,12 +46,12 @@ body{
 
 .container.active .login{
     margin-left: -50%;
-    opacity: 0;
+    opacity: 1;
     transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
 
 .container .signup{
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.09s ease;
 }
 .container.active .signup{
@@ -62,6 +62,7 @@ body{
 .container.active .forms{
     height: 600px;
 }
+
 .container .form .title{
     position: relative;
     font-size: 27px;
@@ -183,4 +184,3 @@ body{
     margin-top: 30px;
     text-align: center;
 }
-
