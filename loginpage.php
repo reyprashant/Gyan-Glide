@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_array($result);
             $_SESSION['current_user'] = $row['c_name'];
-            echo "<script>window.location.href = './innerhome/innerhome.php';</script>";
+            echo "<script>window.location.href = './dashboard_student/index.html';</script>";
         } else {
             $loginError = "Invalid email or password";
             
