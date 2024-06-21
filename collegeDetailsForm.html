@@ -1,34 +1,3 @@
-<?php
-$successMsg = "";
-require 'connectionSetup.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['submit'])) {
-        // Signup form data
-        $name = $_POST['collegeName'];
-        $address = $_POST['collegeAddress'];
-        $site = $_POST['collegeSiteLink'];
-        $phone = $_POST['representativePhone'];
-        $add_info = $_POST['additionalInfo'];
-
-        $sql = "INSERT INTO college (name, address, site, phone, add_info) VALUES ('$name', '$address', '$site', '$phone', '$add_info')";
-        if ($conn->query($sql) === TRUE) { // Insert data into signup table
-            $successMsg = "Info successfully recorded and is verified by admin.";
-            echo "<script> window.location.href = 'joinusSubmit.html'; </script>";
-        } 
-        else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-           
-       
-    }
-}
-$conn->close();
-
-?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,11 +46,8 @@ $conn->close();
             <label for="additionalInfo">Additional Information:</label><br>
             <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Provide any additional details about the college (e.g., programs offered, campus life, unique features)"></textarea><br><br>
 
-            <input type="submit" value="Submit" name = "submit">
+            <input type="submit" value="Submit">
             <input type="button" value="Cancel" onclick="window.location.href='index.html';">
-            <div id="error-message" class="error-message">
-                    <span><?php echo $successMsg; ?></span>
-                    </div>
         </form>
     </div>
 </div>
