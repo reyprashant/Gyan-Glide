@@ -1,3 +1,10 @@
+<?php
+@include 'connectionSetup.php';
+session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +98,7 @@
           <div class="title  between-flex p-20 bg-gray p-relative ">
             <div class="text">
               <h2>welcome</h2>
-              <p class="c-gray">LA GRANDEE International College</p>
+              <p class="c-gray"><span id="loggedUsername"><?php echo $_SESSION['current_user'];?></span></p>
             </div>
             <img src="images/welcome.png" alt="">
             <img src="images/avatar.png" alt="" class="p-absolute">
