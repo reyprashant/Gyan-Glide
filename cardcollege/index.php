@@ -1,3 +1,19 @@
+<?php
+
+require '../connectionSetup.php';
+session_start();
+
+$sql = "SELECT * FROM college_info";
+$result = $conn->query($sql);
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +24,13 @@
     <title>Document</title>
 </head>
 <body>
+
+<?php
+ while ($colleges_row = mysqli_fetch_assoc($result)) {
+
+ 
+
+?>
     <div class="card">
         <div class="card-header">
             <img src="kma.jpeg" alt="University Image">
@@ -19,24 +42,28 @@
             </button>
         </div>
         <div class="card-body">
-            <h3>Kaski Modernized Academy</h3>
+            <h3><?php echo $colleges_row['name'];?></h3>
             <p>Pokhara</p>
         </div>
         <div class="card-footer">
             <div class="card-footer-item">
-                <p>Pokhara-14</p>
-                <p>Chauthe</p>
+                <p><?php echo $colleges_row['address'];?></p>
             </div>
             <div class="card-footer-item">
-                <p>ISO Certified</p>
-                <p>2009</p>
+                <p><?php echo $colleges_row['certification'];?></p>
             </div>
             <div class="card-footer-item">
-                <p>10+2</p>
-                <p>Science, Management, Hotel Management</p>
+                <p><?php echo $colleges_row['level'];?></p>
+                <p><?php echo $colleges_row['courses'];?></p>
             </div>
         </div>
     </div> 
+
+    <?php
+ }
+    ?>
+
+
     <script>
     function toggleHeart(button) {
         button.classList.toggle('active');

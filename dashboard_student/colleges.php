@@ -10,70 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-    <title>courses</title>
+    <title>Colleges</title>
 </head>
 <body>
     <div class="courses page d-flex">
-        <div class="navbar p-20 d-flex p-relative bg-white">
-
-            <h3 class="p-relative  txt-c " >Gyan-Glide</h3>
-            <ul>
-                <li>
-                    <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.html">
-                      <i class="fa-regular fa-chart-bar fa-fw"></i>
-                      <span>Dashboard</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="settings.html">
-                      <i class="fa-solid fa-gear fa-fw"></i>
-                      <span>Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.html">
-                      <i class="fa-regular fa-user fa-fw"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <!-- <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.html">
-                      <i class="fa-solid fa-diagram-project fa-fw"></i>
-                      <span>Projects</span> -->
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="colleges.html">
-                      <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                      <span>College</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="virtualTour.html">
-                      <i class="fa-regular fa-circle-user fa-fw"></i>
-                      <span>Virtual Tour</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="scholarship.html">
-                      <i class="fa-regular fa-circle-user fa-fw"></i>
-                      <span>Scholarship</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="admission.html">
-                      <i class="fa-regular fa-file fa-fw"></i>
-                      <span>Admission</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="reviews.html">
-                      <i class="fa-regular fa-credit-card fa-fw"></i>
-                      <span>Reviews</span>
-                    </a>
-                  </li>
-                </ul>
-        </div>
+        <?php
+        require_once'dashboard_navbar.php';
+        ?>
         
         <div class="content d-flex  column">
             <div class="header between-flex p-20 p-relative bg-white f-width">
@@ -85,9 +28,10 @@
                <img src="images/avatar.png" alt="" class="rad-50">   
              </div>  
             </div>
-            <h1 class="p-relative mt-10">Courses</h1>
+            <h1 class="p-relative mt-10">Colleges</h1>
             <div class="container grid">
                 <div class="course rad-6 bg-white p-relative">
+
                     <img src="images/course-01.jpg" alt="" class="f-width">
                     <img src="images/team-01.png" alt="" class="p-absolute">
                     <div class="text p-20 pb-30">
@@ -102,6 +46,8 @@
                         <a href=""><h5 class="p-5 bg-blue c-white rad-6">Course Info</h5></a>
                         <!-- <span class="c-gray">$ 897</span> -->
                     </div>
+
+                    
                 </div>
 
 
@@ -254,3 +200,5 @@
             </div>
         </div>
     </div>
+</body>
+</html>
