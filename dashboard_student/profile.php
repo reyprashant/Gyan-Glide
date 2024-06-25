@@ -19,7 +19,10 @@
         ?>  
     
         <div class="content d-flex  column">
-        
+            <?php
+            require_once 'dashboard_header.php';
+            ?>
+
             <h1 class="p-relative mt-10">Profile</h1>
             <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
                 <div class="user flex-center column">

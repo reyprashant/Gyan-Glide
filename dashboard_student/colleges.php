@@ -38,7 +38,9 @@ $result = $conn->query($sql);
         ?>
         
         <div class="content d-flex  column">
-            
+        <?php
+        require_once'dashboard_header.php';
+        ?>
             <h1 class="p-relative mt-10">Colleges</h1>
             
         </div>

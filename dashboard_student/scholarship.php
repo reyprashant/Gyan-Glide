@@ -17,6 +17,13 @@
   <?php
         require_once'dashboard_navbar.php';
         ?>  
+              <div class="content d-flex  column">
+            <?php
+            require_once 'dashboard_header.php';
+            ?>
+            <h1 class="p-relative mt-10">Scholarship</h1>
+
+        </div>
 
 </body>
 

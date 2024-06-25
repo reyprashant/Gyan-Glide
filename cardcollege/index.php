@@ -27,14 +27,14 @@ $result = $conn->query($sql);
     <title>Document</title>
 </head>
 <body>
-
 <?php
-require_once '../dashboard_student/dashboard_navbar.php';
+// require_once '../dashboard_student/dashboard_navbar.php';
 for ($i=0; $i<4; $i++){
 
  
 
 ?>
+
 
 
     <div class="card">
@@ -48,6 +48,7 @@ for ($i=0; $i<4; $i++){
                 <i class="fa-regular fa-heart"></i>
             </button>
         </div>
+
         <div class="card-body">
             <h3><?php echo $colleges_row['name'];?></h3>
             <p>Pokhara</p>

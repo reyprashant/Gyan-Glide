@@ -33,6 +33,9 @@ if ( !isset($_SESSION['current_user']) ){
 
 
     <div class="content d-flex  column">
+            <?php
+            require_once 'dashboard_header.php';
+            ?>
 
         <h1 class="p-relative mt-10">Dashboard</h1>
         <div class="container grid ">
