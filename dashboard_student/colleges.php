@@ -1,3 +1,18 @@
+<?php
+
+require '../connectionSetup.php';
+session_start();
+
+$sql = "SELECT * FROM college_info";
+$result = $conn->query($sql);
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +28,10 @@
     <title>Colleges</title>
 </head>
 <body>
+
+<?php
+ while ($colleges_row = mysqli_fetch_assoc($result)) {}
+?>
     <div class="courses page d-flex">
         <?php
         require_once'dashboard_navbar.php';
@@ -30,6 +49,8 @@
             </div>
             <h1 class="p-relative mt-10">Colleges</h1>
             <div class="container grid">
+
+            
                 <div class="course rad-6 bg-white p-relative">
 
                     <img src="images/course-01.jpg" alt="" class="f-width">
@@ -47,10 +68,27 @@
                         <!-- <span class="c-gray">$ 897</span> -->
                     </div>
 
-                    
+
                 </div>
 
 
+                <div class="course rad-6 bg-white p-relative">
+                    <img src="images/course-01.jpg" alt="" class="f-width">
+                    <img src="images/team-01.png" alt="" class="p-absolute">
+                    <div class="text p-20 pb-30">
+                        <h3 class="mb-10">Web Technology</h3>
+                        <p class="c-gray fs-14">Master The Art Of Web Designing And Creating Web Design Architecture</p>
+                    </div>
+                    <div class="info between-flex p-10 p-relative p-10">
+                        <!-- <span class="c-gray">
+                            960
+                            <i class="fa-solid fa-user"></i>
+                        </span> -->
+                        <a href=""><h5 class="p-5 bg-blue c-white rad-6">Course Info</h5></a>
+                        <!-- <span class="c-gray">$ 897</span> -->
+                    </div>
+                </div>
+                
                 <div class="course rad-6 bg-white p-relative">
                     <img src="images/course-01.jpg" alt="" class="f-width">
                     <img src="images/team-01.png" alt="" class="p-absolute">
@@ -200,5 +238,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>

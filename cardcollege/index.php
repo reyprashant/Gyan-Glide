@@ -20,18 +20,25 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../dashboard_student/css/index.css">
+    <link rel="stylesheet" href="../dashboard_student/css/framework.css">
+    <link rel="stylesheet" href="../dashboard_student/css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
 
 <?php
+require_once '../dashboard_student/dashboard_navbar.php';
  while ($colleges_row = mysqli_fetch_assoc($result)) {
 
  
 
 ?>
+
+
     <div class="card">
+
         <div class="card-header">
             <img src="kma.jpeg" alt="University Image">
             <div class="icon">
