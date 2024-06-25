@@ -13,7 +13,7 @@
     <title>Reviews</title>
 </head>
 <body>
-  <div class="admission page d-flex"></div>  
+  <div class="admission page d-flex"> 
   <?php
         require_once'dashboard_navbar.php';
         ?>  
@@ -24,6 +24,7 @@
             <h1 class="p-relative mt-10">Reviews</h1>
 
         </div>
+</div>
 </body>
 
 

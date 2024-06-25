@@ -1,84 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/all.min.css"> 
-    <link rel="stylesheet" href="css/framework.css">
-    <link rel="stylesheet" href="css/normalize.css">
-     <link rel="stylesheet" href="css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-    <title>friends</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/all.min.css">
+   <link rel="stylesheet" href="css/framework.css">
+   <link rel="stylesheet" href="css/normalize.css">
+   <link rel="stylesheet" href="css/index.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+   <title>friends</title>
 </head>
+
 <body>
-    <div class="friends page d-flex">
-        <div class="navbar p-20 d-flex p-relative bg-white">
-            <h3 class="p-relative  txt-c " >Gyan-Glide</h3>
-            <ul>
-                <li>
-                    <a class=" d-flex align-center fs-14 c-black rad-6 p-10" href="index.html">
-                      <i class="fa-regular fa-chart-bar fa-fw"></i>
-                      <span>Dashboard</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="settings.html">
-                      <i class="fa-solid fa-gear fa-fw"></i>
-                      <span>Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.html">
-                      <i class="fa-regular fa-user fa-fw"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <!-- <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.html">
-                      <i class="fa-solid fa-diagram-project fa-fw"></i>
-                      <span>Projects</span>
-                    </a>
-                  </li> -->
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="courses.html">
-                      <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                      <span>Courses</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex active align-center fs-14 c-black rad-6 p-10" href="friends.html">
-                      <i class="fa-regular fa-circle-user fa-fw"></i>
-                      <span>Students</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.html">
-                      <i class="fa-regular fa-file fa-fw"></i>
-                      <span>Files</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.html">
-                      <i class="fa-regular fa-credit-card fa-fw"></i>
-                      <span>Plans</span>
-                    </a>
-                  </li>
-                </ul>
-        </div>
-        <div class="content d-flex  column">
-            <div class="header between-flex p-20 p-relative bg-white f-width">
-             <form action="" class="p-relative" >
-               <input type="text" placeholder="Type a keyword" class=" rad-6 p-10 fs-14">
-               </form>   
-             <div class="user between-flex">
-               <i class="fa-regular fa-bell p-relative fs-20"></i>
-               <img src="images/avatar.png" alt="" class="rad-50">   
-             </div>  
-            </div>
-            <h1 class="p-relative mt-20">Students you enrolled from Gyan-Glide</h1>
-            <!-- <div class="container grid">
+   <div class="friends page d-flex">
+
+      <?php
+      require_once 'dashboard_navbar.php';
+      ?>
+
+      <div class="content d-flex  column">
+
+         <?php
+         require_once 'dashboard_header.php';
+         ?>
+         <h1 class="p-relative mt-20">Students you enrolled from Gyan-Glide</h1>
+         <!-- <div class="container grid">
                 <div class="frnd bg-white rad-6">
 
                    <div class="contact p-10 c-gray ">
@@ -395,5 +344,8 @@
  
                  </div>
             </div> -->
-        </div>
-    </div>
+      </div>
+   </div>
+</body>
+
+</html>

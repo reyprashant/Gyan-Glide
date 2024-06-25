@@ -1,82 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/all.min.css"> 
+    <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/framework.css">
     <link rel="stylesheet" href="css/normalize.css">
-     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <title>Projects</title>
 </head>
+
 <body>
     <div class="projects page d-flex">
-        <div class="navbar p-20 d-flex p-relative bg-white">
-            <h3 class="p-relative  txt-c " >Elzero</h3>
-            <ul>
-                <li>
-                    <a class=" d-flex align-center fs-14 c-black rad-6 p-10" href="index.html">
-                      <i class="fa-regular fa-chart-bar fa-fw"></i>
-                      <span>Dashboard</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="settings.html">
-                      <i class="fa-solid fa-gear fa-fw"></i>
-                      <span>Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.html">
-                      <i class="fa-regular fa-user fa-fw"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex active align-center fs-14 c-black rad-6 p-10" href="projects.html">
-                      <i class="fa-solid fa-diagram-project fa-fw"></i>
-                      <span>Projects</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="courses.html">
-                      <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                      <span>Courses</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="friends.html">
-                      <i class="fa-regular fa-circle-user fa-fw"></i>
-                      <span>Friends</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.html">
-                      <i class="fa-regular fa-file fa-fw"></i>
-                      <span>Files</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.html">
-                      <i class="fa-regular fa-credit-card fa-fw"></i>
-                      <span>Plans</span>
-                    </a>
-                  </li>
-                </ul>
-        </div>
+        <?php
+        require_once 'dashboard_navbar.php';
+        ?>
+
         <div class="content d-flex  column">
-            <div class="header between-flex p-20 p-relative bg-white f-width">
-             <form action="" class="p-relative" >
-               <input type="text" placeholder="Type a keyword" class=" rad-6 p-10 fs-14">
-               </form>   
-             <div class="user between-flex">
-               <i class="fa-regular fa-bell p-relative fs-20"></i>
-               <img src="images/avatar.png" alt="" class="rad-50">   
-             </div>  
-            </div>
+
+            <?php
+            require_once 'dashboard_header.php';
+            ?>
             <h1 class="p-relative mt-10">Projects</h1>
             <div class="container grid">
                 <div class="project bg-white p-20 pt-10 rad-6">
@@ -96,8 +44,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 50%;" class="bg-green"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 50%;" class="bg-green"></span></div>
                         <p class="c-gray">$ 2400</p>
                     </div>
                 </div>
@@ -119,8 +67,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 59%;" class="bg-blue"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 59%;" class="bg-blue"></span></div>
                         <p class="c-gray">$ 2400</p>
                     </div>
                 </div>
@@ -142,8 +90,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 90%;" class="bg-blue"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 90%;" class="bg-blue"></span></div>
                         <p class="c-gray">$ 2400</p>
                     </div>
                 </div>
@@ -165,8 +113,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 70%;" class="bg-red"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 70%;" class="bg-red"></span></div>
                         <p class="c-gray">$ 2400</p>
                     </div>
                 </div>
@@ -189,8 +137,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 80%;" class="bg-blue"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 80%;" class="bg-blue"></span></div>
                         <p class="c-gray">$ 1200</p>
                     </div>
                 </div>
@@ -212,8 +160,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 35%;" class="bg-green"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 35%;" class="bg-green"></span></div>
                         <p class="c-gray">$ 2400</p>
                     </div>
                 </div>
@@ -234,8 +182,8 @@
                         <span>Marketing</span>
                         <span>Hosting</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 30%;" class="bg-blue"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 30%;" class="bg-blue"></span></div>
                         <p class="c-gray">$ 890</p>
                     </div>
                 </div>
@@ -253,8 +201,8 @@
                         <span>Desgin</span>
                         <span>Marketing</span>
                     </div>
-                    <div  class="between-flex pt-20 pb-20">
-                        <div class="p-relative bg-f6" ><span style="width: 70%;" class="bg-green"></span></div>
+                    <div class="between-flex pt-20 pb-20">
+                        <div class="p-relative bg-f6"><span style="width: 70%;" class="bg-green"></span></div>
                         <p class="c-gray">$ 1400</p>
                     </div>
                 </div>
@@ -280,3 +228,6 @@
             </div>
         </div>
     </div>
+</body>
+
+</html>

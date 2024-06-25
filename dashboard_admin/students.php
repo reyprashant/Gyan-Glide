@@ -14,53 +14,13 @@
 </head>
 <body>
     <div class="friends page d-flex">
-      <div class="navbar p-20 d-flex p-relative bg-white">
-
-         <h3 class="p-relative  txt-c " >Gyan-Glide</h3>
-         <ul>
-             <li>
-                 <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.php">
-                   <i class="fa-regular fa-chart-bar fa-fw"></i>
-                   <span>Dashboard</span>
-                 </a>
-               </li>
-               <li>
-                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="colleges.html">
-                   <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                   <span>Colleges</span>
-                 </a>
-               </li>
-               <li>
-                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="students.html">
-                   <i class="fa-regular fa-user fa-fw"></i>
-                   <span>Students</span>
-                 </a>
-               </li>
-               <li>
-                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutors.html">
-                   <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                   <span>Tutors</span>
-                 </a>
-               </li>
-               <li>
-                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="other_institutions.html">
-                   <i class="fa-regular fa-circle-user fa-fw"></i>
-                   <span>Other Institutes</span>
-                 </a>
-               </li>
-             </ul>
-     </div>
-     
-        <div class="content d-flex  column">
-            <div class="header between-flex p-20 p-relative bg-white f-width">
-             <form action="" class="p-relative" >
-               <input type="text" placeholder="Type a keyword" class=" rad-6 p-10 fs-14">
-               </form>   
-             <div class="user between-flex">
-               <i class="fa-regular fa-bell p-relative fs-20"></i>
-               <img src="images/avatar.png" alt="" class="rad-50">   
-             </div>  
-            </div>
+    <?php
+    include_once 'dashboard_navbar.php';
+    ?>
+    <div class="content d-flex  column">
+    <?php
+    include_once 'dashboard_header.php';
+    ?>
             <h1 class="p-relative mt-20">Students you enrolled from Gyan-Glide</h1>
             <!-- <div class="container grid">
                 <div class="frnd bg-white rad-6">

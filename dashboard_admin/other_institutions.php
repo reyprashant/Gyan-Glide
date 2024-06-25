@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-    <title>Admission</title>
+    <title>Other Institutions</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <?php
             require_once 'dashboard_header.php';
             ?>
-            <h1 class="p-relative mt-10">Admission</h1>
+            <h1 class="p-relative mt-10">Other Institutions</h1>
 
         </div>
     </div>
