@@ -1,6 +1,18 @@
 <?php
-require 'connectionSetup.php';
+require_once 'connectionSetup.php';
 session_start();
+if ( isset( $_SESSION['current_user'])){
+    header('location:dashboard_student/index.php');
+    die();
+}
+
+// if ( isset( $_COOKIE['current_user'])){
+//     echo $_COOKIE['current_user'];
+//     // header('location:dashboard_student/index.php');
+//     // die();
+// }
+
+
 $loginError = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['login'])) {
@@ -15,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_array($result);
             $_SESSION['current_user'] = $row['c_name'];
-            echo "<script>window.location.href = './dashboard_student/index.php';</script>";
+            // setcookie('current_user',$row['c_name'],time()+3600,'/');
+            header('location:dashboard_student/index.php');
+            die();
         } else {
             $loginError = "Invalid email or password";
             

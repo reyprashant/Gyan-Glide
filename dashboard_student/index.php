@@ -1,6 +1,12 @@
 <?php
 @include 'connectionSetup.php';
 session_start();
+if ( !isset($_SESSION['current_user']) ){
+  header('location:../loginpage.php');
+  die();
+}
+// $_SESSION['current_user'] = $_COOKIE['current_user'];
+
 ?>
 
 
@@ -31,13 +37,19 @@ session_start();
          <form action="" class="p-relative" >
            <input type="text" placeholder="Type a keyword" class=" rad-6 p-10 fs-14">
            </form>   
+          <a href="logout.php">logout</a>
+
+
+
+
+
+
          <div class="user between-flex">
            <i class="fa-regular fa-bell p-relative fs-20"></i>
            <img src="images/avatar.png" alt="" class="rad-50">   
          </div>  
         </div>
         <h1 class="p-relative mt-10">Dashboard</h1>
-      
         <div class="container grid ">
         <div class="welcome txt-c-mobile bg-white p-relative rad-10">
           <div class="title  between-flex p-20 bg-gray p-relative ">
