@@ -2,8 +2,15 @@
 
 <div class="navbar p-20 d-flex p-relative bg-white">
 
-            <h3 class="p-relative  txt-c " >Gyan-Glide</h3>
+           
+            
             <ul>
+            <li>
+            <img src="../images/logo.png" alt="logo" style="width: 548px; height:auto; align-self: center; margin-top: -115px; margin-left: -192px; margin-bottom: -116px">
+                  </li>
+
+            
+
                 <li>
                     <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.php">
                       <i class="fa-regular fa-chart-bar fa-fw"></i>
