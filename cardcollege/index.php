@@ -30,7 +30,7 @@ $result = $conn->query($sql);
 
 <?php
 require_once '../dashboard_student/dashboard_navbar.php';
- while ($colleges_row = mysqli_fetch_assoc($result)) {
+for ($i=0; $i<4; $i++){
 
  
 
