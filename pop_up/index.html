@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaski Modernized Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="openPopup()">Open Popup</button>
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="card-header">
+                <img src="college1.jpg" alt="School Image" class="school-image">
+                <div class="icon">
+                    <img src="images.jpg" alt="Icon">
+                </div>
+                <button class="heart" onclick="toggleHeart(this)">
+                    <img src="heart-icon-url" alt="Heart Icon">
+                </button>
+            </div>
+            <div class="card-body">
+                <h1>Kaski Modernized Academy (★ 4.0)</h1>
+                <p>Estd: 2063</p>
+                <p>Private School</p>
+                <p>ISO-Certified 2009</p>
+                <p>Chauthe, Pokhara-14</p>
+                <p>Kaski Modernized Academy is an academically selective co-educational secondary boarding school located at Chauthe B.P. Marg, Pokhara-14, Nepal. It covers area of 20 ropanies of its own and 5 huge attractive buildings. It provides quality education to around 200 students from Nursery to Grade 12. KMA prides itself on the quality of its excellent academic programs, along with co-curricular activities covering a wide range of genres.</p>
+                <p>Tracing back to its history, KMA was established in 2055 B.S. at Shiva Chowk, Pokhara-10, with 90 students and 9 teaching staff with the sacred motto 'Learn through reality, attend in humanity.' It was established by Mr. Ram Bahadur Mochi, the erstwhile Lecturer in English, P.N. Campus, Pokhara. Since its inception, Mr. Ram Bahadur Mochi has been the Principal and sole founder of KMA.</p>
+                <p>Our faculties:</p>
+                <ul>
+                    <li>Science</li>
+                    <li>Management</li>
+                    <li>Hotel Management</li>
+                </ul>
+                <p>Our facilities:</p>
+                <ul>
+                    <li>E-Library</li>
+                    <li>Arts Classes</li>
+                    <li>Extra Curriculum Activities</li>
+                </ul>
+                <p>Virtual tour of college:</p>
+                <div class="virtual-tour">
+                    <img src="tour-image1-url" alt="Tour Image 1">
+                    <img src="tour-image2-url" alt="Tour Image 2">
+                    <img src="tour-image3-url" alt="Tour Image 3">
+                </div>
+                <p>Contact Us:</p>
+                <p>📞 061-539007</p>
+                <p>📧 laskimodernizedacademy@gmail.com</p>
+                <p>🌐 www.kaskimodernizedacademy.com</p>
+                <p class="footer">Copyright Gyan-Glide, All Rights Reserved</p>
+            </div>
+        </div>
+        <button class="close-button" onclick="closePopup()">×</button>
+    </div>
+
+    <script>
+        function toggleHeart(button) {
+            button.classList.toggle('red');
+        }
+
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
