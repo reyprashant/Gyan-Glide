@@ -1,11 +1,11 @@
 <?php
 @include 'connectionSetup.php';
 session_start();
-if (!isset($_SESSION['current_user'])) {
+if (!isset($_COOKIE['current_user'])) {
   header('location:../loginpage.php');
   die();
 }
-// $_SESSION['current_user'] = $_COOKIE['current_user'];
+$_SESSION['current_user'] = $_COOKIE['current_user'];
 
 ?>
 
@@ -30,13 +30,13 @@ if (!isset($_SESSION['current_user'])) {
 <body>
   <div class="dashboard page d-flex">
     <?php
-    require_once 'dashboard_navbar.php';
+    include_once 'dashboard_navbar.php';
     ?>
 
 
     <div class="content d-flex  column">
       <?php
-      require_once 'dashboard_header.php';
+      include_once 'dashboard_header.php';
       ?>
 
       <h1 class="p-relative mt-10">Dashboard</h1>

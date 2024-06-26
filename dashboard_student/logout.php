@@ -12,7 +12,7 @@ elseif (isset($_COOKIE['current_user'])){
     echo $_COOKIE['current_user'];
     echo "cookie";
 } else {
-    echo "nnothing exists";
+    echo "nothing exists";
     header("location:../loginpage.php");
     die();
 }
