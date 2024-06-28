@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <title>Reviews</title>
@@ -27,9 +26,9 @@
             ?>
             <h1 class="p-relative mt-10">Reviews</h1>
 
-            <div class="container">
+            <div class="container" style="position: relative; left:200px">
                 <div class="row">
-                    <form action="add_rate.php" method="post">
+                    <form action="reviews.php" method="post">
 
                         <div>
                             <h3>Student Rating System</h3>
