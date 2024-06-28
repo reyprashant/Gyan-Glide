@@ -1,11 +1,24 @@
 <?php
-@include 'connectionSetup.php';
+@require_once '../connectionSetup.php';
 session_start();
-if (!isset($_COOKIE['current_user'])) {
+if (!isset($_SESSION['current_user'])) {
   header('location:../loginpage.php');
   die();
 }
-$_SESSION['current_user'] = $_COOKIE['current_user'];
+// $_SESSION['current_user'] = $_COOKIE['current_user'];
+// $_SESSION['email'] = $_COOKIE['email'];
+$temp_email = $_SESSION['email'];
+
+$sql = "SELECT * FROM students WHERE email= '$temp_email'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = mysqli_fetch_array($result);
+} else {
+    
+}
+
+
 
 ?>
 
@@ -40,8 +53,8 @@ $_SESSION['current_user'] = $_COOKIE['current_user'];
       ?>
 
       <h1 class="p-relative mt-10">Dashboard</h1>
-      <div class="container grid ">
-        
+      <div class="container"> <!-- <div class="container grid "> -->
+
         <div class="welcome txt-c-mobile bg-white p-relative rad-10">
           <div class="title  between-flex p-20 bg-gray p-relative ">
             <div class="text">
@@ -53,25 +66,59 @@ $_SESSION['current_user'] = $_COOKIE['current_user'];
           </div>
           <div class="data between-flex p-20 mb-20">
             <div class="name">
-              <p>LA GRANDEE International College</p>
+              <p><?php echo "USSER BIO"?></p>
               <span class="c-gray">ISO Certified College</span>
             </div>
-            <div class="projects">
-              <p>800</p>
-              <span class="c-gray">Students</span>
-            </div>
-            <!-- <div class="earn">
-              <p>$8500</p>
-              <span class="c-gray">earned</span>
-            </div> -->
+
           </div>
-          <a href="profile.html" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width">profile</a>
+          <a href="settings.php" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width">profile</a>
         </div>
+        <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
+          <div class="user flex-center column">
+            <img src="images/avatar.png" alt="logo of college">
+            <h3 class="mt-10"><?php echo $row['name']; ?></h3>
 
+            <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
 
+          </div>
+          <div class="boxes bg-white">
+            <div class="box p-20">
+              <h4 class="c-gray mb-10 ">General Information</h4>
+              <div class="text grid">
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Full Name:<span class="c-black"><?php echo $_SESSION['current_user']; ?></span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">City:<span class="c-black">Pokhara</span></p>
+                <label class="d-flex align-center">
+                  <input type="checkbox" class="checkbox-button p-relative" checked>
+                </label>
+              </div>
+            </div>
+
+            <div class="box p-20">
+              <h4 class="c-gray mb-10 ">Other Information</h4>
+              <div class="text grid">
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Title:<span class="c-black">ISO Certified College</span></p>
+
+              </div>
+            </div>
+
+            <div class="box p-20">
+              <h4 class="c-gray mb-10 ">Personal Information</h4>
+              <div class="text grid">
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black"><?php echo $row['email']; ?></span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Phone:<span class="c-black"><?php echo $row['phone']; ?></span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Address:<span class="c-black"><?php echo $row['address']; ?></span></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </div>
+
+
+
 </body>
 
 </html>

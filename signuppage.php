@@ -11,25 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $cpassword = $_POST['confirmPassword'];
 
-//         $pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
-// if (preg_match($pattern, $email)) {
-//     echo "The email address '$email' is considered valid.";
-// } else {
-//     echo "The email address '$email' is considered invalid.";
-// }
         
 
 
         if (!empty($email)) {
 
-            $sql = "SELECT * FROM signup WHERE email='$email'";
+            $sql = "SELECT * FROM students WHERE email='$email'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 http_response_code(409);
                 $emailError = "The user with this email already exists.";
             } elseif ($password === $cpassword) { // Check for password and confirm password
-                $sql = "INSERT INTO signup (c_name, email, upassword, ucpassword) VALUES ('$name', '$email', '$password', '$cpassword')";
+                $sql = "INSERT INTO students (name, email, password) VALUES ('$name', '$email', '$password')";
                 if ($conn->query($sql) === TRUE) { // Insert data into signup table
                     $emailError = "Signup Successful";
                 } else {

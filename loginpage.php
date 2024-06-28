@@ -1,7 +1,10 @@
 <?php
 require_once 'connectionSetup.php';
 session_start();
-if ( isset( $_SESSION['current_user']) || isset( $_COOKIE['current_user'])){
+
+// if ( isset( $_SESSION['email']) || isset( $_COOKIE['email'])){
+
+if ( isset( $_SESSION['email'])){
     header('location:dashboard_student/index.php');
     die();
 }
@@ -21,13 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         // Check user credentials
-        $sql = "SELECT * FROM signup WHERE email='$email' AND upassword='$password'";
+        $sql = "SELECT * FROM students WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_array($result);
-            $_SESSION['current_user'] = $row['c_name'];
-            setcookie('current_user',$row['c_name'],time()+3600,'/');
+            $_SESSION['current_user'] = $row['name'];
+            $_SESSION['email'] = $row['email'];
+            // setcookie('current_user',$row['name'],time()+3600,'/');
+            // setcookie('email',$row['email'],time()+3600,'/');
             header('location:dashboard_student/index.php');
             die();
         } else {

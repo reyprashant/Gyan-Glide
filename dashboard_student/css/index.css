@@ -633,14 +633,14 @@ transition: 0.3s;
 }
 .social-media .details a{
 margin-right: 10px;}
-/***twitter**/
-.social-media .twitter{
+/***instagram**/
+.social-media .instagram{
 background-color:rgb(29, 161, 242 ,20%);
 color:rgb(29, 161, 242);  
 
 }
-.social-media .twitter a,
-.social-media .twitter .icon{
+.social-media .instagram a,
+.social-media .instagram .icon{
 background-color:rgb(29, 161, 242);  
 }
 
