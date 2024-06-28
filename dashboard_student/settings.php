@@ -160,11 +160,11 @@ $updated_message = "";
                 <input type="text" value="<?php echo $row['linkedIn']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
-              <div class="youtube rad-6 mb-20 bg-f6 d-flex">
+              <div class="github rad-6 mb-20 bg-f6 d-flex">
                 <div class="icon  flex-center">
-                  <i class="fa-brands fa-youtube c-gray "></i>
+                  <i class="fa-brands fa-github c-gray "></i>
                 </div>
-                <input type="text" value="<?php echo $row['youtube']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" value="<?php echo $row['github']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
             </form>
             <input type="submit" form="update_form" name="update_user" value="Update" class="rad-6 c-white bg-blue p-5">

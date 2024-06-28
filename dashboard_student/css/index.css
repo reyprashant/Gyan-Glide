@@ -655,14 +655,14 @@ background-color:rgb(29, 161, 242);
     background-color:rgb(24, 119, 242);
     }
 
-/*********youtube**********/
-.social-media .youtube{
+/*********github**********/
+.social-media .github{
     background-color:rgb(255, 0, 0, 20%);
     color:rgb(255, 0, 0);
 
     }
-.social-media .youtube a,
-.social-media .youtube .icon{
+.social-media .github a,
+.social-media .github .icon{
     background-color:rgb(255, 0, 0);
     }
 
