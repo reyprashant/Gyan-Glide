@@ -75,7 +75,7 @@ if ($result->num_rows > 0) {
         </div>
         <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
           <div class="user flex-center column">
-            <img src="images/avatar.png" alt="logo of college">
+            <img src="../reviews/user2.png" alt="logo of college">
             <h3 class="mt-10"><?php echo $row['name']; ?></h3>
 
             <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
