@@ -74,13 +74,21 @@ if ($result->num_rows > 0) {
           <a href="settings.php" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width">profile</a>
         </div>
         <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
+
           <div class="user flex-center column">
+
+
             <img src="../reviews/user2.png" alt="logo of college">
+            <div class="popup" style=" width: 400px; background: white; position: relative; top: 50%; left: 50%; ">
             <h3 class="mt-10"><?php echo $row['name']; ?></h3>
+            </div>
+           
 
             <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
 
           </div>
+
+
           <div class="boxes bg-white">
             <div class="box p-20">
               <h4 class="c-gray mb-10 ">General Information</h4>
