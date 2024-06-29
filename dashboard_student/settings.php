@@ -18,6 +18,13 @@ if (!isset($_SESSION['email'])) {
   }
 }
 
+//for password change
+
+$passwordUpdateMessage = "";
+
+
+
+
 
 $updated_message = "";
 $sql = "SELECT * FROM students WHERE email= '$temp_email'";
@@ -26,6 +33,35 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (isset($_POST['changePassword'])) {
+      // Password change form data
+      $oldPassword = $_POST['oldPassword'];
+      $password = $_POST['password'];
+      $email = $_SESSION['email'];
+
+      // Check user credentials
+      $passwordVerify = false;
+      $sql = "SELECT * FROM students WHERE email='$email' AND password='$oldPassword'";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          $passwordVerify = true;   //old password is correct
+      } else {
+          $passwordUpdateMessage = "Invalid old password";
+      }
+
+      if ($passwordVerify) {
+
+          $sql = "UPDATE `students` SET `password`='$password' WHERE `email` = '$email'";
+          if ($conn->query($sql) === TRUE) {  // change password successfull
+              $passwordUpdateMessage = "Password Changed Successfully";
+          } else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+
+      }
+  }
 
     if (isset($_POST['update_user'])) {
       // update form data
@@ -46,11 +82,6 @@ if ($result->num_rows > 0) {
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
-
-      // $sql = "UPDATE `students` SET `name`='',`email`='[value-2]',`password`='[value-3]',
-      // `phone`='[value-4]',`address`='[value-5]',`facebook`='[value-6]',`instagram`='[value-7]',
-      // `linkedIn`='[value-8]',`youtube`='[value-9]' WHERE 1";
-
 
     }
 
@@ -96,6 +127,7 @@ if ($result->num_rows > 0) {
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
   <title>Settings</title>
 
@@ -227,18 +259,14 @@ if ($result->num_rows > 0) {
       cursor: pointer;
     }
 
-    form .signup-link {
-      text-align: center;
-    }
+    .data i.showHidePw {
+            position: relative;
+            bottom: 74%;
+            left: 92%;
+            cursor: pointer;
+            padding: 10px;
+        }
 
-    form .signup-link a {
-      color: #3498db;
-      text-decoration: none;
-    }
-
-    form .signup-link a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 
@@ -301,34 +329,53 @@ if ($result->num_rows > 0) {
             <label for="show"><span class="rad-6 c-white bg-blue p-5 ">Change</span></label>
 
             <div class="popup">
-              <label for="show" class="close-btn fas fa-times" title="close"></label>
-              <div class="text">
+            <label for="show" class="close-btn fas fa-times" title="close"></label>
+
+            <div class="text">
                 Change your password
-              </div>
-              <form action="#">
+            </div>
+            <form action="#" id="changePasswordForm" method="post">
 
                 <div class="data">
-                  <label>Old Password</label>
-                  <input type="password" required>
+                    <label>Old Password</label>
+                    <input type="password" id="oldPassword" class="password" placeholder="Old Password" name="oldPassword" required>
                 </div>
+
                 <div class="data">
-                  <label>New Password</label>
-                  <input type="password" required>
+                    <label>New Password</label>
+                    <input type="password" id="password" class="password" placeholder="New password" name="password" required>
                 </div>
+                <div id="error-message" class="error-message">
+                    <span id="passwordError" class="error"></span>
+                </div>
+
+
                 <div class="data">
-                  <label>Confirm Password</label>
-                  <input type="password" required>
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" name="confirmPassword" required>
+                    <i class="uil uil-eye-slash showHidePw"></i>
                 </div>
+                <div id="error-message" class="error-message">
+                    <span id="confirmPasswordError" class="error"></span>
+                </div>
+
+
+
 
                 <div class="btn">
-                  <div class="inner"></div>
-                  <button type="submit">Confirm</button>
+                    <div class="inner"></div>
+                    <button type="submit" name="changePassword">Confirm</button>
                 </div>
-                <div class="signup-link">
-                  Forget your password? <a href="#">Reset here</a>
+
+                <div class="data">
+                    <label><?php echo $passwordUpdateMessage; ?></label>
                 </div>
-              </form>
-            </div>
+
+            </form>
+        </div>
+
+
+
           </div>
 
           <div class="social-info bg-white p-20 rad-6 ">
@@ -373,5 +420,5 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 
-
+<script src="formValidation.js"></script>
 </body>

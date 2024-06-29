@@ -1,5 +1,64 @@
+<?php
+
+$passwordUpdateMessage = "";
+require '../connectionSetup.php';
+session_start();
+
+if(!empty($_POST['changePassword'])) {
+    echo '
+        <script type="text/javascript">
+       jQuery(document).ready(function(){
+        jQuery("#show").prop("checked", true);
+    });
+
+    </script>
+    ';
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['changePassword'])) {
+        // Password change form data
+        $oldPassword = $_POST['oldPassword'];
+        $password = $_POST['password'];
+        $email = $_SESSION['email'];
+
+        // Check user credentials
+        $passwordVerify = false;
+        $sql = "SELECT * FROM students WHERE email='$email' AND password='$oldPassword'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $passwordVerify = true;   //old password is correct
+        } else {
+            $passwordUpdateMessage = "Invalid old password";
+        }
+
+
+
+        if ($passwordVerify) {
+
+            $sql = "UPDATE `students` SET `password`='$password' WHERE `email` = '$email'";
+            if ($conn->query($sql) === TRUE) {  // change password successfull
+                $passwordUpdateMessage = "Password Changed Successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
+        }
+    }else {
+        $passwordUpdateMessage = "post has no value";
+    }
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
+
 <html lang="en" dir="ltr">
 
 <head>
@@ -7,7 +66,7 @@
     <title>Popup Login Form Design | CodingNepal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         .show-btn {
             background: #fff;
@@ -20,7 +79,7 @@
         }
 
         .show-btn,
-        .container {
+        .popup {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -31,7 +90,7 @@
             display: none;
         }
 
-        .container {
+        .popup {
             display: none;
             background: #fff;
             width: 410px;
@@ -39,11 +98,11 @@
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
         }
 
-        #show:checked~.container {
+        #show:checked~.popup {
             display: block;
         }
 
-        .container .close-btn {
+        .popup .close-btn {
             position: absolute;
             right: 20px;
             top: 15px;
@@ -51,21 +110,21 @@
             cursor: pointer;
         }
 
-        .container .close-btn:hover {
+        .popup .close-btn:hover {
             color: #3498db;
         }
 
-        .container .text {
+        .popup .text {
             font-size: 35px;
             font-weight: 600;
             text-align: center;
         }
 
-        .container form {
+        .popup form {
             margin-top: -20px;
         }
 
-        .container form .data {
+        .popup form .data {
             height: 45px;
             width: 100%;
             margin: 40px 0;
@@ -148,40 +207,77 @@
         form .signup-link a:hover {
             text-decoration: underline;
         }
+
+        .data i.showHidePw {
+            position: relative;
+            bottom: 74%;
+            left: 92%;
+            cursor: pointer;
+            padding: 10px;
+        }
     </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="center">
         <input type="checkbox" id="show">
         <label for="show" class="show-btn">View Form</label>
-        <div class="container">
+        <div class="popup">
             <label for="show" class="close-btn fas fa-times" title="close"></label>
+
             <div class="text">
-                Login Form
+                Change your password
             </div>
-            <form action="#">
+            <form action="#" id="changePasswordForm" method="post">
+
                 <div class="data">
-                    <label>Email or Phone</label>
-                    <input type="text" required>
+                    <label>Old Password</label>
+                    <input type="password" id="oldPassword" class="password" placeholder="Old Password" name="oldPassword" required>
                 </div>
+
                 <div class="data">
-                    <label>Password</label>
-                    <input type="password" required>
+                    <label>New Password</label>
+                    <input type="password" id="password" class="password" placeholder="New password" name="password" required>
                 </div>
-                <div class="forgot-pass">
-                    <a href="#">Forgot Password?</a>
+                <div id="error-message" class="error-message">
+                    <span id="passwordError" class="error"></span>
                 </div>
+
+
+                <div class="data">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" name="confirmPassword" required>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+                <div id="error-message" class="error-message">
+                    <span id="confirmPasswordError" class="error"></span>
+                </div>
+
+
+
+
                 <div class="btn">
                     <div class="inner"></div>
-                    <button type="submit">login</button>
+                    <button type="submit" name="changePassword">Confirm</button>
                 </div>
-                <div class="signup-link">
-                    Not a member? <a href="#">Signup now</a>
+
+                <div class="data">
+                    <label><?php echo $passwordUpdateMessage; ?></label>
                 </div>
+
             </form>
         </div>
     </div>
+
+    <script src="formValidation.js"></script>
+    <script type="text/javascript">
+       jQuery(document).ready(function(){
+        jQuery("#show").prop("checked", true);
+    });
+
+    </script>
 </body>
 
 </html>

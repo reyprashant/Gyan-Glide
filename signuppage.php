@@ -1,5 +1,4 @@
 <?php
-// require_once 'validation.php';
 
 $emailError = "";
 require 'connectionSetup.php';
@@ -73,10 +72,12 @@ $conn->close();
                     <div id="error-message" class="error-message">
                     <span id="passwordError" class="error"></span>
                     </div>
+
                     <div class="input-field">
                         <input type="password" class="password" placeholder="Confirm a password" id="confirmPassword"name="confirmPassword" required>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
+                    
                     <div id="error-message" class="error-message">
                     <span id="confirmPasswordError" class="error"></span>
                     </div>
