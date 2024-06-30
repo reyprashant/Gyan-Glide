@@ -31,19 +31,22 @@
                     <form action="reviews.php" method="post">
 
                         <div>
-                            <h3>Student Rating System</h3>
+                            <h3 style="font-family: Arial">Enjoying Gyan-Glide? Give us your Reviews</h3>
+                            <h3 style="font-family: Arial">Your Review Matters</h3>
                         </div>
 
-                        <div>
-                            <label>Name</label>
-                            <input type="text" name="name">
-                        </div>
+                        
 
                         <div class="rateyo" id="rating" data-rateyo-rating="4" data-rateyo-num-stars="5" data-rateyo-score="3">
                         </div>
 
                         <span class='result'>0</span>
                         <input type="hidden" name="rating">
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">What's Your Thoughts About Us</label>
+
+            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 width-800" placeholder="your thought" style="height: 300px; width: 600px;"></textarea>
+            <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
+        </div>
 
                         <div><input type="submit" name="add"> </div>
 
