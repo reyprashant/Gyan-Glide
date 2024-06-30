@@ -47,25 +47,71 @@
 
         <div class="general-info bg-white p-20 rad-6 ">
           <h2 class="mb-20">General Info</h2>
-          <p class=" c-gray">General Information About Your Account</p>
+          <p class=" c-gray">General Information About Your College</p>
           <form action="">
 
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">First Name</label>
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" value="First Name">
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="College Name">
 
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">College Address</label>
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="College Address">
 
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-15">last Name</label>
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" value="last Name">
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Establised Date</label>
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Establised Date">
 
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Certifications</label>
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
 
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">email</label>
-            <div class="div between-flex">
-              <input type="email" class="c-gray p-10 rad-6 fs-14 " value="email" disabled>
-              <input type="submit" value="Change" class="fs-18 c-blue bg-white">
-            </div>
+           <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Organization Type</label>
+            <!-- <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" value="last Name"> -->
+            <select name="org_type" id="1">
+              <option value="profitable">Profitable</option>
+              <option value="profitable">Non-Profitable</option>
+              <option value="profitable">Private</option>
+              <option value="profitable">Government</option>
+              <option value="profitable">NGo's/INGo's</option>  
+            </select>
 
+            <div class="draft txt-c-mobile p-20 column bg-white p-relative rad-10">
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Description of your College</label>
+            <!-- <input type="textbox" class="c-gray p-10 rad-6 fs-14 " placeholder="Description of your College"> -->
 
-          </form>
+            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"></textarea>
+            <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
+        </div>
+
+        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Faculties/ Courses you offer</label>
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+
+        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Top Facilities in your College</label>
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        
+        
+        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
+        <input type="file" id="myFile" name="filename" accept="image/*">
+
+        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload Logo of your College</label>
+        <input type="file" id="myFile" name="filename" accept="image/*">
+
+        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload ambience/glimpse of your college</label>
+        <input type="file" id="myFile" name="filename" multiple="multiple" accept="image/*">
+       <br>
+       <br>
+        <input type="button" value="submit">
+      
+      
+      
+      </form>
         </div>
 
         <div class="security-info bg-white p-20 rad-6 ">
@@ -104,11 +150,11 @@
             <h2 class="mb-20">Social Info</h2>
             <p class=" c-gray">General Information About Your Account</p>
             <form action="">
-              <div class="twitter rad-6 mb-20 mt-25 bg-f6 d-flex ">
+              <div class="instagram rad-6 mb-20 mt-25 bg-f6 d-flex ">
                 <div class="icon  flex-center">
-                  <i class="fa-brands fa-twitter c-gray "></i>
+                  <i class="fa-brands fa-instagram c-gray "></i>
                 </div>
-                <input type="text" value="Twitter username" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" value="Instagram username" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="facebook rad-6 mb-20 bg-f6 d-flex">
@@ -119,17 +165,17 @@
               </div>
 
               <div class="linkedin rad-6 mb-20 bg-f6 d-flex">
-                <div class="icon  flex-center">
+                <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-linkedin c-gray "></i>
-                </div>
-                <input type="text" value="linkedin username" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                </div> -->
+                <input type="text" value="website url" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="youtube rad-6 mb-20 bg-f6 d-flex">
-                <div class="icon  flex-center">
+                <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-youtube c-gray "></i>
-                </div>
-                <input type="text" value="youtube username" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                </div> -->
+                <input type="text" value="email address" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
             </form>
           </div>
