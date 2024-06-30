@@ -85,3 +85,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+//jquery
+
+// <script type="text/javascript">
+    $(document).ready(function(){
+        $(".heart").click(function(){
+        var id = $(this).attr("id");
+        $.post( "gett.php" , {data:id,how:'c'}, function(data){
+alert(data);
+        } )
+         });
+
+
+    });
+// </script>

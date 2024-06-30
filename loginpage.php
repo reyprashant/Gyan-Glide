@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $row = mysqli_fetch_array($result);
             $_SESSION['current_user'] = $row['name'];
             $_SESSION['email'] = $row['email'];
+            $_SESSION['std_id'] = $row['std_id'];
             // setcookie('current_user',$row['name'],time()+3600,'/');
             // setcookie('email',$row['email'],time()+3600,'/');
             header('location:dashboard_student/index.php');
