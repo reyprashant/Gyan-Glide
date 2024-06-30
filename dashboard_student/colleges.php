@@ -49,8 +49,10 @@ $collegeCount = 0;
                     $collegeCount = $collegeCount + 1;
                 ?>
                     <div class="course rad-6 bg-white p-relative">
-                        <img src="images/course-01.jpg" alt="" class="f-width">
+                    <i class="fa-regular fa-heart"></i>
+                        <img src="../cardcollege/kma.jpeg" alt="" class="f-width">
                         <img src="images/team-01.png" alt="" class="p-absolute">
+                        <i class="fa-regular fa-heart"></i>
                         <div class="text p-20 pb-30">
                             <div class="card-body">
                                 <h3><?php echo $colleges_row['name'];
