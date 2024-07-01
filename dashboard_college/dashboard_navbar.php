@@ -26,12 +26,12 @@
                     <span>Settings</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.php">
                     <i class="fa-regular fa-user fa-fw"></i>
                     <span>Profile</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="courses.php">
                     <i class="fa-solid fa-graduation-cap fa-fw"></i>
@@ -44,12 +44,12 @@
                     <span>Students</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.php">
                     <i class="fa-regular fa-file fa-fw"></i>
                     <span>Files</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.php">
                     <i class="fa-regular fa-credit-card fa-fw"></i>
