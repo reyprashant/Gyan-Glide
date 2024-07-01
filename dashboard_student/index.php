@@ -85,8 +85,13 @@ if (isset($_POST['upload'])) {
         }
       }
        else{
-        # move uploaded image to 'uploads' folder
-        move_uploaded_file($tmp_name, $img_upload_path);
+
+        $sql  = "UPDATE `student_images` SET `img_name`='$new_img_name' WHERE std_id = $std_id";
+        if ($conn->query($sql)) {
+          # move uploaded image to 'uploads' folder
+          move_uploaded_file($tmp_name, $img_upload_path);
+        }
+        
       }
 
 

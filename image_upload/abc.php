@@ -11,7 +11,6 @@
 	$stmt->execute();
     $result = $stmt->get_result();
     $images = $result->fetch_all(MYSQLI_ASSOC);
-print_r($images);
 
  ?> 
 
@@ -24,9 +23,7 @@ print_r($images);
     <title>Document</title>
 </head>
 <body>
-<form method="post" 
-	      action="upload.php"
-	      enctype="multipart/form-data">
+<form method="post" action="upload.php" enctype="multipart/form-data">
           <?php  
             if (isset($_GET['error'])) {
             	echo "<p class='error'>";

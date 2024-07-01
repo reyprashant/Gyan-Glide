@@ -56,7 +56,7 @@ if (isset($_POST['upload'])) {
                 # inserting imge name into database
 				$sql  = "INSERT INTO college_images (clz_id, img_name) VALUES (?, ?)";
 				$stmt = $conn->prepare($sql);
-				$stmt->execute([$i,$new_img_name]);
+				$stmt->execute([1,$new_img_name]);
 				
 
                 # move uploaded image to 'uploads' folder
@@ -93,3 +93,4 @@ if (isset($_POST['upload'])) {
         }
     }
 }
+?>
