@@ -27,9 +27,12 @@
             require_once 'dashboard_header.php';
             ?>
             <h1 class="p-relative mt-10">Virtual Tour</h1>
-
+            <div>
+                Hello
+            </div>
         </div>
     </div>
+    
 
 </body>
 
