@@ -294,6 +294,7 @@ if ($result->num_rows > 0) {
         <div class="general-info bg-white p-20 rad-6 ">
           <h2 class="mb-20">General Info</h2>
           <p class=" c-gray">General Information About Your Account</p>
+          
           <form id="update_user" action="settings.php" method="post">
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">First Name</label>

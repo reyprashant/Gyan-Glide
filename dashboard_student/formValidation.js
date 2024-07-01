@@ -94,11 +94,12 @@ $(document).ready(function () {
     $(".heart").click(function () {
         var id = $(this).attr("id");
         $.post("gett.php", { data: id, heart: 'c' }, function (data) {
-            if (data < 2) {
-                document.getElementById("total_likes").innerHTML = data + " like";
-            } else {
-                document.getElementById("total_likes").innerHTML = data + " likes";
-            }
+            // if (data < 2) {
+                
+            //     document.getElementById("total_likes").innerHTML = data + " like";
+            // } else {
+            //     document.getElementById("total_likes").innerHTML = data + " likes";
+            // }
 
         })
     });

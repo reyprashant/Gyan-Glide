@@ -77,12 +77,15 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
 
                 ?>
                     <div class="course rad-6 bg-white p-relative">
+                        <?
+                        
+                        ?>
                         <img src="../cardcollege/kma.jpeg" alt="" class="f-width">
                         <img src="images/team-01.png" alt="" class="p-absolute">
 
                         <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                             <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
-                            <p id="total_likes"><?php echo $colleges_row['liked_by']; ?> <?php echo $likeOrLikes; ?></p>
+                           
                         </div>
 
 
