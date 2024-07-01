@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('changePasswordForm');
     const pwShowHide = document.querySelectorAll(".showHidePw");
     const pwFields = document.querySelectorAll(".password");
@@ -7,25 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const passwordError = document.getElementById('passwordError');
     const confirmPasswordError = document.getElementById('confirmPasswordError');
- 
+
     //   js code to show/hide password and change icon
-    pwShowHide.forEach(eyeIcon =>{
-        eyeIcon.addEventListener("click", ()=>{
-            pwFields.forEach(pwField =>{
-                if(pwField.type ==="password"){
+    pwShowHide.forEach(eyeIcon => {
+        eyeIcon.addEventListener("click", () => {
+            pwFields.forEach(pwField => {
+                if (pwField.type === "password") {
                     pwField.type = "text";
 
-                    pwShowHide.forEach(icon =>{
+                    pwShowHide.forEach(icon => {
                         icon.classList.replace("uil-eye-slash", "uil-eye");
                     })
-                }else{
+                } else {
                     pwField.type = "password";
 
-                    pwShowHide.forEach(icon =>{
+                    pwShowHide.forEach(icon => {
                         icon.classList.replace("uil-eye", "uil-eye-slash");
                     })
                 }
-            }) 
+            })
         })
     })
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Submit event listener for the form
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         if (!validateForm()) {
             event.preventDefault(); // Prevent form submission if validation fails
         }
@@ -90,14 +90,31 @@ document.addEventListener('DOMContentLoaded', function() {
 //jquery
 
 // <script type="text/javascript">
-    $(document).ready(function(){
-        $(".heart").click(function(){
+$(document).ready(function () {
+    $(".heart").click(function () {
         var id = $(this).attr("id");
-        $.post( "gett.php" , {data:id,how:'c'}, function(data){
-alert(data);
-        } )
-         });
+        $.post("gett.php", { data: id, heart: 'c' }, function (data) {
+            if (data < 2) {
+                document.getElementById("total_likes").innerHTML = data + " like";
+            } else {
+                document.getElementById("total_likes").innerHTML = data + " likes";
+            }
 
-
+        })
     });
+
+
+});
+
+function replaceClass(heart) {
+
+    if (heart.classList.contains("fa-solid")) {
+        heart.classList.replace('fa-solid', 'fa-regular');
+    } else {
+        heart.classList.replace('fa-regular', 'fa-solid');
+    }
+
+}
+
+
 // </script>

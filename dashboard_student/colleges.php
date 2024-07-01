@@ -4,11 +4,10 @@ require '../connectionSetup.php';
 session_start();
 
 $sql = "SELECT * FROM college_info";
-$result = $conn->query($sql);
+$college = $conn->query($sql);
 $collegeCount = 0;
-
-
-
+$heart_shape = "";
+$std_id = $_SESSION['std_id'];
 ?>
 
 
@@ -46,17 +45,35 @@ $collegeCount = 0;
             <h1 class="p-relative mt-10">Colleges</h1>
             <div class="container grid">
                 <?php
-                while ($colleges_row = mysqli_fetch_assoc($result)) {
+                while ($colleges_row = mysqli_fetch_assoc($college)) {
                     $collegeCount = $collegeCount + 1;
+                    $clz_id = $colleges_row['clz_id'];
+                    $liked_by = $colleges_row['liked_by'];
+                    $likeOrLikes = "";
+                    if ($liked_by < 2){
+                        $likeOrLikes = "like";
+                    } else {
+                        $likeOrLikes = "likes";
+                    }
+
+
+                    $sql1 = "SELECT `std_id`,`clz_id` FROM `liked_colleges` where `std_id` = '$std_id' and `clz_id` = '$clz_id'";
+                    $liked_result = $conn->query($sql1);
+                    if ($liked_result->num_rows == 0) {
+                            $heart_shape = "regular";
+                    } else if($liked_result->num_rows == 1){
+                        $heart_shape = "solid";
+                    }
+
                 ?>
                     <div class="course rad-6 bg-white p-relative">
                         <img src="../cardcollege/kma.jpeg" alt="" class="f-width">
                         <img src="images/team-01.png" alt="" class="p-absolute">
 
                         <div class="heart" id ="<?php echo $colleges_row['clz_id']; ?>" >
-                            <i class="fa-solid fa-heart" onclick="replaceClass(this)"></i>
+                            <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
+                            <p id="total_likes" ><?php echo $colleges_row['liked_by'];?> <?php echo $likeOrLikes;?></p>
                         </div>
-
 
 
 
@@ -275,15 +292,6 @@ $collegeCount = 0;
     </script>
 
     <script>
-        function replaceClass(heart) {
-
-            if (heart.classList.contains("fa-solid")) {
-                heart.classList.replace('fa-solid', 'fa-regular');
-            } else {
-                heart.classList.replace('fa-regular', 'fa-solid');
-            }
-
-        }
     </script>
     <script src="formValidation.js"></script>
 </body>
