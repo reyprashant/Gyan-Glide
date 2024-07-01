@@ -62,7 +62,6 @@ if (isset($_POST['upload'])) {
      **/
 
 
-
     if (in_array($img_ex_lc, $allowed_exs)) {
       /** 
 				 renaming the image name with std id
