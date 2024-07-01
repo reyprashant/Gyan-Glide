@@ -26,13 +26,14 @@
             ?>
             <h1 class="p-relative mt-10">Reviews</h1>
 
-            <div class="container" style="position: relative; left:200px">
+            <div class="container" style="position: relative; left:200px background-image: url('bgimage.jpeg;')">
                 <div class="row">
                     <form action="reviews.php" method="post">
 
-                        <div>
+                        <div style="display: flex; align-content: center; flex-direction: column; justify-content: center;">
+                            <img src="bgimage.png" alt="" height="300px" width="500px" >
                             <h3 style="font-family: Arial">Enjoying Gyan-Glide? Give us your Reviews</h3>
-                            <h3 style="font-family: Arial">Your Review Matters</h3>
+                            <!-- <h3 style="font-family: Arial">Your Review Matters</h3> -->
                         </div>
 
                         
@@ -40,15 +41,15 @@
                         <div class="rateyo" id="rating" data-rateyo-rating="4" data-rateyo-num-stars="5" data-rateyo-score="3">
                         </div>
 
-                        <span class='result'>0</span>
+                        <!-- <span class='result'>0</span> -->
                         <input type="hidden" name="rating">
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">What's Your Thoughts About Us</label>
 
-            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 width-800" placeholder="your thought" style="height: 300px; width: 600px;"></textarea>
+            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 width-800" placeholder="your thought" style="height: 100px; width: 500px;"></textarea>
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
         </div>
 
-                        <div><input type="submit" name="add"> </div>
+                        <div><input type="submit" name="add" value="Submit"> </div>
 
                     </form>
                 </div>

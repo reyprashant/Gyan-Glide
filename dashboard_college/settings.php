@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap"
+    rel="stylesheet">
   <title>Settings</title>
 </head>
 
@@ -61,57 +63,70 @@
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Certifications</label>
             <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Certification">
 
-           <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Organization Type</label>
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Organization Type</label>
             <!-- <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" value="last Name"> -->
             <select name="org_type" id="1">
               <option value="profitable">Profitable</option>
               <option value="profitable">Non-Profitable</option>
               <option value="profitable">Private</option>
               <option value="profitable">Government</option>
-              <option value="profitable">NGo's/INGo's</option>  
+              <option value="profitable">NGo's/INGo's</option>
             </select>
 
+            
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Faculties/ Courses you offer</label>
+            <!-- <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
+            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty"> -->
+
+            
+            <input type="checkbox" id="faculty1" name="faculty1" value="BBA">
+            <label for="vehicle1">BBA</label><br>
+            <input type="checkbox" id="faculty2" name="faculty2" value="BCA">
+            <label for="vehicle2">BCA</label><br>
+            <input type="checkbox" id="faculty3" name="faculty3" value="BPH">
+            <label for="vehicle3">BPH</label><br>
+            <input type="checkbox" id="faculty4" name="faculty4" value="BBS">
+            <label for="vehicle1">BBS</label><br>
+            <input type="checkbox" id="faculty5" name="faculty5" value="Engineering">
+            <label for="vehicle2">Engineering</label><br>
+            <input type="checkbox" id="faculty6" name="faculty6" value="BALLB">
+            <label for="vehicle3">BALLB</label><br>
+            
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Top Facilities in your College</label>
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
+            
+            
+            
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
+            <input type="file" id="myFile" name="filename" accept="image/*">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload Logo of your College</label>
+            <input type="file" id="myFile" name="filename" accept="image/*">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload ambience/glimpse of your college</label>
+            <input type="file" id="myFile" name="filename" multiple="multiple" accept="image/*">
+            <br>
+            <br>
+            <input type="button" value="submit">
+
             <div class="draft txt-c-mobile p-20 column bg-white p-relative rad-10">
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Description of your College</label>
-            <!-- <input type="textbox" class="c-gray p-10 rad-6 fs-14 " placeholder="Description of your College"> -->
+              <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Description of your College</label>
+              <!-- <input type="textbox" class="c-gray p-10 rad-6 fs-14 " placeholder="Description of your College"> -->
 
-            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"></textarea>
-            <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
-        </div>
+              <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"></textarea>
+              <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
+            </div>
 
-        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Faculties/ Courses you offer</label>
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
-            <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty">
-
-        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Top Facilities in your College</label>
-        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
-        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
-        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
-        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
-        <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="">
-        
-        
-        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
-        <input type="file" id="myFile" name="filename" accept="image/*">
-
-        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload Logo of your College</label>
-        <input type="file" id="myFile" name="filename" accept="image/*">
-
-        <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload ambience/glimpse of your college</label>
-        <input type="file" id="myFile" name="filename" multiple="multiple" accept="image/*">
-       <br>
-       <br>
-        <input type="button" value="submit">
-      
-      
-      
-      </form>
+          </form>
         </div>
 
         <div class="security-info bg-white p-20 rad-6 ">
