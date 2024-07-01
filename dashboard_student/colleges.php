@@ -58,6 +58,21 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                 while ($colleges_row = mysqli_fetch_assoc($college)) {
                     $collegeCount = $collegeCount + 1;
                     $clz_id = $colleges_row['clz_id'];
+                    $sql20 = "SELECT * FROM `college_main_images` where `clz_id` = '$clz_id'";
+                    $clz_images = $conn->query($sql20);
+
+                    if ($clz_images->num_rows > 0) {
+
+                        $clz_main_img = mysqli_fetch_assoc($clz_images);
+                        $clz_logo = $clz_main_img['logo'];
+                        $clz_img = $clz_main_img['main_img'];
+                        } else {
+                            $clz_logo = 'default.jpg';
+                            $clz_img = 'default.jpg';
+                        }
+
+
+
                     $liked_by = $colleges_row['liked_by'];
                     $likeOrLikes = "";
                     if ($liked_by < 2) {
@@ -80,8 +95,8 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                         <?
                         
                         ?>
-                        <img src="../cardcollege/kma.jpeg" alt="" class="f-width">
-                        <img src="images/team-01.png" alt="" class="p-absolute">
+                        <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="" class="f-width">
+                        <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="" class="p-absolute">
 
                         <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                             <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
@@ -176,7 +191,7 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                                                                 <?php foreach ($images as $image) { ?>
                                                                     <div class="swiper-slide">
                                                             <div class="img_box">
-                                                                <img src="../image_upload/uploads/<?= $image['img_name'] ?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                <img src="../image_upload/uploads/<?php $image['img_name'] ?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
                                                             </div>
                                                         </div>
                                                                 <?php } ?>
