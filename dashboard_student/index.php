@@ -143,6 +143,16 @@ if (isset($_POST['upload'])) {
     <div class="content d-flex  column">
       <?php
       include_once 'dashboard_header.php';
+      
+
+      $sql20 = "SELECT * FROM `student_images` where `std_id` = '$std_id'";
+      $std_image = $conn->query($sql20);
+      if ($std_image->num_rows > 0) {
+          $main_img = mysqli_fetch_assoc($std_image);
+          $std_img = $main_img['img_name'];
+          } else {
+            $std_img = 'default.jpg';
+          }
       ?>
 
       <h1 class="p-relative mt-10">Dashboard</h1>
@@ -155,7 +165,7 @@ if (isset($_POST['upload'])) {
               <p class="c-gray"><span id="loggedUsername"><?php echo $_SESSION['current_user']; ?></span></p>
             </div>
             <img src="images/welcome.png" alt="">
-            <img src="../image_upload/std_uploads/<?=$student_image['img_name']?>" alt="" class="p-absolute">
+            <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="" class="p-absolute">
           </div>
           <div class="data between-flex p-20 mb-20">
             <div class="name">
@@ -171,7 +181,7 @@ if (isset($_POST['upload'])) {
           <div class="user flex-center column">
 
 
-            <img src="../image_upload/std_uploads/<?=$student_image['img_name']?>" alt="logo of college" style="max-width: 25%;">
+            <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="logo of college" style="max-width: 25%;">
             <div class="popup" style=" width: 400px; background: white; position: relative; top: 50%; left: 50%; ">
             </div>
             <h3 class="mt-10"><?php echo $row['name']; ?></h3>
@@ -206,12 +216,12 @@ if (isset($_POST['upload'])) {
               </div>
             </div>
 
-            <div class="box p-20">
+            <!-- <div class="box p-20">
               <h4 class="c-gray mb-10 ">Other Information</h4>
               <div class="text grid">
                 <p class="c-gray fs-15 mt-5 d-flex align-center">Title:<span class="c-black">ISO Certified College</span></p>
 
-              </div>
+              </div> -->
             </div>
 
             <div class="box p-20">

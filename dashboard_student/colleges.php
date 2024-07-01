@@ -9,16 +9,6 @@ $collegeCount = 0;
 $heart_shape = "";
 $std_id = $_SESSION['std_id'];
 
-
-# fetching images
-$sql3  = "SELECT img_name FROM
-	         college_images ORDER BY img_name DESC";
-
-$stmt = $conn->prepare($sql3);
-$stmt->execute();
-$result = $stmt->get_result();
-$images = $result->fetch_all(MYSQLI_ASSOC);
-
 ?>
 
 
@@ -60,16 +50,32 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                     $clz_id = $colleges_row['clz_id'];
                     $sql20 = "SELECT * FROM `college_main_images` where `clz_id` = '$clz_id'";
                     $clz_images = $conn->query($sql20);
-
                     if ($clz_images->num_rows > 0) {
 
                         $clz_main_img = mysqli_fetch_assoc($clz_images);
                         $clz_logo = $clz_main_img['logo'];
                         $clz_img = $clz_main_img['main_img'];
-                        } else {
-                            $clz_logo = 'default.jpg';
-                            $clz_img = 'default.jpg';
-                        }
+                    } else {
+                        $clz_logo = 'default.jpg';
+                        $clz_img = 'default.jpg';
+                    }
+
+                    # fetching images
+                    $sql3  = "SELECT * FROM `college_images` where `clz_id` = $clz_id ";
+                    $image_result = $conn->query($sql3);
+
+                    if ($image_result->num_rows > 0) {
+                        // print_r($clz_imagess);
+                    } else {
+
+                    }
+
+
+
+                    $stmt = $conn->prepare($sql3);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $images = $result->fetch_all(MYSQLI_ASSOC);
 
 
 
@@ -93,14 +99,14 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                 ?>
                     <div class="course rad-6 bg-white p-relative">
                         <?
-                        
+
                         ?>
                         <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="" class="f-width">
                         <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="" class="p-absolute">
 
                         <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                             <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
-                           
+
                         </div>
 
 
@@ -148,7 +154,7 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                                         </div>
                                         <div class="popup-text">
                                             <h1><?php echo $colleges_row['name']; ?> (★ 4.0 )</h1>
-                                            <p><strong><?php echo $colleges_row['estd']; ?>  A.D.</strong></p>
+                                            <p><strong><?php echo $colleges_row['estd']; ?> A.D.</strong></p>
                                             <p><strong><?php echo $colleges_row['college_type']; ?> College</strong></p>
                                             <p><strong><?php echo $colleges_row['certification']; ?></strong></p>
                                             <p><strong><?php echo $colleges_row['address']; ?></strong></p>
@@ -187,14 +193,13 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                                             <div class="container">
                                                 <div class="swiper card_slider">
                                                     <div class="swiper-wrapper">
-
-                                                                <?php foreach ($images as $image) { ?>
-                                                                    <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../image_upload/uploads/<?php $image['img_name'] ?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                        <?php while ($clz_imagess = mysqli_fetch_assoc($image_result)) { ?>
+                                                            <div class="swiper-slide">
+                                                                <div class="img_box">
+                                                                    <img src="../image_upload/uploads/<?php echo $clz_imagess['img_name']?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                                <?php } ?>
+                                                        <?php } ?>
 
 
                                                     </div>
@@ -213,9 +218,9 @@ $images = $result->fetch_all(MYSQLI_ASSOC);
                                         <ul style="list-style: none; line-height: 30px; color: rgb(78, 105, 78);">
                                             <li><i class="fa-solid fa-phone"></i>&nbsp; &nbsp; &nbsp; <?php echo $colleges_row['phone']; ?></li>
                                             <li><i class="fa-solid fa-envelope"></i>&nbsp; &nbsp; &nbsp;
-                                            <?php echo $colleges_row['email']; ?></li>
+                                                <?php echo $colleges_row['email']; ?></li>
                                             <li><i class="fa-solid fa-globe"></i>&nbsp; &nbsp; &nbsp;
-                                            <?php echo $colleges_row['website']; ?></li>
+                                                <?php echo $colleges_row['website']; ?></li>
                                         </ul>
                                     </div>
                                 </div>
