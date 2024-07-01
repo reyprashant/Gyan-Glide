@@ -8,15 +8,104 @@ if (!isset($_SESSION['current_user'])) {
 // $_SESSION['current_user'] = $_COOKIE['current_user'];
 // $_SESSION['email'] = $_COOKIE['email'];
 $temp_email = $_SESSION['email'];
-
+$std_id = $_SESSION['std_id'];
 $sql = "SELECT * FROM students WHERE email= '$temp_email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    $row = mysqli_fetch_array($result);
+  $row = mysqli_fetch_array($result);
 } else {
-    
 }
+
+$sql = "SELECT * FROM student_images WHERE std_id= $std_id"; 
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  $student_image = mysqli_fetch_array($result);
+} else{
+  $new_student = true;
+}
+
+
+if (isset($_POST['upload'])) {
+
+  $image = $_FILES['image'];
+
+  # get the image info and store them in var
+  
+  $image_name = $image['name'];
+  $tmp_name   = $image['tmp_name'];
+  $error      = $image['error'];
+
+  # if there is not error occurred while uploading
+  if ($error === 0) {
+    # get image extension store it in var
+    $img_ex = pathinfo($image_name, PATHINFO_EXTENSION);
+
+    /** 
+			convert the image extension into lower case 
+			and store it in var 
+     **/
+    $img_ex_lc = strtolower($img_ex);
+
+
+
+    /** 
+			crating array that stores allowed
+			to upload image extensions.
+     **/
+    $allowed_exs = array('jpg', 'jpeg', 'png');
+
+
+    /** 
+			check if the the image extension 
+			is present in $allowed_exs array
+     **/
+
+
+
+    if (in_array($img_ex_lc, $allowed_exs)) {
+      /** 
+				 renaming the image name with std id
+       **/
+      $new_img_name = $std_id . '.' . $img_ex_lc;
+
+      # crating upload path on root directory
+      $img_upload_path = '../image_upload/std_uploads/' . $new_img_name;
+
+      # inserting imge name into database
+      if($new_student){
+        $sql  = "INSERT INTO student_images VALUES ($std_id, '$new_img_name')";
+        if($conn->query($sql)){
+              # move uploaded image to 'uploads' folder
+          move_uploaded_file($tmp_name, $img_upload_path);
+        }else{
+
+          header("Location: index.php?error=$em");
+  
+        }
+      }
+       else{
+        # move uploaded image to 'uploads' folder
+        move_uploaded_file($tmp_name, $img_upload_path);
+      }
+
+
+      # redirect to 'index.php'
+      header("Location: index.php");
+    } else {
+      # error message
+      $em = "You can't upload files of this type";
+
+      /*
+		    	redirect to 'index.php' and 
+		    	passing the error message
+		        */
+
+      header("Location: index.php?error=$em");
+    }
+  }
+}
+
 
 
 
@@ -62,11 +151,11 @@ if ($result->num_rows > 0) {
               <p class="c-gray"><span id="loggedUsername"><?php echo $_SESSION['current_user']; ?></span></p>
             </div>
             <img src="images/welcome.png" alt="">
-            <img src="images/avatar.png" alt="" class="p-absolute">
+            <img src="../image_upload/std_uploads/<?=$student_image['img_name']?>" alt="" class="p-absolute">
           </div>
           <div class="data between-flex p-20 mb-20">
             <div class="name">
-              <p><?php echo "USSER BIO"?></p>
+              <p><?php echo "USSER BIO" ?></p>
               <span class="c-gray">ISO Certified College</span>
             </div>
 
@@ -78,12 +167,24 @@ if ($result->num_rows > 0) {
           <div class="user flex-center column">
 
 
-            <img src="../reviews/user2.png" alt="logo of college">
+            <img src="../image_upload/std_uploads/<?=$student_image['img_name']?>" alt="logo of college" style="max-width: 25%;">
             <div class="popup" style=" width: 400px; background: white; position: relative; top: 50%; left: 50%; ">
-            <h3 class="mt-10"><?php echo $row['name']; ?></h3>
             </div>
-           
+            <h3 class="mt-10"><?php echo $row['name']; ?></h3>
 
+            <div>
+              <form method="post" action="index.php" enctype="multipart/form-data">
+                <?php
+                // if (isset($_GET['error'])) {
+                // 	echo "<p class='error'>";
+                // 	    echo htmlspecialchars($_GET['error']);
+                // 	echo "</p>";
+                // }
+                ?>
+                <input type="file" name="image" id="">
+                <button type="submit" name="upload">Upload</button>
+              </form>
+            </div>
             <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
 
           </div>

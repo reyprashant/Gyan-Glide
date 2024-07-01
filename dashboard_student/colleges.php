@@ -8,8 +8,18 @@ $college = $conn->query($sql);
 $collegeCount = 0;
 $heart_shape = "";
 $std_id = $_SESSION['std_id'];
-?>
 
+
+# fetching images
+$sql3  = "SELECT img_name FROM
+	         college_images ORDER BY img_name DESC";
+
+$stmt = $conn->prepare($sql3);
+$stmt->execute();
+$result = $stmt->get_result();
+$images = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
 
 
 <!DOCTYPE html>
@@ -50,7 +60,7 @@ $std_id = $_SESSION['std_id'];
                     $clz_id = $colleges_row['clz_id'];
                     $liked_by = $colleges_row['liked_by'];
                     $likeOrLikes = "";
-                    if ($liked_by < 2){
+                    if ($liked_by < 2) {
                         $likeOrLikes = "like";
                     } else {
                         $likeOrLikes = "likes";
@@ -60,8 +70,8 @@ $std_id = $_SESSION['std_id'];
                     $sql1 = "SELECT `std_id`,`clz_id` FROM `liked_colleges` where `std_id` = '$std_id' and `clz_id` = '$clz_id'";
                     $liked_result = $conn->query($sql1);
                     if ($liked_result->num_rows == 0) {
-                            $heart_shape = "regular";
-                    } else if($liked_result->num_rows == 1){
+                        $heart_shape = "regular";
+                    } else if ($liked_result->num_rows == 1) {
                         $heart_shape = "solid";
                     }
 
@@ -70,9 +80,9 @@ $std_id = $_SESSION['std_id'];
                         <img src="../cardcollege/kma.jpeg" alt="" class="f-width">
                         <img src="images/team-01.png" alt="" class="p-absolute">
 
-                        <div class="heart" id ="<?php echo $colleges_row['clz_id']; ?>" >
+                        <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                             <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
-                            <p id="total_likes" ><?php echo $colleges_row['liked_by'];?> <?php echo $likeOrLikes;?></p>
+                            <p id="total_likes"><?php echo $colleges_row['liked_by']; ?> <?php echo $likeOrLikes; ?></p>
                         </div>
 
 
@@ -92,7 +102,7 @@ $std_id = $_SESSION['std_id'];
                                 </div>
                                 <div class="card-footer-item">
                                     <span><?php echo $colleges_row['level']; ?></span>
-                                    <span><?php echo $colleges_row['courses']; ?></span>
+                                    <span><?php echo $colleges_row['faculties']; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -120,21 +130,14 @@ $std_id = $_SESSION['std_id'];
                                         </div>
                                         <div class="popup-text">
                                             <h1><?php echo $colleges_row['name']; ?> (★ 4.0 )</h1>
-                                            <p><strong>Estb: 2058</strong></p>
-                                            <p><strong>Private School</strong></p>
-                                            <p><strong>ISO-Certified 2009</strong></p>
-                                            <p><strong>Chauthe, Pokhara-14</strong></p>
+                                            <p><strong><?php echo $colleges_row['estd']; ?>  A.D.</strong></p>
+                                            <p><strong><?php echo $colleges_row['college_type']; ?> College</strong></p>
+                                            <p><strong><?php echo $colleges_row['certification']; ?></strong></p>
+                                            <p><strong><?php echo $colleges_row['address']; ?></strong></p>
                                             <hr>
-                                            <p>Kaski Modernized Academy is an academically selective co-educational secondary
-                                                boarding school
-                                                located at Chauthe B.P. Marg, Pokhara-14, Nepal. It covers an area of 20
-                                                ropanies of its own and
-                                                5 huge attractive buildings. It provides quality education to around 200
-                                                students from Nursery
-                                                to Grade 12. KMA prides itself on the quality of its excellent academic
-                                                programs, along with
-                                                co-curricular activities covering a wide range of genres.</p>
-                                            <p>Tracing back to its history, KMA was established in 2058 BS. At Shiva Chowk,
+                                            <p><?php echo $colleges_row['description']; ?></p>
+
+                                            <!-- <p>Tracing back to its history, KMA was established in 2058 BS. At Shiva Chowk,
                                                 Pokhara-10, with 90
                                                 students and 9 teaching staff with the sacred motto "Learn through reality,
                                                 attend in humanity."
@@ -142,17 +145,17 @@ $std_id = $_SESSION['std_id'];
                                                 P.N. Campus,
                                                 Pokhara. Since its inception, Mr. Ram Bahadur Mochi has been the Principal and
                                                 sole founder of
-                                                KMA.</p>
+                                                KMA.</p> -->
                                             <hr>
                                             <h2>Our faculties:</h2>
                                             <ul>
-                                                <li>Science</li>
-                                                <li>Management</li>
-                                                <li>Hotel Management</li>
+                                                <li><?php echo $colleges_row['faculties']; ?></li>
+                                                <!-- <li>Management</li>
+                                                <li>Hotel Management</li> -->
                                             </ul>
                                             <h2>Our facilities:</h2>
                                             <ul>
-                                                <li>E-Library</li>
+                                                <li><?php echo $colleges_row['facilities']; ?></li>
                                                 <li>Arts Classes</li>
                                                 <li>Extra Curriculum Activities</li>
                                             </ul>
@@ -166,53 +169,17 @@ $std_id = $_SESSION['std_id'];
                                             <div class="container">
                                                 <div class="swiper card_slider">
                                                     <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
+
+                                                                <?php foreach ($images as $image) { ?>
+                                                                    <div class="swiper-slide">
                                                             <div class="img_box">
-                                                                <img src="../pop_up/sos.jpeg" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                <img src="../image_upload/uploads/<?= $image['img_name'] ?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
                                                             </div>
                                                         </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../pop_up/kma.jpeg" class="custom-image">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../pop_up/sos.jpeg" class="custom-image">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../pop_up/motherland.jpeg" class="custom-image">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../pop_up/samata.jpeg" class="custom-image">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="../pop_up/sos.jpeg" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px;   width: 350px; height: 250px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="Collge Fit3.jpg" class="custom-image">
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="img_box">
-                                                                <img src="college.jpg" class="custom-image">
-                                                            </div>
-                                                        </div>
+                                                                <?php } ?>
+
 
                                                     </div>
-                                                    <!-- for arrow-->
-                                                    <div class="swiper-button-next"></div>
-                                                    <div class="swiper-button-prev"></div>
-                                                    <!--for pagination-->
-                                                    <div class="swiper-pagination"></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -226,11 +193,11 @@ $std_id = $_SESSION['std_id'];
                                     <div class="popup_footer">
                                         <h2 style="text-align: left;">Contact Info:</h2>
                                         <ul style="list-style: none; line-height: 30px; color: rgb(78, 105, 78);">
-                                            <li><i class="fa-solid fa-phone"></i>&nbsp; &nbsp; &nbsp; 061-521165</li>
+                                            <li><i class="fa-solid fa-phone"></i>&nbsp; &nbsp; &nbsp; <?php echo $colleges_row['phone']; ?></li>
                                             <li><i class="fa-solid fa-envelope"></i>&nbsp; &nbsp; &nbsp;
-                                                kaskimodernizedacademy@gmail.com</li>
+                                            <?php echo $colleges_row['email']; ?></li>
                                             <li><i class="fa-solid fa-globe"></i>&nbsp; &nbsp; &nbsp;
-                                                www.kaskimodernizedacademy.com</li>
+                                            <?php echo $colleges_row['website']; ?></li>
                                         </ul>
                                     </div>
                                 </div>
