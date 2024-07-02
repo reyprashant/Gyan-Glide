@@ -1,14 +1,13 @@
 <?php
-$clz_id = 1;
+$clz_id = $_SESSION['clz_id'];
 if (isset($_POST['changePassword'])) {
   // Password change form data
   $oldPassword = $_POST['oldPassword'];
   $password = $_POST['password'];
-  // $email = $_SESSION['email'];
 
   // Check user credentials
   $passwordVerify = false;
-  $sql = "SELECT * FROM college_login WHERE clz_id='$email' AND password='$oldPassword'";
+  $sql = "SELECT * FROM login WHERE `email`='$prev_email' AND password='$oldPassword'";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -19,9 +18,10 @@ if (isset($_POST['changePassword'])) {
 
   if ($passwordVerify) {
 
-    $sql = "UPDATE `college_login` SET `password`='$password' WHERE `clz_id` = $clz_id";
+    $sql = "UPDATE `login` SET `password`='$password' WHERE `email` = '$prev_email'";
     if ($conn->query($sql) === TRUE) {  // change password successfull
-      $passwordUpdateMessage = "Password Changed Successfully";
+      $_SESSION['password_click'] = true;
+      header('location: settings.php');
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -216,7 +216,7 @@ if (isset($_POST['upload_logo'])) {
 }
 
 if (isset($_POST['update_college'])) {
-
+    $prev_email = $_POST['prev_email'];
   // update form data
   $name = $_POST['college_name'];
   // $email = $_POST['email'];
@@ -239,14 +239,10 @@ if (isset($_POST['update_college'])) {
   $sql = "UPDATE `college_info` SET `name`='$name',
       `address`='$address',`estd`='$estd',
       `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities' WHERE `clz_id` = $clz_id";
+        $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
 
-  if ($conn->query($sql) === TRUE) { // update data into college_info table
+  if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) { // update data into college_info table
     // $_SESSION['email'] = $email;
-
-
-
-
-
     $updated_message = "General Info Updated Successfully";
     echo '<script>alert("Inserted Successfully")</script>';
   } else {
