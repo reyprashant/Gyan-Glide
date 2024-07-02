@@ -2,6 +2,7 @@
 @require_once '../connectionSetup.php';
 session_start();
 
+
 if ($_SESSION['edit_click']){
   $updated_message = "General Info Updated Successfully";
 }else {
@@ -25,7 +26,7 @@ $_SESSION['password_click'] = false;
 $_SESSION['social_click'] = false;
 
 
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['std_id'])) {
   header('location:../loginpage.php');
   die();
 } else {

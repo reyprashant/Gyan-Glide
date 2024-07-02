@@ -1,7 +1,22 @@
 <?php
-
+session_start();
 $emailError = "";
 require 'connectionSetup.php';
+
+if($_SESSION['signuperror']){
+    $emailError = "The user with this email already exists.";
+    $_SESSION['signup'] = false;
+}else{
+    $emailError = "";
+}
+
+if($_SESSION['signup']){
+    $emailError = "Signup Successful";
+}
+$_SESSION['signup'] = false;
+$_SESSION['signuperror'] = false;
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['signup'])) {
         // Signup form data
@@ -9,29 +24,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $cpassword = $_POST['confirmPassword'];
+        $user_type = $_POST['userType'];
+
+        $sql = "SELECT * FROM login WHERE email='$email'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $_SESSION['signuperror'] = true;
+            header('location: signuppage.php');
+            die();
+            // http_response_code(409);
+            // $emailError = "The user with this email already exists.";
+        }
+
+        if ($user_type) { 
+            $sql = "INSERT INTO `college_info`(`name`,`email`) VALUES ('$name','$email')";
+        } else{
+            $sql = "INSERT INTO `students`(`name`,`email`) VALUES ('$name','$email')";
+        }
+
+        $sql2 = "INSERT INTO login (email, password, user_type) VALUES ('$email', '$password', '$user_type')";
 
 
-        
-
-
-        if (!empty($email)) {
-
-            $sql = "SELECT * FROM students WHERE email='$email'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                http_response_code(409);
-                $emailError = "The user with this email already exists.";
-            } elseif ($password === $cpassword) { // Check for password and confirm password
-                $sql = "INSERT INTO students (name, email, password) VALUES ('$name', '$email', '$password')";
-                if ($conn->query($sql) === TRUE) { // Insert data into signup table
-                    $emailError = "Signup Successful";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            } else {
-                http_response_code(403);
-                $emailError = "Password donot match";
-            }
+        if ($conn->query($sql2) === TRUE && $conn->query($sql) === TRUE) { // Insert data into login table
+            $emailError = "Signup Successful";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
 }
@@ -54,6 +71,14 @@ $conn->close();
             <div class="form signup">
                 <span class="title">Register to Gyan-Glide</span>
                 <form id="signupform" action="signuppage.php" method="post">
+
+                    <div class="input-field">
+
+                        <select name="userType">
+                        <option value='0'>Student</option>
+                        <option value='1'>College</option>
+                        </select>
+                    </div>
                     <div class="input-field">
                         <input type="text" placeholder="Enter your name" id="name" name="name" required>
                     </div>

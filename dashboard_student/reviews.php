@@ -1,10 +1,10 @@
 <?php
 @require_once '../connectionSetup.php';
 session_start();
-if (!isset($_SESSION['current_user'])) {
-  header('location:../loginpage.php');
-  die();
-}
+if (!isset($_SESSION['std_id'])) {
+    header('location:../loginpage.php');
+    die();
+  }
 
 $std_id = $_SESSION['std_id'];
 $sql = "SELECT * from gyan_glide_reviews Where std_id = $std_id";

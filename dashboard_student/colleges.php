@@ -2,7 +2,10 @@
 
 require '../connectionSetup.php';
 session_start();
-
+if (!isset($_SESSION['std_id'])) {
+    header('location:../loginpage.php');
+    die();}
+    
 $sql = "SELECT * FROM college_info where Status = 1";
 $college = $conn->query($sql);
 $heart_shape = "";
@@ -149,7 +152,6 @@ $std_id = $_SESSION['std_id'];
                                                     }else{
                                                         foreach ($faculties as $faculty) {
                                                             echo "<p>$faculty</p>";
-                                                            
                                                         }
                                                     }
                                                     ?>
