@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prev_email = $_POST['prev_email'];
-    
+
     if (isset($_POST['changePassword'])) {
       // Password change form data
       $oldPassword = $_POST['oldPassword'];

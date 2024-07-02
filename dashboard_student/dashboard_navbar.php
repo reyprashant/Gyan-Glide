@@ -44,12 +44,12 @@
         <span>Virtual Tour</span>
       </a>
     </li>
-    <li>
+    <!-- <li>
       <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="scholarship.php">
         <i class="fa-regular fa-circle-user fa-fw"></i>
         <span>Scholarship</span>
       </a>
-    </li>
+    </li> -->
     <li>
       <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="admission.php">
         <i class="fa-regular fa-file fa-fw"></i>
