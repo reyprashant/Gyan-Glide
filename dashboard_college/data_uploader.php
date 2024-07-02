@@ -232,7 +232,7 @@ if (isset($_POST['update_college'])) {
   }
   if (isset($_POST['facility'])) {
     $facility = $_POST['facility'];
-    $facilities = implode("**** ", $facility);
+    $facilities = implode(", ", $facility);
   }
 
   //sql query for update

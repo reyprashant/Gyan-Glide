@@ -1,15 +1,39 @@
 <?php
 @require_once '../connectionSetup.php';
 session_start();
+
+if ($_SESSION['edit_click']){
+  $updated_message = "General Info Updated Successfully";
+}else {
+  $updated_message = "";
+}
+
+if ($_SESSION['password_click']){
+  $password_message = "Password Changed Successfully";
+}else {
+  $password_message = "";
+}
+
+if ($_SESSION['social_click']){
+  $social_message = "Social Info Updated Successfully";
+}else {
+  $social_message = "";
+}
+
+$_SESSION['edit_click'] = false;
+$_SESSION['password_click'] = false;
+$_SESSION['social_click'] = false;
+
+
 if (!isset($_SESSION['email'])) {
   header('location:../loginpage.php');
   die();
 } else {
   // $_SESSION['current_user'] = $_COOKIE['current_user'];
   // $_SESSION['email'] = $_COOKIE['email'];
-  $temp_email = $_SESSION['email'];
+  $std_id = $_SESSION['std_id'];
 
-  $sql = "SELECT * FROM students WHERE email= '$temp_email'";
+  $sql = "SELECT * FROM students WHERE std_id= '$std_id'";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -20,14 +44,12 @@ if (!isset($_SESSION['email'])) {
 
 //for password change
 
-$passwordUpdateMessage = "";
 
 
 
 
 
-$updated_message = "";
-$sql = "SELECT * FROM students WHERE email= '$temp_email'";
+$sql = "SELECT * FROM students WHERE std_id= '$std_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -38,11 +60,10 @@ if ($result->num_rows > 0) {
       // Password change form data
       $oldPassword = $_POST['oldPassword'];
       $password = $_POST['password'];
-      $email = $_SESSION['email'];
 
       // Check user credentials
       $passwordVerify = false;
-      $sql = "SELECT * FROM students WHERE email='$email' AND password='$oldPassword'";
+      $sql = "SELECT * FROM students WHERE std_id='$std_id' AND password='$oldPassword'";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -53,9 +74,10 @@ if ($result->num_rows > 0) {
 
       if ($passwordVerify) {
 
-          $sql = "UPDATE `students` SET `password`='$password' WHERE `email` = '$email'";
+          $sql = "UPDATE `students` SET `password`='$password' WHERE `std_id` = '$std_id'";
           if ($conn->query($sql) === TRUE) {  // change password successfull
-              $passwordUpdateMessage = "Password Changed Successfully";
+              $_SESSION['password_click'] = true;
+              header('location: settings.php');
           } else {
               echo "Error: " . $sql . "<br>" . $conn->error;
           }
@@ -71,14 +93,17 @@ if ($result->num_rows > 0) {
       $email = $_POST['email'];
       $phone = $_POST['phone'];
       $address = $_POST['address'];
+      $prev_school = $_POST['prev_school'];
+      $grade = $_POST['grade'];
       
       //sql query for update
       $sql = "UPDATE `students` SET `name`='$name',`email`='$email',
-          `phone`='$phone',`address`='$address' WHERE `email` = '$temp_email'";
+          `phone`='$phone',`address`='$address',`prev_school`='$prev_school',`grade`='$grade' WHERE `std_id` = '$std_id'";
 
       if ($conn->query($sql) === TRUE) { // update data into students table
-        $_SESSION['email'] = $email;
-        $updated_message = "General Info Updated Successfully";
+
+        $_SESSION['edit_click'] = true;
+        header('location: settings.php');
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
@@ -94,10 +119,11 @@ if ($result->num_rows > 0) {
 
       //sql query for update
       $sql = "UPDATE `students` SET `facebook`='$facebook',`instagram`='$instagram',
-        `linkedIn`='$linkedIn',`github`='$github' WHERE `email` = '$temp_email'";
+        `linkedIn`='$linkedIn',`github`='$github' WHERE `std_id` = '$std_id'";
 
       if ($conn->query($sql) === TRUE) { // update data into students table
-        $updated_message = "Social Info Updated Successfully";
+        $_SESSION['social_click'] = true;
+        header('location: settings.php');
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
@@ -285,7 +311,9 @@ if ($result->num_rows > 0) {
       <h1 class="p-relative mt-10">Settings</h1>
 
       <div class="text" style="position: absolute; top:12%; left: 50%;">
+        <H4><?php echo $social_message ?></H4>
         <H4><?php echo $updated_message ?></H4>
+        <H4><?php echo $password_message ?></H4>
         <!-- <p class="c-gray fs-14 mt-5">Last Change On 25/10/2021</p> -->
       </div>
 
@@ -311,6 +339,12 @@ if ($result->num_rows > 0) {
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Address</label>
             <input type="text" name="address" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['address']; ?>">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Recently Graduated From</label>
+            <input type="text" name="prev_school" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['prev_school']; ?>">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Grade Obtained</label>
+            <input type="text" name="grade" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['grade']; ?>">
 
             <input type="submit" name="update_user" value="Update General Info" class="rad-6 c-white bg-blue p-5" style="margin:15px; position: relative;left: 30%">
 
@@ -422,4 +456,10 @@ if ($result->num_rows > 0) {
   </div>
 
 <script src="formValidation.js"></script>
+
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
 </body>

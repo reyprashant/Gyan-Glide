@@ -1,19 +1,34 @@
 <?php
 @require_once '../connectionSetup.php';
 session_start();
-if (!isset($_SESSION['current_user'])) {
+if (!isset($_SESSION['std_id'])) {
   header('location:../loginpage.php');
   die();
 }
 // $_SESSION['current_user'] = $_COOKIE['current_user'];
 // $_SESSION['email'] = $_COOKIE['email'];
-$temp_email = $_SESSION['email'];
+// $temp_email = $_SESSION['email'];
 $std_id = $_SESSION['std_id'];
-$sql = "SELECT * FROM students WHERE email= '$temp_email'";
+$sql = "SELECT * FROM students WHERE std_id= $std_id";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
   $row = mysqli_fetch_array($result);
+
+if (empty($row['prev_school'])){
+  $prev_school = "N/A";
+}else{
+  $prev_school = $row['prev_school'];
+}
+
+if (empty($row['grade'])){
+  $grade = "N/A";
+}else{
+  $grade = $row['grade'];
+}
+
+
+
+
 } else {
 }
 
@@ -208,7 +223,7 @@ if (isset($_POST['upload'])) {
             <div class="box p-20">
               <h4 class="c-gray mb-10 ">General Information</h4>
               <div class="text grid">
-                <p class="c-gray fs-15 mt-5 d-flex align-center">Full Name:<span class="c-black"><?php echo $_SESSION['current_user']; ?></span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Full Name:<span class="c-black"><?php echo $row['name']; ?></span></p>
                 <p class="c-gray fs-15 mt-5 d-flex align-center">City:<span class="c-black">Pokhara</span></p>
                 <label class="d-flex align-center">
                   <input type="checkbox" class="checkbox-button p-relative" checked>
@@ -216,12 +231,13 @@ if (isset($_POST['upload'])) {
               </div>
             </div>
 
-            <!-- <div class="box p-20">
+            <div class="box p-20">
               <h4 class="c-gray mb-10 ">Other Information</h4>
               <div class="text grid">
-                <p class="c-gray fs-15 mt-5 d-flex align-center">Title:<span class="c-black">ISO Certified College</span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Recently Graduated from:<span class="c-black"><?php echo $prev_school; ?></span></p>
+                <p class="c-gray fs-15 mt-5 d-flex align-center">Grade:<span class="c-black"><?php echo $grade; ?></span></p>
 
-              </div> -->
+              </div>
             </div>
 
             <div class="box p-20">
