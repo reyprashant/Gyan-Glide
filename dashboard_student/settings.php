@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prev_email = $_POST['prev_email'];
-    
+
     if (isset($_POST['changePassword'])) {
       // Password change form data
       $oldPassword = $_POST['oldPassword'];
@@ -99,7 +99,7 @@ if ($result->num_rows > 0) {
       //sql query for update
       $sql = "UPDATE `students` SET `name`='$name',`email`='$email',
           `phone`='$phone',`address`='$address',`prev_school`='$prev_school',`grade`='$grade',`bio`='$bio' WHERE `std_id` = '$std_id'";
-      $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
+      $sql1 = "UPDATE `login` SET `email`='$email' where `email` = '$prev_email'";
 
       if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) { // update data into students table
 
