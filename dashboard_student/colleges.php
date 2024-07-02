@@ -65,6 +65,10 @@ $std_id = $_SESSION['std_id'];
             require_once 'dashboard_header.php';
             ?>
             <h1 class="p-relative mt-10">Colleges</h1>
+            <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0;">
+    <input type="text" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+    <button style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007BFF; color: white; border-radius: 4px; cursor: pointer; outline: none;">Search</button>
+</div>
             <div class="container grid">
                 <?php
                 while ($colleges_row = mysqli_fetch_assoc($college)) {
