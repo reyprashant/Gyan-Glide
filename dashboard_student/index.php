@@ -182,8 +182,8 @@ if (isset($_POST['upload'])) {
           </div>
           <div class="data between-flex p-20 mb-20">
             <div class="name">
-              <p><?php echo "USSER BIO" ?></p>
-              <span class="c-gray">ISO Certified College</span>
+              <p><?php echo $row['bio']; ?></p>
+              <!-- <span class="c-gray">ISO Certified College</span> -->
             </div>
 
           </div>
@@ -197,7 +197,7 @@ if (isset($_POST['upload'])) {
             <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="logo of college" style="max-width: 25%;">
             <div class="popup" style=" width: 400px; background: white; position: relative; top: 50%; left: 50%; ">
             </div>
-            <h3 class="mt-10"><?php echo $row['name']; ?></h3>
+            <!-- <h3 class="mt-10"><?php echo $row['name']; ?></h3> -->
 
             <div>
               <form method="post" action="index.php" enctype="multipart/form-data">

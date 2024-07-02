@@ -95,9 +95,10 @@ if ($result->num_rows > 0) {
       $address = $_POST['address'];
       $prev_school = $_POST['prev_school'];
       $grade = $_POST['grade'];
+      $bio = $_POST['bio'];
       //sql query for update
       $sql = "UPDATE `students` SET `name`='$name',`email`='$email',
-          `phone`='$phone',`address`='$address',`prev_school`='$prev_school',`grade`='$grade' WHERE `std_id` = '$std_id'";
+          `phone`='$phone',`address`='$address',`prev_school`='$prev_school',`grade`='$grade',`bio`='$bio' WHERE `std_id` = '$std_id'";
       $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
 
       if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) { // update data into students table
@@ -343,6 +344,9 @@ if ($result->num_rows > 0) {
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Grade Obtained</label>
             <input type="text" name="grade" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['grade']; ?>">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-15">About Me</label>
+            <textarea name="bio" class="c-gray p-10 rad-6 fs-14 f-width" value=""><?php echo $row['bio']; ?></textarea>
 
             <input type="submit" name="update_user" value="Update General Info" class="rad-6 c-white bg-blue p-5" style="margin:15px; position: relative;left: 30%">
 
