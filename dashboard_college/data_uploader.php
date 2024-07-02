@@ -236,6 +236,7 @@ if (isset($_POST['update_college'])) {
   $estd = $_POST['estd'];
   $certification = $_POST['certification'];
   $college_type = $_POST['college_type'];
+  $description = $_POST['description'];
   $chk = "";
   if (isset($_POST['faculty'])) {
     $faculty = $_POST['faculty'];
@@ -249,7 +250,7 @@ if (isset($_POST['update_college'])) {
   //sql query for update
   $sql = "UPDATE `college_info` SET `name`='$name',
       `address`='$address',`estd`='$estd',
-      `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities' WHERE `clz_id` = $clz_id";
+      `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities',`description`='$description' WHERE `clz_id` = $clz_id";
        
   if ($conn->query($sql) === TRUE) { // update data into college_info table
     // $_SESSION['email'] = $email;

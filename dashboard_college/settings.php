@@ -450,7 +450,7 @@ if ($result->num_rows > 0) {
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Description of your College</label>
             <!-- <input type="textbox" class="c-gray p-10 rad-6 fs-14 " placeholder="Description of your College"> -->
 
-            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"></textarea>
+            <textarea name="description" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"><?php echo $row['description'];?></textarea>
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
 
             <!-- </div> -->
