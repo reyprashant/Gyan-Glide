@@ -4,8 +4,8 @@ session_start();
 if (!isset($_SESSION['admin'])) {
    header('location:../index.php');
    die();
- }
-
+}
+// $_GET = [];
 $sql = "SELECT * FROM students";
 $result = $conn->query($sql);
 
@@ -252,6 +252,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          include_once 'dashboard_header.php';
          ?>
          <h1 class="p-relative mt-20">Students you enrolled from Gyan-Glide</h1>
+         <form action="" method="GET">
+
+            <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
+               <input name="search" type="text" value="<?php if (isset($_GET['search'])) {
+                                                            echo $_GET['search'];
+                                                         } ?>" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+               <button type="submit" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">
+                  Search
+               </button>
+            </div>
+         </form>
+
 
          <div class="header_fixed">
 
@@ -274,6 +286,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   </thead>
                   <tbody>
                      <?php
+
+                     if (isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $sql12 = "SELECT * FROM students WHERE CONCAT(name,email,phone,address) LIKE '%$filtervalues%' ";
+
+                        $student1 = $conn->query($sql12);
+
+                        if ($student1->num_rows > 0) {
+                           $result = $student1;
+                        }
+
+                     }
+
+
                      $i = 1;
                      while ($row = $result->fetch_assoc()) {
                         $std_id = $row['std_id'];
@@ -394,12 +420,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
    </script>
 
-<script>
-   if (window.history.replaceState) {
-      window.history.replaceState(null, null, window.location.href);
-   }
-</script>
+   <script>
+      if (window.history.replaceState) {
+         window.history.replaceState(null, null, window.location.href);
+      }
+   </script>
 </body>
 
 </html>
-

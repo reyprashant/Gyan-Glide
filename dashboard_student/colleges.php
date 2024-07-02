@@ -95,7 +95,7 @@ if (isset($_POST['apply'])) {
             ?>
             <h1 class="p-relative mt-10">Colleges</h1>
             <form action="" method="GET">
-
+                
                 <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
                     <input name="search" type="text" value="<?php if (isset($_GET['search'])) {
                                                                 echo $_GET['search'];
@@ -116,7 +116,7 @@ if (isset($_POST['apply'])) {
                     
                     $college1 = $conn->query($sql12);
 
-                    if($college->num_rows > 0){
+                    if($college1->num_rows > 0){
                         $college = $college1;
                     }
                 }
