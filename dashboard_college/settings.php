@@ -17,7 +17,7 @@ if (isset($_POST['update_college'])) {
 // update form data
 $name = $_POST['college_name'];
 // $email = $_POST['email'];
-// $phone = $_POST['phone'];
+$phone = $_POST['phone'];
 $address = $_POST['address'];
 $estd = $_POST['estd'];
 $certification = $_POST['certification'];
@@ -34,7 +34,7 @@ if (isset($_POST['facility'])) {
 }
 
 //sql query for update
-$sql = "UPDATE `college_info` SET `name`='$name',
+$sql = "UPDATE `college_info` SET `name`='$name',`phone`='$phone',
     `address`='$address',`estd`='$estd',
     `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities',`description`='$description' WHERE `clz_id` = $clz_id";
      
@@ -429,6 +429,9 @@ if ($result->num_rows > 0) {
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">College Address</label>
             <input type="text" name="address" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['address']; ?>">
+
+            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Phone Number</label>
+            <input type="text" name="phone" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['phone']; ?>">
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Establised Date</label>
             <input type="text" name="estd" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['estd']; ?>">

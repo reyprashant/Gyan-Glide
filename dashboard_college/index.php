@@ -75,7 +75,7 @@ if ($college_image_data->num_rows > 0) {
           <img src="../image_upload/clz_logo/<?php echo $college_logo;?>" alt="logo of college">
           <h3 class="mt-10"><?php echo $row['name'];?></h3>
           <!-- <p class="c-gray fs-14 mt-10">Level 20</p> -->
-          <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
+          <!-- <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div> -->
           <!-- <div class="icons mt-10">
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
@@ -106,7 +106,7 @@ if ($college_image_data->num_rows > 0) {
             <h4 class="c-gray mb-10 ">Personal Information</h4>
             <div class="text grid">
               <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black"><?php echo $row['email'];?></span></p>
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Phoner:<span class="c-black"><?php echo $row['phone'];?></span></p>
+              <p class="c-gray fs-15 mt-5 d-flex align-center">Phone:<span class="c-black"><?php echo $row['phone'];?></span></p>
               <span class="c-gray fs-15 mt-5 d-flex align-center">Address:<span class="c-black"><?php echo $row['address'];?></span></span>
             </div>
           </div>
@@ -167,17 +167,17 @@ if ($college_image_data->num_rows > 0) {
             </div>
           </div>
 
-          <!-- <div class="activity p-10 d-flex align-center f-width">
+          <div class="activity p-10 d-flex align-center f-width">
             <img src="images/activity-03.png" class="flex-center" alt="">
             <div>
               <div class="text between-flex c-black">
-                <p>Badges</p>
+                <p>Verified</p>
               </div>
               <div class="text between-flex c-gray mt-10">
-                <p>Some Reputed Badge</p>
+                <p>You are verified by Gyan-Glide.</p>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- 
                 <div class="activity p-10 d-flex align-center f-width">
                     <img src="images/activity-01.png" class="flex-center" alt="">
