@@ -1,3 +1,18 @@
+<?php
+@require_once '../connectionSetup.php';
+session_start();
+$_SESSION['clz_id'] = 1;
+if (!isset($_SESSION['clz_id'])) {
+  header('location:../index.php');
+  die();
+}
+
+$clz_id = $_SESSION['clz_id'];
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

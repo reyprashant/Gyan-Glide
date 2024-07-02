@@ -1,3 +1,15 @@
+<?php
+@require_once '../connectionSetup.php';
+session_start();
+if (!isset($_SESSION['std_id'])) {
+    header('location:../loginpage.php');
+    die();
+  }
+
+$std_id = $_SESSION['std_id'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

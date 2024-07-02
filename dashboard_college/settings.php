@@ -1,8 +1,14 @@
 <?php
 @require_once '../connectionSetup.php';
-include_once 'data_uploader.php';
 session_start();
-$clz_id = 1;
+$_SESSION['clz_id'] = 1;
+if (!isset($_SESSION['clz_id'])) {
+  header('location:../index.php');
+  die();
+}
+include_once 'data_uploader.php';
+
+$clz_id = $_SESSION['clz_id'];
 
 
 

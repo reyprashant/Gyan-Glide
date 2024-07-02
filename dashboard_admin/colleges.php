@@ -1,11 +1,11 @@
 <?php
 @require_once '../connectionSetup.php';
 session_start();
-
-// if (!isset($_SESSION['admin'])) {
-//   header('location:../loginpage.php');
-//   die();
-// }
+$_SESSION['admin'] = 'admin';
+if (!isset($_SESSION['admin'])) {
+  header('location:../index.php');
+  die();
+}
 
 $sql = "SELECT * FROM college_info";
 $result = $conn->query($sql);

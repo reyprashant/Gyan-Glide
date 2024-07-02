@@ -2,7 +2,6 @@
 @require_once '../connectionSetup.php';
 session_start();
 
-
 if ($_SESSION['edit_click']) {
   $updated_message = "General Info Updated Successfully";
 } else {
@@ -27,7 +26,7 @@ $_SESSION['social_click'] = false;
 
 
 if (!isset($_SESSION['std_id'])) {
-  header('location:../loginpage.php');
+  header('location:../index.php');
   die();
 } else {
   // $_SESSION['current_user'] = $_COOKIE['current_user'];
