@@ -9,6 +9,36 @@ if (!isset($_SESSION['clz_id'])) {
 
 $clz_id = $_SESSION['clz_id'];
 
+$sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  $row = mysqli_fetch_array($result);
+
+// if (empty($row['prev_school'])){
+//   $prev_school = "N/A";
+// }else{
+//   $prev_school = $row['prev_school'];
+// }
+
+// if (empty($row['grade'])){
+//   $grade = "N/A";
+// }else{
+//   $grade = $row['grade'];
+// }
+} else {
+}
+
+$sql = "SELECT * FROM college_main_images WHERE clz_id= $clz_id";
+$college_image_data = $conn->query($sql);
+if ($college_image_data->num_rows > 0) {
+    $college_image_array = mysqli_fetch_array($college_image_data);
+    $college_image = $college_image_array['main_img'];
+    $college_logo = $college_image_array['logo'];
+} else {
+    $college_image = 'default.jpg';
+    $college_logo = 'default.jpg';
+}
+
 ?>
 
 
@@ -43,8 +73,8 @@ $clz_id = $_SESSION['clz_id'];
       <h1 class="p-relative mt-10">Dashboard</h1>
       <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
         <div class="user flex-center column">
-          <img src="images/avatar.png" alt="logo of college">
-          <h3 class="mt-10">LA GRANDEE</h3>
+          <img src="../image_upload/clz_logo/<?php echo $college_logo;?>" alt="logo of college">
+          <h3 class="mt-10"><?php echo $row['name'];?></h3>
           <!-- <p class="c-gray fs-14 mt-10">Level 20</p> -->
           <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>
           <!-- <div class="icons mt-10">
@@ -60,48 +90,25 @@ $clz_id = $_SESSION['clz_id'];
           <div class="box p-20">
             <h4 class="c-gray mb-10 ">General Information</h4>
             <div class="text grid">
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Full Name:<span class="c-black">LA GRANDEE International College</span></p>
+              <p class="c-gray fs-15 mt-5 d-flex align-center">Full Name:<span class="c-black"><?php echo $row['name'];?></span></p>
               <!-- <p class="c-gray fs-15 mt-5 d-flex align-center">Gender:<span class="c-black">Male</span></p> -->
-              <p class="c-gray fs-15 mt-5 d-flex align-center">City:<span class="c-black">Pokhara</span></p>
-              <label class="d-flex align-center">
-                <input type="checkbox" class="checkbox-button p-relative" checked>
-                <!-- <div class="checkbox-toggle"></div> -->
-              </label>
+              <span class="c-gray fs-15 mt-5 d-flex align-center">City:<span class="c-black"><?php echo $row['address'];?></span></span>
             </div>
           </div>
 
           <div class="box p-20">
             <h4 class="c-gray mb-10 ">Other Information</h4>
             <div class="text grid">
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Title:<span class="c-black">ISO Certified College</span></p>
-              <!-- <p class="c-gray fs-15 mt-5 d-flex align-center">Programming Language:<span class="c-black">Python</span></p>
-                            <p class="c-gray fs-15 mt-5 d-flex align-center">Years Of Experience:<span class="c-black">15+</span></p>
-                            <label class="d-flex align-center">
-                                <input type="checkbox" class="checkbox-button p-relative" checked>
-                                <div class="checkbox-toggle"></div>
-                            </label> -->
+              <p class="c-gray fs-15 mt-5 d-flex align-center">Title:<span class="c-black"><?php echo $row['certification'];?></span></p>
             </div>
           </div>
-
-          <!-- <div class="box p-20">
-                        <h4 class="c-gray mb-10 ">Billing Information</h4>
-                         <div class="text grid">
-                            <p class="c-gray fs-15 mt-5 d-flex align-center">Payment Method:<span class="c-black">Paypal</span></p>
-                            <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black">email@website.com</span></p>
-                            <p class="c-gray fs-15 mt-5 d-flex align-center">Subscription:<span class="c-black">Monthly</span></p>
-                            <label class="d-flex align-center">
-                                <input type="checkbox" class="checkbox-button p-relative" checked>
-                                <div class="checkbox-toggle"></div>
-                            </label>
-                         </div>
-                    </div> -->
 
           <div class="box p-20">
             <h4 class="c-gray mb-10 ">Personal Information</h4>
             <div class="text grid">
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black">lagrandee@gmail.com</span></p>
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Phoner:<span class="c-black">061521165</span></p>
-              <p class="c-gray fs-15 mt-5 d-flex align-center">Address:<span class="c-black">Pokhara,Nepal</span></p>
+              <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black"><?php echo $row['email'];?></span></p>
+              <p class="c-gray fs-15 mt-5 d-flex align-center">Phoner:<span class="c-black"><?php echo $row['phone'];?></span></p>
+              <span class="c-gray fs-15 mt-5 d-flex align-center">Address:<span class="c-black"><?php echo $row['address'];?></span></span>
               <!-- <label class="d-flex align-center">
                                 <input type="checkbox" class="checkbox-button p-relative" checked>
                                 <div class="checkbox-toggle"></div>
