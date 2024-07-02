@@ -184,8 +184,8 @@ if (isset($_POST['apply'])) {
                 ?>
                     <div class="course rad-6 bg-white p-relative" style="padding:7px;">
                         <button? ?>
-                            <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="logo" class="f-width" style="height:65%">
-                            <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="image" class="p-absolute">
+                            <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="logo" class="f-width" style="height:65%">
+                            <img src="../image_upload/clz_main/<?php echo $clz_img ?>" alt="image" class="p-absolute">
 
                             <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                                 <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
