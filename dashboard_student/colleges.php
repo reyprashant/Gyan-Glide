@@ -123,7 +123,7 @@ $std_id = $_SESSION['std_id'];
 
                 ?>
                     <div class="course rad-6 bg-white p-relative" style="padding:7px;">
-                        <?
+                        <button?
 
                         ?>
                         <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="logo" class="f-width" style="height:65%">
@@ -200,6 +200,8 @@ $std_id = $_SESSION['std_id'];
 
                                         </div>
                                         <div class="popup-text">
+                                        <button><span class="rad-6 c-white bg-blue p-5 " style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none; position: absolute; right: 80px; ">Apply for this College</span></button>
+
                                             <h1><?php echo $colleges_row['name']; ?> (★ 4.0 )</h1>
                                             <p><strong><?php echo $colleges_row['estd']; ?> A.D.</strong></p>
                                             <p><strong><?php echo $colleges_row['college_type']; ?> College</strong></p>
@@ -301,7 +303,7 @@ $std_id = $_SESSION['std_id'];
 
                                     <hr>
                                     <hr>
-                                    <div class="popup_footer">
+                                    <div class="popup_footer" style="margin-top: 20px;">
                                         <h2 style="text-align: left;">Contact Info:</h2>
                                         <ul style="list-style: none; line-height: 30px; color: rgb(78, 105, 78);">
                                             <li><i class="fa-solid fa-phone"></i>&nbsp; &nbsp; &nbsp; <?php echo $colleges_row['phone']; ?></li>
