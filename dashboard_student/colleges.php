@@ -30,7 +30,7 @@ if (isset($_POST['apply'])) {
 
         if ($conn->query($sql22) === TRUE) {  // apply successful
 
-            header('location:college.php');
+            header('location:colleges.php');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
