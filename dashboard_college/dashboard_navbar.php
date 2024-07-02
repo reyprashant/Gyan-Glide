@@ -33,12 +33,6 @@
                 </a>
             </li> -->
             <li>
-                <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="courses.php">
-                    <i class="fa-solid fa-graduation-cap fa-fw"></i>
-                    <span>Courses</span>
-                </a>
-            </li>
-            <li>
                 <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="friends.php">
                     <i class="fa-regular fa-circle-user fa-fw"></i>
                     <span>Students</span>
