@@ -307,7 +307,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     $status_text = "Accepted";
                                     $action_button_text = "Reject";
                                 } else {
-                                    $status_text = "Rejected";
+                                    $status_text = "Not Accepted";
                                     $action_button_text = "Accept";
                                 }
 
