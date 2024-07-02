@@ -122,7 +122,7 @@ $all_college_types = array('Profitable', 'Non-Profitable', 'Private', 'Governmen
 $selected_type = $row['college_type'];
 
 $selected_faculties = (explode(", ", $row['faculties']));
-$facilities = (explode("**** ", $row['facilities']));
+$facilities = (explode(", ", $row['facilities']));
 
 
 //for password change
@@ -217,8 +217,8 @@ if ($result->num_rows > 0) {
           <form id="update_clz" action="settings.php" method="post" enctype="multipart/form-data>
 
 
-            <label for="" class=" fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
-            <input type=" text" name="college_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
+            <label class="fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
+            <input type="text" name="college_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">College Address</label>
             <input type="text" name="address" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['address']; ?>">
@@ -230,7 +230,7 @@ if ($result->num_rows > 0) {
             <input type="text" name="certification" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['certification']; ?>">
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Organization Type</label>
-            <select name="college_type" id="1">
+            <select name="college_type">
 
               <?php
               foreach ($all_college_types as $value) {
@@ -404,4 +404,10 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 
+  <script>
+   if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+   }
+</script>
 </body>
+</html>

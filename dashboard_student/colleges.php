@@ -3,9 +3,8 @@
 require '../connectionSetup.php';
 session_start();
 
-$sql = "SELECT * FROM college_info";
+$sql = "SELECT * FROM college_info where Status = 1";
 $college = $conn->query($sql);
-$collegeCount = 0;
 $heart_shape = "";
 $std_id = $_SESSION['std_id'];
 
@@ -30,7 +29,27 @@ $std_id = $_SESSION['std_id'];
     <title>Colleges</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+<style>
+.f-width{
+    height: 60%;
+}
 
+@media screen and (max-width: 888px) {
+            .f-width {
+                height: 60%;
+                        }
+            }
+@media screen and (max-width: 500px) {
+            .f-width {
+                height: 50%;
+                        }
+            }
+@media screen and (max-width: 375px) {
+            .f-width {
+                width: 35%;
+                        }
+            }
+</style>
 <body>
 
     <div class="courses page d-flex">
@@ -46,7 +65,6 @@ $std_id = $_SESSION['std_id'];
             <div class="container grid">
                 <?php
                 while ($colleges_row = mysqli_fetch_assoc($college)) {
-                    $collegeCount = $collegeCount + 1;
                     $clz_id = $colleges_row['clz_id'];
                     $sql20 = "SELECT * FROM `college_main_images` where `clz_id` = '$clz_id'";
                     $clz_images = $conn->query($sql20);
@@ -65,9 +83,9 @@ $std_id = $_SESSION['std_id'];
                     $image_result = $conn->query($sql3);
 
                     if ($image_result->num_rows > 0) {
-                        // print_r($clz_imagess);
+                        $images_ambience = true;
                     } else {
-
+                        $images_ambience = false;
                     }
 
 
@@ -97,12 +115,12 @@ $std_id = $_SESSION['std_id'];
                     }
 
                 ?>
-                    <div class="course rad-6 bg-white p-relative">
+                    <div class="course rad-6 bg-white p-relative" style="padding:7px;">
                         <?
 
                         ?>
-                        <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="" class="f-width">
-                        <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="" class="p-absolute">
+                        <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="logo" class="f-width" style="height:66%">
+                        <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="image" class="p-absolute">
 
                         <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                             <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
@@ -114,42 +132,65 @@ $std_id = $_SESSION['std_id'];
 
                         <div class="text p-20 pb-30">
                             <div class="card-body">
-                                <h3><?php echo $colleges_row['name'];
-                                    echo $collegeCount; ?></h3>
+                                <h3><?php echo $colleges_row['name'];?></h3>
                             </div>
                             <div class="card-footer">
                                 <div class="card-footer-item">
                                     <span><?php echo $colleges_row['address']; ?></span>
+                                                                        <!-- <span><?php echo $colleges_row['level']; ?></span> -->
+                                                                         <div>
+
+                                                                             <?php
+                                    $faculties = (explode(", ", $colleges_row['faculties']));
+                                                    if(sizeof($faculties) == 0){
+                                                        echo "<p>N/A</p>";
+                                                        echo "<p>N/A</p>";
+                                                        echo "<p>N/A</p>";
+                                                    }else{
+                                                        foreach ($faculties as $faculty) {
+                                                            echo "<p>$faculty</p>";
+                                                            
+                                                        }
+                                                    }
+                                                    ?>
+                                                    </div>
                                 </div>
                                 <div class="card-footer-item">
                                     <span><?php echo $colleges_row['certification']; ?></span>
                                 </div>
                                 <div class="card-footer-item">
-                                    <span><?php echo $colleges_row['level']; ?></span>
-                                    <span><?php echo $colleges_row['faculties']; ?></span>
+
+
                                 </div>
                             </div>
                         </div>
                         <div class="info between-flex p-10 p-relative p-10">
-                            <h5 class="p-5 bg-blue c-white rad-6">
-                                <button id="openPopupBtn<?php echo $collegeCount ?>" class="openPopupBtn p-5 bg-blue c-white rad-6">
+                            <h5 class="p-5 bg-blue c-white rad-6" >
+                            <!-- style="position: relative; bottom: 5px;" -->
+                                <button id="openPopupBtn<?php echo $clz_id ?>" class="openPopupBtn p-5 bg-blue c-white rad-6">
                                     College Info
                                 </button>
                             </h5>
-                            <div class="overlay" id="overlay<?php echo $collegeCount ?>" style="z-index: 1000;">
+                            <div class="overlay" id="overlay<?php echo $clz_id ?>" style="z-index: 1000;">
 
                                 <div class="popup">
-                                    <button class="close-btn" id="closeBtn<?php echo $collegeCount ?>">&times;</button>
+                                    <form action="colleges.php" method="post">
+
+                                        <button class="close-btn" id="closeBtn<?php echo $clz_id ?>">&times;</button>
+                                    </form>
                                     <div class="popup-content">
                                         <div class="topbar">
                                             <div><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;
                                                 <strong><?php echo $colleges_row['name']; ?></strong>
                                             </div>
-                                            <div><i class="fa-regular fa-heart"></i></div>
+                                            
+                                            <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>"><i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i></div>
+                                            
                                         </div>
-                                        <div class="collegeimg">
-                                            <!-- <img src="college1.jpg" alt="Kaski Modernized Academy" class="popup-image"> -->
-                                            <div><img src="images.jpg" alt="logo" class="collegelogo"></div>
+                                        <div class="collegeimg" style="background-image: url('../image_upload/clz_logo/<?php echo $clz_img ?>'); background-size:contain; align-self:center;">
+                                            <!-- <img src="../image_upload/clz_logo/" alt="college_image" class="popup-image"> -->
+                                            <div><img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="logo" class="collegelogo"></div>
+                                            <!-- <div><img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="main" class="collegelogo"></div> -->
 
                                         </div>
                                         <div class="popup-text">
@@ -173,19 +214,38 @@ $std_id = $_SESSION['std_id'];
                                             <hr>
                                             <h2>Our faculties:</h2>
                                             <ul>
-                                                <li><?php echo $colleges_row['faculties']; ?></li>
-                                                <!-- <li>Management</li>
-                                                <li>Hotel Management</li> -->
+                                                <?php
+                                                    $faculties = (explode(", ", $colleges_row['faculties']));
+                                                    if(sizeof($faculties) == 0){
+                                                        echo "<li>N/A</li>";
+                                                    }else{
+                                                        foreach ($faculties as $faculty) {
+                                                            echo "<li>$faculty</li>";
+                                                            
+                                                          }
+                                                    }
+
+                                                ?>
                                             </ul>
                                             <h2>Our facilities:</h2>
                                             <ul>
-                                                <li><?php echo $colleges_row['facilities']; ?></li>
-                                                <li>Arts Classes</li>
-                                                <li>Extra Curriculum Activities</li>
+                                            <?php
+                                                    $facilities = (explode(", ", $colleges_row['facilities']));
+                                                    if(sizeof($facilities) == 0){
+                                                        echo "<li>N/A</li>";
+                                                    }else{
+                                                        foreach ($facilities as $facility) {
+                                                            echo "<li>$facility</li>";
+                                                            
+                                                          }
+                                                    }
+
+                                                ?>
                                             </ul>
+
                                         </div>
 
-                                        <h2>Virtual Tour of College:</h2>
+                                        <!-- <h2>Virtual Tour of College:</h2> -->
 
 
                                         <section class="slider_container">
@@ -193,12 +253,34 @@ $std_id = $_SESSION['std_id'];
                                             <div class="container">
                                                 <div class="swiper card_slider">
                                                     <div class="swiper-wrapper">
-                                                        <?php while ($clz_imagess = mysqli_fetch_assoc($image_result)) { ?>
+                                                        <?php 
+                                                        if(!$images_ambience){
+                                                            for ($i=0; $i < 8; $i++) { 
+                                                                # code...
+
+                                                                ?>
                                                             <div class="swiper-slide">
                                                                 <div class="img_box">
-                                                                    <img src="../image_upload/uploads/<?php echo $clz_imagess['img_name']?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                    <img src="../image_upload/uploads/default.png" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
                                                                 </div>
                                                             </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="img_box">
+                                                                    <img src="../image_upload/uploads/default.png" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        }
+                                                        ?>
+                                                        <?php
+                                                        while ($clz_imagess = mysqli_fetch_assoc($image_result)) { ?>
+                                                            <div class="swiper-slide">
+                                                                <div class="img_box">
+                                                                    <img src="../image_upload/uploads/<?php echo $clz_imagess['img_name'] ?>" class="custom-image" style="max-width:100%; height: 400px;border-radius: 20px; width: 350px;">
+                                                                </div>
+                                                            </div>
+                                                            
                                                         <?php } ?>
 
 
@@ -245,7 +327,7 @@ $std_id = $_SESSION['std_id'];
 
 
     <script>
-        for (let i = 1; i < 100; i++) {
+        for (let i = 1; i < 1000; i++) {
             document.getElementById("openPopupBtn" + i).addEventListener("click", function() {
                 document.getElementById("overlay" + i).style.display = "flex";
             });

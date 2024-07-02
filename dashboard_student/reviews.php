@@ -1,3 +1,55 @@
+<?php
+@require_once '../connectionSetup.php';
+session_start();
+if (!isset($_SESSION['current_user'])) {
+  header('location:../loginpage.php');
+  die();
+}
+
+$std_id = $_SESSION['std_id'];
+$sql = "SELECT * from gyan_glide_reviews Where std_id = $std_id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  $row = mysqli_fetch_array($result);
+  $prev_rating = $row['rating'];
+  $prev_message = $row['message'];
+  $new_review = false;
+} else {
+    $prev_rating = "2.5";
+    $prev_message = "";
+    $new_review = true;
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['add_review'])) {
+        
+        $rating = $_POST['rating'];
+        $message = $_POST['review_msg'];
+        if ($new_review){
+            $sql = "INSERT INTO `gyan_glide_reviews`(`std_id`, `rating`, `message`) VALUES ($std_id,'$rating','$message')";
+        }else{
+            $sql = "UPDATE `gyan_glide_reviews` SET `rating`='$rating',`message`='$message' WHERE std_id = $std_id";
+        }
+        if($conn->query($sql)){
+            $review_status = "Review recorded Successfully";
+            echo "<script>alert('{$review_status}');</script>";
+            header("Location: ../reviews/index.php");
+      }else{
+        $review_status = "Failed to update reviews. Please try again.";
+        echo "<script>alert('{$review_status}');</script>";
+        header("Location: reviews.php?error=$em");
+
+      }
+
+
+
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +78,7 @@
             ?>
             <h1 class="p-relative mt-10">Reviews</h1>
 
-            <div class="container" style="position: relative; left:200px background-image: url('bgimage.jpeg;')">
+            <div class="container" style="position: relative; left:200px; background-image: url('bgimage.jpeg;')">
                 <div class="row">
                     <form action="reviews.php" method="post">
 
@@ -38,18 +90,18 @@
 
                         
 
-                        <div class="rateyo" id="rating" data-rateyo-rating="4" data-rateyo-num-stars="5" data-rateyo-score="3">
+                        <div class="rateyo" id="rating" data-rateyo-rating="<?php echo $prev_rating;?>" data-rateyo-num-stars="5" data-rateyo-score="3">
                         </div>
 
                         <!-- <span class='result'>0</span> -->
-                        <input type="hidden" name="rating">
+                        <input type="hidden" name="rating" value= "<?php echo $prev_rating;?>">
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">What's Your Thoughts About Us</label>
 
-            <textarea name="" id="" class="c-gray p-10 rad-6 fs-14 width-800" placeholder="your thought" style="height: 100px; width: 500px;"></textarea>
+            <textarea name="review_msg" id="" class="c-gray p-10 rad-6 fs-14 width-800" placeholder="your thought" style="height: 100px; width: 500px;"><?php echo $prev_message;?></textarea>
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
         </div>
 
-                        <div><input type="submit" name="add" value="Submit"> </div>
+                        <div><input type="submit" name="add_review" value="Submit"> </div>
 
                     </form>
                 </div>
@@ -69,6 +121,12 @@
             </script>
 
         </div>
+
+        <script>
+   if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+   }
+</script>
 
 </body>
 

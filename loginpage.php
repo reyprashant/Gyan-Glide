@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         // Check user credentials
-        $sql = "SELECT * FROM students WHERE email='$email' AND password='$password'";
+        $sql = "SELECT * FROM students WHERE email='$email' AND password='$password' and Status = 1";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

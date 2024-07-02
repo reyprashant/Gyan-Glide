@@ -194,7 +194,7 @@
                 <p style="font-size: 40px; color: rgb(0, 0, 0); font-weight: 900;">Rate us & Give reviews of yours.</p>
                 <p style="font-size: 20px; color: rgb(0, 0, 0); font-weight: 500; margin-top: 20px;">Rate colleges as
                     well on the basis of your experience. You can rate on the basis of ambience, education and more.</p>
-                <a href="reviews/index.html"><button class="learnmore"
+                <a href="reviews/index.php"><button class="learnmore"
                         style="border: 2px solid rgb(0, 0, 0); border-radius: 10px; padding: 5px; color: rgb(0, 0, 0); background: transparent; cursor: pointer; font-size: large; margin-top: 50px;">Learn
                         More</button></a>
             </div>
