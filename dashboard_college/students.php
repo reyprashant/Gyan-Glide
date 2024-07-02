@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-   <title>Admission</title>
+   <title>Students</title>
 
    <style>
       .overlay {
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       .popup {
          background: white;
-         width: 80%;
+         width: 50%;
          height: 80%;
          border-radius: 10px;
          overflow-y: auto;
@@ -238,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          <?php
          require_once 'dashboard_header.php';
          ?>
-         <h1 class="p-relative mt-10">Admission</h1>
+         <h1 class="p-relative mt-10">Students Applied for Admission</h1>
 
          <div class="header_fixed">
 
@@ -293,8 +293,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                  <h2 class="mb-20">General Info</h2>
                                  <p class=" c-gray">General Information About Your Account</p>
 
-
-                                 <form id="update_user" action="students.php" method="post">
                                     <div style="height:200px; width: 200px; display:grid; position:relative; left:20%; overflow:hidden;">
                                        <img style="height:100%; width:100%; object-fit:contain; align-self:center;" src="../image_upload/std_uploads/<?php echo $image; ?>" />
                                     </div>
@@ -302,34 +300,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <!-- sending student id to backend -->
                                     <input type="hidden" name="std_id" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $std_id; ?>">
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Name</label>
-                                    <input type="text" name="name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Name: <?php echo $row['name']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Email</label>
-                                    <input type="email" name="email" class="c-gray p-10 rad-6 f-width " value="<?php echo $row['email']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Email: <?php echo $row['email']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Phone</label>
-                                    <input type="text" name="phone" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['phone']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Phone: <?php echo $row['phone']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Address</label>
-                                    <input type="text" name="address" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['address']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Address: <?php echo $row['address']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Facebook</label>
-                                    <input type="text" name="facebook" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['facebook']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Recently Graduated From: <?php echo $row['prev_school']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Instagram</label>
-                                    <input type="text" name="instagram" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['instagram']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Grade: <?php echo $row['grade']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">LinkedIn</label>
-                                    <input type="text" name="linkedIn" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['linkedIn']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">LinkedIn: <?php echo $row['linkedIn']; ?></label>
 
-                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Github</label>
-                                    <input type="text" name="github" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['github']; ?>">
+                                    <label for="" class="fs-14 c-gray mb-10 d-block mt-15">Github: <?php echo $row['github']; ?></label>
 
-                                    <input type="submit" name="update_user" value="Update" class="rad-6 c-white bg-blue p-5" style="margin:15px; position: relative;left: 30%">
-
-                                 </form>
-                              </div>
+                                 </div>
 
                            </div>
                         </div>
