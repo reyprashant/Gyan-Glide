@@ -2,7 +2,7 @@
 @require_once '../connectionSetup.php';
 session_start();
 if (!isset($_SESSION['std_id'])) {
-  header('location:../loginpage.php');
+  header('location:../index.php');
   die();
 }
 

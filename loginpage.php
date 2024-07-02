@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['username'];
         $password = $_POST['password'];
 
-        if(strcmp(!$email,"admin") && strcmp(!$password,"admin")){
+        if((!strcmp($email,"admin")) && (!strcmp($password,"admin"))){
             $_SESSION['admin'] = 'admin';
             header('location:dashboard_admin/index.php');
             die();
