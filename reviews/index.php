@@ -52,7 +52,16 @@ if ($result->num_rows > 0) {
                     <h3><?php echo $std_name?></h3>
                     <h4><?php echo $std_prev_school?> &nbsp;</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars">
+                        <?php
+                        for($i = 0; $i<$std_rating; $i++){
+                            echo "<span>★</span>";
+                        }
+                            ?>
+
+
+                            
+                    </div>
                     <p><?php echo $std_message?></p>
                 </div>
 <?php        
@@ -70,7 +79,7 @@ if ($result->num_rows > 0) {
                     <h3>Prashant Adhikari</h3>
                     <h4>LA GRANDEE International College</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <p>I was able to achieve scholarship with the help of this platform.</p>
                 </div>
 
@@ -80,7 +89,7 @@ if ($result->num_rows > 0) {
                     <h3>Subash Adhikari</h3>
                     <h4>Pokhara University</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <p>Join Gyan-Glide if you want your ideal college.</p>
                 </div>
 
@@ -90,7 +99,7 @@ if ($result->num_rows > 0) {
                     <h3>Ashmita G.C.</h3>
                     <h4>Software Developer</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><span>★</span><span>★</span><span>★</span></div>
                     <p>Not only school and colleges but also other educational Institute. Gyan-Glide really does have huge network.</p>
                 </div>
 
@@ -100,7 +109,7 @@ if ($result->num_rows > 0) {
                     <h3>XYZ</h3>
                     <h4>UnknownPost</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★</div>
+                    <div class="stars"><span>★</span><span>★</span></div>
                     <p>Have many bugs but really good website as a concept.</p>
                 </div>
 
@@ -110,7 +119,7 @@ if ($result->num_rows > 0) {
                     <h3>XYZ</h3>
                     <h4>Gyan-Glide user</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★★</div>
+                    <div class="stars"><span>★</span><span>★</span><span>★</span></div>
                     <p>Good Work.</p>
                 </div>
 
@@ -120,7 +129,7 @@ if ($result->num_rows > 0) {
                     <h3>ABC</h3>
                     <h4>Gyan-Glide user</h4>
                     <h4>Gyan-Glide</h4>
-                    <div class="stars">★★★★</div>
+                    <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <p>A top-notch website that’s easy to use and has a range of fantastic features for displaying colleges.</p>
                 </div>
 
@@ -137,8 +146,8 @@ if ($result->num_rows > 0) {
 
             </div>
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

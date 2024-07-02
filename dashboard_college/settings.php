@@ -193,6 +193,142 @@ if ($result->num_rows > 0) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
   <title>Settings</title>
+  <style>
+    .show-btn {
+      background: #fff;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #3498db;
+      cursor: pointer;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .show-btn,
+    .popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .popup {
+      display: none;
+      background: #fff;
+      width: 410px;
+      padding: 30px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #show:checked~.popup {
+      display: block;
+    }
+
+    .popup .close-btn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .popup .close-btn:hover {
+      color: #3498db;
+    }
+
+    .popup .text {
+      font-size: 35px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .popup form {
+      margin-top: -20px;
+    }
+
+    .popup form .data {
+      height: 45px;
+      width: 100%;
+      margin: 40px 0;
+    }
+
+    form .data label {
+      font-size: 18px;
+    }
+
+    form .data input {
+      height: 100%;
+      width: 100%;
+      padding-left: 10px;
+      font-size: 17px;
+      border: 1px solid silver;
+    }
+
+    form .data input:focus {
+      border-color: #3498db;
+      border-bottom-width: 2px;
+    }
+
+    form .forgot-pass {
+      margin-top: -8px;
+    }
+
+    form .forgot-pass a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    form .forgot-pass a:hover {
+      text-decoration: underline;
+    }
+
+    form .btn {
+      margin: 30px 0;
+      height: 45px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    form .btn .inner {
+      height: 100%;
+      width: 300%;
+      position: absolute;
+      left: -100%;
+      z-index: -1;
+      background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+      transition: all 0.4s;
+    }
+
+    form .btn:hover .inner {
+      left: 0;
+    }
+
+    form .btn button {
+      height: 100%;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .data i.showHidePw {
+      position: relative;
+      bottom: 74%;
+      left: 92%;
+      cursor: pointer;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -215,10 +351,10 @@ if ($result->num_rows > 0) {
           <p class=" c-gray">General Information About Your College</p>
 
           <form id="update_clz" action="settings.php" method="post" enctype="multipart/form-data>
+            <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
 
-
-            <label class="fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
-            <input type="text" name="college_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
+            <label class=" fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
+            <input type=" text" name="college_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">College Address</label>
             <input type="text" name="address" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['address']; ?>">
@@ -322,7 +458,55 @@ if ($result->num_rows > 0) {
               <H4>Password</H4>
               <!-- <p class="c-gray fs-14 mt-5">Last Change On 25/10/2021</p> -->
             </div>
-            <a href="#" class="rad-6 c-white bg-blue p-5 ">Change</a>
+            <input type="checkbox" id="show">
+            <label for="show"><span class="rad-6 c-white bg-blue p-5 ">Change</span></label>
+
+            <div class="popup">
+              <label for="show" class="close-btn fas fa-times" title="close"></label>
+
+              <div class="text">
+                Change your password
+              </div>
+              <form action="#" id="changePasswordForm" method="post">
+                <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
+                <div class="data">
+                  <label>Old Password</label>
+                  <input type="password" id="oldPassword" class="password" placeholder="Old Password" name="oldPassword" required>
+                </div>
+
+                <div class="data">
+                  <label>New Password</label>
+                  <input type="password" id="password" class="password" placeholder="New password" name="password" required>
+                </div>
+                <div id="error-message" class="error-message">
+                  <span id="passwordError" class="error"></span>
+                </div>
+
+
+                <div class="data">
+                  <label>Confirm Password</label>
+                  <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" name="confirmPassword" required>
+                  <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+                <div id="error-message" class="error-message">
+                  <span id="confirmPasswordError" class="error"></span>
+                </div>
+
+
+
+
+                <div class="btn">
+                  <div class="inner"></div>
+                  <button type="submit" name="changePassword">Confirm</button>
+                </div>
+
+                <div class="data">
+                  <label><?php echo $passwordUpdateMessage; ?></label>
+                </div>
+
+              </form>
+            </div>
+
           </div>
 
           <div class="social-info bg-white p-20 rad-6 ">
@@ -359,43 +543,43 @@ if ($result->num_rows > 0) {
             </form>
 
             <form method="post" action="settings.php" enctype="multipart/form-data">
-            <?php
-            if (isset($_GET['error'])) {
-              echo "<p class='error'>";
-              echo htmlspecialchars($_GET['error']);
-              echo "</p>";
-            }
-            ?>
-            <label for="" class=" fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
-            <input type="file" id="main_img" name="main_img" accept="image/*">
-            <button type="submit" name="upload_main">Upload</button>
-          </form>
+              <?php
+              if (isset($_GET['error'])) {
+                echo "<p class='error'>";
+                echo htmlspecialchars($_GET['error']);
+                echo "</p>";
+              }
+              ?>
+              <label for="" class=" fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
+              <input type="file" id="main_img" name="main_img" accept="image/*">
+              <button type="submit" name="upload_main">Upload</button>
+            </form>
 
-          <form method="post" action="settings.php" enctype="multipart/form-data">
-            <?php
-            if (isset($_GET['error'])) {
-              echo "<p class='error'>";
-              echo htmlspecialchars($_GET['error']);
-              echo "</p>";
-            }
-            ?>
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload Logo of your College</label>
-            <input type="file" id="logo" name="logo" accept="image/*">
-            <button type="submit" name="upload_logo">Upload</button>
-          </form>
+            <form method="post" action="settings.php" enctype="multipart/form-data">
+              <?php
+              if (isset($_GET['error'])) {
+                echo "<p class='error'>";
+                echo htmlspecialchars($_GET['error']);
+                echo "</p>";
+              }
+              ?>
+              <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload Logo of your College</label>
+              <input type="file" id="logo" name="logo" accept="image/*">
+              <button type="submit" name="upload_logo">Upload</button>
+            </form>
 
-          <form method="post" action="settings.php" enctype="multipart/form-data">
-            <?php
-            if (isset($_GET['error'])) {
-              echo "<p class='error'>";
-              echo htmlspecialchars($_GET['error']);
-              echo "</p>";
-            }
-            ?>
-            <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload ambience/glimpse of your college</label>
-            <input type="file" name="images[]" multiple id="">
-            <button type="submit" name="upload">Upload</button>
-          </form>
+            <form method="post" action="settings.php" enctype="multipart/form-data">
+              <?php
+              if (isset($_GET['error'])) {
+                echo "<p class='error'>";
+                echo htmlspecialchars($_GET['error']);
+                echo "</p>";
+              }
+              ?>
+              <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Upload ambience/glimpse of your college</label>
+              <input type="file" name="images[]" multiple id="">
+              <button type="submit" name="upload">Upload</button>
+            </form>
 
           </div>
 
@@ -404,10 +588,13 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 
+  <script src="../dashboard_student/formValidation.js"></script>
+
   <script>
-   if (window.history.replaceState) {
+    if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
-   }
-</script>
+    }
+  </script>
 </body>
+
 </html>

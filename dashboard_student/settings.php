@@ -3,21 +3,21 @@
 session_start();
 
 
-if ($_SESSION['edit_click']){
+if ($_SESSION['edit_click']) {
   $updated_message = "General Info Updated Successfully";
-}else {
+} else {
   $updated_message = "";
 }
 
-if ($_SESSION['password_click']){
+if ($_SESSION['password_click']) {
   $password_message = "Password Changed Successfully";
-}else {
+} else {
   $password_message = "";
 }
 
-if ($_SESSION['social_click']){
+if ($_SESSION['social_click']) {
   $social_message = "Social Info Updated Successfully";
-}else {
+} else {
   $social_message = "";
 }
 
@@ -56,6 +56,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $prev_email = $_POST['prev_email'];
 
     if (isset($_POST['changePassword'])) {
       // Password change form data
@@ -64,27 +65,26 @@ if ($result->num_rows > 0) {
 
       // Check user credentials
       $passwordVerify = false;
-      $sql = "SELECT * FROM students WHERE std_id='$std_id' AND password='$oldPassword'";
+      $sql = "SELECT * FROM login WHERE `email`='$prev_email' AND password='$oldPassword'";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
-          $passwordVerify = true;   //old password is correct
+        $passwordVerify = true;   //old password is correct
       } else {
-          $passwordUpdateMessage = "Invalid old password";
+        $passwordUpdateMessage = "Invalid old password";
       }
 
       if ($passwordVerify) {
 
-          $sql = "UPDATE `students` SET `password`='$password' WHERE `std_id` = '$std_id'";
-          if ($conn->query($sql) === TRUE) {  // change password successfull
-              $_SESSION['password_click'] = true;
-              header('location: settings.php');
-          } else {
-              echo "Error: " . $sql . "<br>" . $conn->error;
-          }
-
+        $sql = "UPDATE `login` SET `password`='$password' WHERE `email` = '$prev_email'";
+        if ($conn->query($sql) === TRUE) {  // change password successfull
+          $_SESSION['password_click'] = true;
+          header('location: settings.php');
+        } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
       }
-  }
+    }
 
     if (isset($_POST['update_user'])) {
       // update form data
@@ -96,19 +96,18 @@ if ($result->num_rows > 0) {
       $address = $_POST['address'];
       $prev_school = $_POST['prev_school'];
       $grade = $_POST['grade'];
-      
       //sql query for update
       $sql = "UPDATE `students` SET `name`='$name',`email`='$email',
           `phone`='$phone',`address`='$address',`prev_school`='$prev_school',`grade`='$grade' WHERE `std_id` = '$std_id'";
+      $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
 
-      if ($conn->query($sql) === TRUE) { // update data into students table
+      if ($conn->query($sql) === TRUE && $conn->query($sql1) === TRUE) { // update data into students table
 
         $_SESSION['edit_click'] = true;
         header('location: settings.php');
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
-
     }
 
     if (isset($_POST['update_social'])) {
@@ -287,13 +286,12 @@ if ($result->num_rows > 0) {
     }
 
     .data i.showHidePw {
-            position: relative;
-            bottom: 74%;
-            left: 92%;
-            cursor: pointer;
-            padding: 10px;
-        }
-
+      position: relative;
+      bottom: 74%;
+      left: 92%;
+      cursor: pointer;
+      padding: 10px;
+    }
   </style>
 </head>
 
@@ -323,9 +321,9 @@ if ($result->num_rows > 0) {
         <div class="general-info bg-white p-20 rad-6 ">
           <h2 class="mb-20">General Info</h2>
           <p class=" c-gray">General Information About Your Account</p>
-          
-          <form id="update_user" action="settings.php" method="post">
 
+          <form id="update_user" action="settings.php" method="post">
+            <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">First Name</label>
             <input type="text" name="first_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo explode(" ", $row['name'])[0]; ?>">
 
@@ -365,50 +363,50 @@ if ($result->num_rows > 0) {
             <label for="show"><span class="rad-6 c-white bg-blue p-5 ">Change</span></label>
 
             <div class="popup">
-            <label for="show" class="close-btn fas fa-times" title="close"></label>
+              <label for="show" class="close-btn fas fa-times" title="close"></label>
 
-            <div class="text">
+              <div class="text">
                 Change your password
-            </div>
-            <form action="#" id="changePasswordForm" method="post">
-
+              </div>
+              <form action="#" id="changePasswordForm" method="post">
+                <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
                 <div class="data">
-                    <label>Old Password</label>
-                    <input type="password" id="oldPassword" class="password" placeholder="Old Password" name="oldPassword" required>
+                  <label>Old Password</label>
+                  <input type="password" id="oldPassword" class="password" placeholder="Old Password" name="oldPassword" required>
                 </div>
 
                 <div class="data">
-                    <label>New Password</label>
-                    <input type="password" id="password" class="password" placeholder="New password" name="password" required>
+                  <label>New Password</label>
+                  <input type="password" id="password" class="password" placeholder="New password" name="password" required>
                 </div>
                 <div id="error-message" class="error-message">
-                    <span id="passwordError" class="error"></span>
+                  <span id="passwordError" class="error"></span>
                 </div>
 
 
                 <div class="data">
-                    <label>Confirm Password</label>
-                    <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" name="confirmPassword" required>
-                    <i class="uil uil-eye-slash showHidePw"></i>
+                  <label>Confirm Password</label>
+                  <input type="password" id="confirmPassword" class="password" placeholder="Confirm password" name="confirmPassword" required>
+                  <i class="uil uil-eye-slash showHidePw"></i>
                 </div>
                 <div id="error-message" class="error-message">
-                    <span id="confirmPasswordError" class="error"></span>
+                  <span id="confirmPasswordError" class="error"></span>
                 </div>
 
 
 
 
                 <div class="btn">
-                    <div class="inner"></div>
-                    <button type="submit" name="changePassword">Confirm</button>
+                  <div class="inner"></div>
+                  <button type="submit" name="changePassword">Confirm</button>
                 </div>
 
                 <div class="data">
-                    <label><?php echo $passwordUpdateMessage; ?></label>
+                  <label><?php echo $passwordUpdateMessage; ?></label>
                 </div>
 
-            </form>
-        </div>
+              </form>
+            </div>
 
 
 
@@ -456,11 +454,11 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 
-<script src="formValidation.js"></script>
+  <script src="formValidation.js"></script>
 
-<script>
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-</script>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </body>
