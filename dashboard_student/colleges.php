@@ -97,7 +97,9 @@ if (isset($_POST['apply'])) {
             <h1 class="p-relative mt-10">Colleges</h1>
             <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
                 <input type="text" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
-                <button style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">Search</button>
+                <button style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">
+                    Search
+                </button>
             </div>
             <div class="container grid">
                 <?php

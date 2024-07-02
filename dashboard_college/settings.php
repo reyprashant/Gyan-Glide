@@ -334,6 +334,9 @@ if ($result->num_rows > 0) {
       padding: 10px;
     }
   </style>
+  <style>
+
+  </style>
 </head>
 
 <body style="background-color: rgb(173, 255, 255);">
@@ -356,7 +359,7 @@ if ($result->num_rows > 0) {
           <p class=" c-gray">General Information About Your College</p>
 
           <form id="update_clz" action="settings.php" method="post" enctype="multipart/form-data>
-            <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
+            <input type=" hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
 
             <label class=" fs-14 c-gray mb-10 d-block mt-20 ">College Name</label>
             <input type=" text" name="college_name" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['name']; ?>">
@@ -395,30 +398,30 @@ if ($result->num_rows > 0) {
             <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="Faculty"> -->
 
 
-            <input type="checkbox" id="faculty1" name="faculty[]" value="BBA" <?php if (in_array("BBA", $selected_faculties)) {
+            <input style="display: inline;" type="checkbox" id="faculty1" name="faculty[]" value="BBA" <?php if (in_array("BBA", $selected_faculties)) {
                                                                                 echo "checked";
                                                                               } ?>>
-            <label for="vehicle1">BBA</label><br>
-            <input type="checkbox" id="faculty2" name="faculty[]" value="BCA" <?php if (in_array("BCA", $selected_faculties)) {
+            <label>BBA</label><br>
+            <input style="display: inline;" type="checkbox" id="faculty2" name="faculty[]" value="BCA" <?php if (in_array("BCA", $selected_faculties)) {
                                                                                 echo "checked";
                                                                               } ?>>
-            <label for="vehicle2">BCA</label><br>
-            <input type="checkbox" id="faculty3" name="faculty[]" value="BPH" <?php if (in_array("BPH", $selected_faculties)) {
+            <label>BCA</label><br>
+            <input style="display: inline;" type="checkbox" id="faculty3" name="faculty[]" value="BPH" <?php if (in_array("BPH", $selected_faculties)) {
                                                                                 echo "checked";
                                                                               } ?>>
-            <label for="vehicle3">BPH</label><br>
-            <input type="checkbox" id="faculty4" name="faculty[]" value="BBS" <?php if (in_array("BBS", $selected_faculties)) {
+            <label>BPH</label><br>
+            <input style="display: inline;" type="checkbox" id="faculty4" name="faculty[]" value="BBS" <?php if (in_array("BBS", $selected_faculties)) {
                                                                                 echo "checked";
                                                                               } ?>>
-            <label for="vehicle1">BBS</label><br>
-            <input type="checkbox" id="faculty5" name="faculty[]" value="Engineering" <?php if (in_array("Engineering", $selected_faculties)) {
+            <label>BBS</label><br>
+            <input style="display: inline;" type="checkbox" id="faculty5" name="faculty[]" value="Engineering" <?php if (in_array("Engineering", $selected_faculties)) {
                                                                                         echo "checked";
                                                                                       } ?>>
-            <label for="vehicle2">Engineering</label><br>
-            <input type="checkbox" id="faculty6" name="faculty[]" value="BALLB" <?php if (in_array("BALLB", $selected_faculties)) {
+            <label>Engineering</label><br>
+            <input style="display: inline;" type="checkbox" id="faculty6" name="faculty[]" value="BALLB" <?php if (in_array("BALLB", $selected_faculties)) {
                                                                                   echo "checked";
                                                                                 } ?>>
-            <label for="vehicle3">BALLB</label><br>
+            <label>BALLB</label><br>
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Top Facilities in your College</label>
             <input type="text" class="c-gray p-10 rad-6 fs-14 f-width" name="facility[]" value="<?php if (isset($facilities[0])) {
@@ -557,7 +560,7 @@ if ($result->num_rows > 0) {
               ?>
               <label for="" class=" fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
               <input type="file" id="main_img" name="main_img" accept="image/*">
-              <button type="submit" name="upload_main" >Upload</button>
+              <button type="submit" name="upload_main">Upload</button>
             </form>
 
             <form method="post" action="settings.php" enctype="multipart/form-data">
