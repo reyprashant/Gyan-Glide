@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['std_id'])) {
+  header('location:../loginpage.php');
+  die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

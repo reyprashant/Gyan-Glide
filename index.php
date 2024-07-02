@@ -1,6 +1,11 @@
 <?php
-
-
+session_start();
+$_SESSION['loginerror'] = false;
+$_SESSION['signuperror'] = false;
+$_SESSION['signup'] = false;
+$_SESSION['edit_click'] = false;
+$_SESSION['password_click'] = false;
+$_SESSION['social_click'] = false;
 
 
 

@@ -7,6 +7,9 @@ session_start();
 // unset($_SESSION['current_user']);
 // unset($_SESSION['email']);
 $_SESSION = [];
+$_SESSION['loginerror'] = false;
+$_SESSION['signuperror'] = false;
+$_SESSION['signup'] = false;
 header("location:../loginpage.php");
 die();
 

@@ -1,10 +1,19 @@
 <?php
 require_once 'connectionSetup.php';
 session_start();
+if($_SESSION['loginerror']){
+    $loginError = "Invalid email or password";
+}else{
+    $loginError = "";
 
-// if ( isset( $_SESSION['email']) || isset( $_COOKIE['email'])){
+}
+$_SESSION['loginerror'] = false;
 
-if ( isset( $_SESSION['email'])){
+if ( isset( $_SESSION['clz_id'])){
+    header('location:dashboard_college/index.php');
+    die();
+}
+if ( isset( $_SESSION['std_id'])){
     header('location:dashboard_student/index.php');
     die();
 }
@@ -15,29 +24,42 @@ if ( isset( $_SESSION['email'])){
 //     // die();
 // }
 
-
-$loginError = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['login'])) {
         // Login form data
         $email = $_POST['username'];
         $password = $_POST['password'];
-
-        // Check user credentials
-        $sql = "SELECT * FROM students WHERE email='$email' AND password='$password' and Status = 1";
+        // Check user credentials //student login
+        $sql = "SELECT * FROM login WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
-
         if ($result->num_rows > 0) {
             $row = mysqli_fetch_array($result);
-            $_SESSION['current_user'] = $row['name'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['std_id'] = $row['std_id'];
-            // setcookie('current_user',$row['name'],time()+3600,'/');
-            // setcookie('email',$row['email'],time()+3600,'/');
-            header('location:dashboard_student/index.php');
-            die();
+            $user_type = $row['user_type'];
+            $logged_email = $row['email'];
+            if ($user_type){         //college
+                $sql = "SELECT `clz_id` from `college_info` where `email` ='$email'";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = mysqli_fetch_array($result);
+                    $_SESSION['clz_id'] = $row['clz_id'];
+                    header('location:dashboard_college/index.php');
+                    die();
+                }
+            } else {
+
+                $sql = "SELECT `std_id` FROM students WHERE email='$email'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    $row = mysqli_fetch_array($result);
+                    $_SESSION['std_id'] =  $row['std_id'];
+                    header('location:dashboard_student/index.php');
+                    die();
+                }
+            }
+
         } else {
-            $loginError = "Invalid email or password";
+            $_SESSION['loginerror'] = true;
             
         }
     }

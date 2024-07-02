@@ -5,9 +5,7 @@ if (!isset($_SESSION['std_id'])) {
   header('location:../loginpage.php');
   die();
 }
-// $_SESSION['current_user'] = $_COOKIE['current_user'];
-// $_SESSION['email'] = $_COOKIE['email'];
-// $temp_email = $_SESSION['email'];
+
 $std_id = $_SESSION['std_id'];
 $sql = "SELECT * FROM students WHERE std_id= $std_id";
 $result = $conn->query($sql);
@@ -177,7 +175,7 @@ if (isset($_POST['upload'])) {
           <div class="title  between-flex p-20 bg-gray p-relative ">
             <div class="text">
               <h2>welcome</h2>
-              <p class="c-gray"><span id="loggedUsername"><?php echo $_SESSION['current_user']; ?></span></p>
+              <p class="c-gray"><span id="loggedUsername"><?php echo $row['name']; ?></span></p>
             </div>
             <img src="images/welcome.png" alt="">
             <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="" class="p-absolute">
