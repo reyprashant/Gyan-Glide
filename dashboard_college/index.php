@@ -13,6 +13,7 @@ $sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   $row = mysqli_fetch_array($result);
+  $selected_faculties = (explode(", ", $row['faculties']));
 
 // if (empty($row['prev_school'])){
 //   $prev_school = "N/A";
@@ -109,10 +110,6 @@ if ($college_image_data->num_rows > 0) {
               <p class="c-gray fs-15 mt-5 d-flex align-center">Email:<span class="c-black"><?php echo $row['email'];?></span></p>
               <p class="c-gray fs-15 mt-5 d-flex align-center">Phoner:<span class="c-black"><?php echo $row['phone'];?></span></p>
               <span class="c-gray fs-15 mt-5 d-flex align-center">Address:<span class="c-black"><?php echo $row['address'];?></span></span>
-              <!-- <label class="d-flex align-center">
-                                <input type="checkbox" class="checkbox-button p-relative" checked>
-                                <div class="checkbox-toggle"></div>
-                            </label> -->
             </div>
           </div>
         </div>
@@ -121,49 +118,41 @@ if ($college_image_data->num_rows > 0) {
       <div class="d-flex wrap">
         <div class="skills bg-white p-20 rad-6 mt-20 ml-20 mr-20">
           <h2>Faculties</h2>
-          <!-- <p class="c-gray fs-14 mb-20">Complete Skills List</p> -->
-          <div class="skill p-10 d-flex align-center bg-white">
-            <span>Bachelors in Computer Application(BCA)</span>
-            <!-- <span>Pugjs</span>
-                    <span>HAML</span> -->
+          <?php
+          foreach ($selected_faculties as $faculty) {
+            if (!strcmp($faculty,"BBA")){
+              $faculty_text = "Bachelors in Business Administration(BBA)";
+            }
+            if (!strcmp($faculty,"BCA")){
+              $faculty_text = "Bachelors in Computer Application(BCA)";
+            }
+            if (!strcmp($faculty,"BPH")){
+              $faculty_text = "Bachelors in Public Health(BPH)";
+            }
+            if (!strcmp($faculty,"BBS")){
+              $faculty_text = "Bachelors in Business Studies(BBS)";
+            }
+            if (!strcmp($faculty,"Engineering")){
+              $faculty_text = "Engineering";
+            }
+            if (!strcmp($faculty,"BALLB")){
+              $faculty_text = "Bachelors of Arts Bachelors of Laws(BALLB)";
+            }
+            
+            ?>
+                      <div class="skill p-10 d-flex align-center bg-white">
+
+            <span><?php echo $faculty_text;?></span>
           </div>
-          <div class="skill p-10 d-flex align-center bg-white">
-            <span>Bachelors in Business Administration(BBA)</span>
-            <!-- <span>SASS</span>
-                    <span>Stylus</span> -->
-          </div>
-          <div class="skill p-10 d-flex align-center bg-white">
-            <span>Bachelors in Public Health(BPH)</span>
-            <!-- <span>TypeScript</span> -->
-          </div>
-          <!-- <div class="skill p-10 d-flex align-center bg-white">
-                    <span>Vuejs</span>
-                    <span>Reactjs</span>
-                </div>
-                <div class="skill p-10 d-flex align-center bg-white">
-                    <span>Jest</span>
-                    <span>Jasmine</span>
-                </div>
-                <div class="skill p-10 d-flex align-center bg-white">
-                    <span>PHP</span>
-                    <span>Laravel</span>
-                </div>
-                <div class="skill p-10 d-flex align-center">
-                    <span>Python</span>
-                    <span>Django</span>
-                </div> -->
+            
+            <?php
+          }
+          ?>
         </div>
         <div class="activities bg-white rad-6 mt-20 p-20 mr-20">
           <h2>Latest Achievements</h2>
           <p class="c-gray fs-14 mb-20">Latest Achievements of you</p>
           <div class="activity p-10 d-flex align-center f-width">
-            <!-- <img src="images/activity-01.png" class="flex-center" alt=""> -->
-            <!-- <div>
-                        <div class="text between-flex c-gray mt-10">
-                            <p>Bought The Mastering Python Course</p>
-                            <p>Yesterday</p>
-                        </div>
-                    </div> -->
           </div>
 
           <div class="activity p-10 d-flex align-center f-width">
@@ -174,25 +163,23 @@ if ($college_image_data->num_rows > 0) {
                 <!-- <p>08:50</p> -->
               </div>
               <div class="text between-flex c-gray mt-10">
-                <p>Got The ISO Certificate</p>
-                <p>Yesterday</p>
+                <p>Got The <?php echo $row['certification'];?></p>
+                <!-- <p>Yesterday</p> -->
               </div>
             </div>
           </div>
 
-          <div class="activity p-10 d-flex align-center f-width">
+          <!-- <div class="activity p-10 d-flex align-center f-width">
             <img src="images/activity-03.png" class="flex-center" alt="">
             <div>
               <div class="text between-flex c-black">
                 <p>Badges</p>
-                <!-- <p>16:10</p> -->
               </div>
               <div class="text between-flex c-gray mt-10">
-                <!-- <p>Unlocked The 10 Skills Badge</p> -->
                 <p>Some Reputed Badge</p>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- 
                 <div class="activity p-10 d-flex align-center f-width">
                     <img src="images/activity-01.png" class="flex-center" alt="">
