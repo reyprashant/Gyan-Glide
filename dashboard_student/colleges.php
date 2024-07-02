@@ -14,22 +14,23 @@ $std_id = $_SESSION['std_id'];
 
 if (isset($_POST['apply'])) {
     $clz_id = $_POST['clz_id'];
-
     $first_apply = true;
-    $sql = "SELECT * from `admission` where std_id = $std_id and clz_id = $clz_id";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+    $sql1 = "SELECT `std_id`,`clz_id` FROM `admission` where `std_id` = '$std_id' and `clz_id` = '$clz_id'";
+    $resultt = $conn->query($sql1);
+    if ($resultt->num_rows > 0) {
         $first_apply = false;   //old password is correct
     } else {
         //   $passwordUpdateMessage = "Invalid old password";
     }
 
     if ($first_apply) {
-        $sql = "INSERT INTO `admission`(`std_id`, `clz_id`) VALUES ('$std_id','$clz_id)";
+        
 
-        if ($conn->query($sql) === TRUE) {  // apply successful
+        $sql22 = "INSERT INTO `admission` (`std_id`,`clz_id`) VALUES ('$std_id','$clz_id')";
 
-            header('location: settings.php');
+        if ($conn->query($sql22) === TRUE) {  // apply successful
+
+            header('location:college.php');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -238,7 +239,7 @@ if (isset($_POST['apply'])) {
                                             </div>
                                             <div class="popup-text">
                                                 <form action="colleges.php" method="post">
-                                                    <input type="hidden" name="clz_id" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['clz_id']; ?>">
+                                                    <input type="hidden" name="clz_id" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $colleges_row['clz_id']; ?>">
                                                     <button type="submit" name="apply" <?php echo $disabled; ?>><span class="rad-6 c-white bg-blue p-5 msg" style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none; position: absolute; right: 80px; ">
                                                             <?php echo $apply_message; ?>
                                                         </span>
