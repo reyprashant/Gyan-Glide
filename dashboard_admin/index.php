@@ -24,7 +24,7 @@ if (!isset($_SESSION['admin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="dashboard page d-flex">
     <?php
     include_once 'dashboard_navbar.php';

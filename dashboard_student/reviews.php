@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Reviews</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
     <div class="admission page d-flex">
         <?php
         require_once 'dashboard_navbar.php';
@@ -78,13 +78,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
             <h1 class="p-relative mt-10">Reviews</h1>
 
-            <div class="container" style="position: relative; left:200px; background-image: url('bgimage.jpeg;')">
+            <div class="container" style="position: relative; left:200px;">
                 <div class="row">
                     <form action="reviews.php" method="post">
 
                         <div style="display: flex; align-content: center; flex-direction: column; justify-content: center;">
+                            <h1 style="font-family: Arial">Enjoying Gyan-Glide? Give us your Reviews</h1>
                             <img src="bgimage.png" alt="" height="300px" width="500px" >
-                            <h3 style="font-family: Arial">Enjoying Gyan-Glide? Give us your Reviews</h3>
                             <!-- <h3 style="font-family: Arial">Your Review Matters</h3> -->
                         </div>
 
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
         </div>
 
-                        <div><input type="submit" name="add_review" value="Submit"> </div>
+                        <div><input type="submit" name="add_review" value="Submit" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; width: fit-content; text-decoration: none; margin-top: 10px"> </div>
 
                     </form>
                 </div>

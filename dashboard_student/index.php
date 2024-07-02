@@ -146,7 +146,7 @@ if (isset($_POST['upload'])) {
   <title>Dashboard</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="dashboard page d-flex">
     <?php
     include_once 'dashboard_navbar.php';
@@ -172,7 +172,7 @@ if (isset($_POST['upload'])) {
       <div class="container"> <!-- <div class="container grid "> -->
 
         <div class="welcome txt-c-mobile bg-white p-relative rad-10">
-          <div class="title  between-flex p-20 bg-gray p-relative ">
+          <div class="title  between-flex p-20 bg-gray p-relative " style="background-color: transparent;">
             <div class="text">
               <h2>welcome</h2>
               <p class="c-gray"><span id="loggedUsername"><?php echo $row['name']; ?></span></p>
@@ -187,14 +187,15 @@ if (isset($_POST['upload'])) {
             </div>
 
           </div>
-          <a href="settings.php" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width">profile</a>
+          <!-- <a href="settings.php" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width">profile</a> -->
+          <a href="settings.php" class="c-white p-20 bg-blue rad-6 fs-14 d-block fit-width" style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">profile</a>
         </div>
         <div class="discription p-20 bg-white rad-6 mt-20 ml-20 mr-20 d-flex wrap">
 
           <div class="user flex-center column">
 
 
-            <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="logo of college" style="max-width: 25%;">
+            <img src="../image_upload/std_uploads/<?php echo $std_img?>" alt="logo of college" style="max-width: 25%; border-radius: 100px">
             <div class="popup" style=" width: 400px; background: white; position: relative; top: 50%; left: 50%; ">
             </div>
             <!-- <h3 class="mt-10"><?php echo $row['name']; ?></h3> -->

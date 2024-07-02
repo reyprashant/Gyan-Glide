@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    </style>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
    <div class="friends page d-flex">
       <?php
       include_once 'dashboard_navbar.php';

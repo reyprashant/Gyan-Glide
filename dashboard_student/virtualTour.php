@@ -47,7 +47,7 @@ $std_id = $_SESSION['std_id'];
         width: 165px;
     }
 </style>
-<body>
+<body style="background-color: rgb(173, 255, 255);">
 
   <div class="courses page d-flex">
     <?php

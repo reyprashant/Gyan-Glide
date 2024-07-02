@@ -29,7 +29,7 @@ $clz_id = $_SESSION['clz_id'];
   <title>Profile</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="profile page d-flex">
     <?php
     require_once 'dashboard_navbar.php';

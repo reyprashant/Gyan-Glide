@@ -26,7 +26,7 @@ if (!isset($_SESSION['clz_id'])) {
   <title>plans</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="plans page d-flex">
     <?php
     require_once 'dashboard_navbar.php';
