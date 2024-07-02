@@ -153,12 +153,12 @@
         <p style="text-align: center; font-size: 40px; font-weight: 900; margin-top: 100px;">You can count on us.</p>
         <div class="facts">
             <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
-            <span style="position: relative;top: 120px;">hello</span>
+            <span style="position: relative;top: 125px; left:110px; font-size:30px;">hello</span>
                 <img class="to_display" src="images/stdregistered.png" alt="Students Registered">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">Students Registered</p>
             </div>
             <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
-            <span style="position: relative;top: 120px;">hello</span>
+            <span style="position: relative;top: 125px; left:155px; font-size: 30px; ">hello</span>
             <img
                     class="to_display" src="images/college_profiles.png" alt="College Profiles">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">College Profiles</p>
