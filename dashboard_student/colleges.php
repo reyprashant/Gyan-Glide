@@ -24,7 +24,7 @@ if (isset($_POST['apply'])) {
     }
 
     if ($first_apply) {
-        
+
 
         $sql22 = "INSERT INTO `admission` (`std_id`,`clz_id`) VALUES ('$std_id','$clz_id')";
 
@@ -35,7 +35,6 @@ if (isset($_POST['apply'])) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-
 }
 
 ?>
@@ -96,9 +95,11 @@ if (isset($_POST['apply'])) {
             ?>
             <h1 class="p-relative mt-10">Colleges</h1>
             <form action="" method="GET">
-
+                
                 <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
-                    <input name="search" type="text" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+                    <input name="search" type="text" value="<?php if (isset($_GET['search'])) {
+                                                                echo $_GET['search'];
+                                                            } ?>" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
                     <button type="submit" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">
                         Search
                     </button>
@@ -106,6 +107,20 @@ if (isset($_POST['apply'])) {
             </form>
             <div class="container grid">
                 <?php
+
+//search code
+
+                if (isset($_GET['search'])) {
+                    $filtervalues = $_GET['search'];
+                    $sql12 = "SELECT * FROM college_info WHERE CONCAT(name,address,college_type,website,faculties) LIKE '%$filtervalues%' ";
+                    
+                    $college1 = $conn->query($sql12);
+
+                    if($college1->num_rows > 0){
+                        $college = $college1;
+                    }
+                }
+
                 while ($colleges_row = mysqli_fetch_assoc($college)) {
                     $clz_id = $colleges_row['clz_id'];
                     $sql20 = "SELECT * FROM `college_main_images` where `clz_id` = '$clz_id'";
@@ -420,10 +435,10 @@ if (isset($_POST['apply'])) {
     </script>
     <script src="formValidation.js"></script>
     <script>
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, window.location.href);
-    }
-  </script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>

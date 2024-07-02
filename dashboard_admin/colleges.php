@@ -2,8 +2,8 @@
 @require_once '../connectionSetup.php';
 session_start();
 if (!isset($_SESSION['admin'])) {
-  header('location:../index.php');
-  die();
+    header('location:../index.php');
+    die();
 }
 
 $sql = "SELECT * FROM college_info";
@@ -174,8 +174,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         @media screen and (max-width: 1120px) {
             .popup-content {
                 max-width: 90%;
-                        }
             }
+        }
 
         .popup-image {
             width: 100%;
@@ -269,6 +269,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
             <h1 class="p-relative mt-10">Colleges</h1>
 
+            <form action="" method="GET">
+
+                <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
+                    <input name="search" type="text" value="<?php if (isset($_GET['search'])) {
+                                                                echo $_GET['search'];
+                                                            } ?>" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+                    <button type="submit" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">
+                        Search
+                    </button>
+                </div>
+            </form>
+
             <div class="header_fixed">
 
 
@@ -291,6 +303,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </thead>
                         <tbody>
                             <?php
+
+                     if (isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $sql12 = "SELECT * FROM students WHERE CONCAT(name,email,phone,address) LIKE '%$filtervalues%' ";
+
+                        $college1 = $conn->query($sql12);
+
+                        if ($college1->num_rows > 0) {
+                           $result = $college1;
+                        }
+
+                     }
+
                             $i = 1;
                             while ($row = $result->fetch_assoc()) {
 
