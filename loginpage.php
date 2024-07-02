@@ -9,10 +9,10 @@ if($_SESSION['loginerror']){
 }
 $_SESSION['loginerror'] = false;
 
-if ( isset( $_SESSION['clz_id'])){
-    header('location:dashboard_college/index.php');
-    die();
-}
+// if ( isset( $_SESSION['clz_id'])){
+//     header('location:dashboard_college/index.php');
+//     die();
+// }
 if ( isset( $_SESSION['std_id'])){
     header('location:dashboard_student/index.php');
     die();
