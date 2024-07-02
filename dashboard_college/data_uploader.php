@@ -1,6 +1,5 @@
 <?php
-session_start();
-$_SESSION['clz_id'] = 1;
+
 $clz_id = $_SESSION['clz_id'];
 if (isset($_POST['changePassword'])) {
   // Password change form data

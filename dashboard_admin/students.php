@@ -1,7 +1,6 @@
 <?php
 @require_once '../connectionSetup.php';
 session_start();
-$_SESSION['admin'] = 'admin';
 if (!isset($_SESSION['admin'])) {
    header('location:../index.php');
    die();
