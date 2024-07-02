@@ -16,8 +16,6 @@ if ($result22->num_rows > 0) {
     $clz_ids = implode(', ', $colleges_ids);
     $sql = "SELECT * from college_info where `clz_id` IN (" . $clz_ids . ")";
 } else {
-    //no admission applied
-    die();
 }
 
 $result = $conn->query($sql);
