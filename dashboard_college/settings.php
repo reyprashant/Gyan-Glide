@@ -516,7 +516,7 @@ if ($result->num_rows > 0) {
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
 
             <!-- </div> -->
-            <button type="submit" name="update_college" style="background-color: teal; color: white; border-radius: 6px; font-size: 1px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update General Info</button>
+            <button type="submit" name="update_college" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update General Info</button>
           </form>
 
         </div>
@@ -612,7 +612,7 @@ if ($result->num_rows > 0) {
                 </div> -->
                 <input type="text" name="email" value="<?php echo $row['email'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
-              <button type="submit" name="update_social" style="background-color: teal; color: white; border-radius: 6px; font-size: 1px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update Social Info</button>
+              <button type="submit" name="update_social" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update Social Info</button>
 
             </form>
 
