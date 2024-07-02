@@ -14,38 +14,37 @@ include_once 'data_uploader.php';
 
 if (isset($_POST['update_college'])) {
   // $prev_email = $_POST['prev_email'];
-// update form data
-$name = $_POST['college_name'];
-// $email = $_POST['email'];
-$phone = $_POST['phone'];
-$address = $_POST['address'];
-$estd = $_POST['estd'];
-$certification = $_POST['certification'];
-$college_type = $_POST['college_type'];
-$description = $_POST['description'];
-$chk = "";
-if (isset($_POST['faculty'])) {
-  $faculty = $_POST['faculty'];
-  $faculties = implode(", ", $faculty);
-}
-if (isset($_POST['facility'])) {
-  $facility = $_POST['facility'];
-  $facilities = implode(", ", $facility);
-}
+  // update form data
+  $name = $_POST['college_name'];
+  // $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $address = $_POST['address'];
+  $estd = $_POST['estd'];
+  $certification = $_POST['certification'];
+  $college_type = $_POST['college_type'];
+  $description = $_POST['description'];
+  $chk = "";
+  if (isset($_POST['faculty'])) {
+    $faculty = $_POST['faculty'];
+    $faculties = implode(", ", $faculty);
+  }
+  if (isset($_POST['facility'])) {
+    $facility = $_POST['facility'];
+    $facilities = implode(", ", $facility);
+  }
 
-//sql query for update
-$sql = "UPDATE `college_info` SET `name`='$name',`phone`='$phone',
+  //sql query for update
+  $sql = "UPDATE `college_info` SET `name`='$name',`phone`='$phone',
     `address`='$address',`estd`='$estd',
     `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities',`description`='$description' WHERE `clz_id` = $clz_id";
-     
-if ($conn->query($sql) === TRUE) { // update data into college_info table
-  // $_SESSION['email'] = $email;
-  $updated_message = "General Info Updated Successfully";
-  echo '<script>alert("Inserted Successfully")</script>';
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
 
+  if ($conn->query($sql) === TRUE) { // update data into college_info table
+    // $_SESSION['email'] = $email;
+    $updated_message = "General Info Updated Successfully";
+    echo '<script>alert("Inserted Successfully")</script>';
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
 }
 
 if (isset($_POST['upload'])) {
@@ -78,7 +77,7 @@ if (isset($_POST['upload'])) {
     crating array that stores allowed
     to upload image extensions.
        **/
-      $allowed_exs = array('jpg', 'jpeg', 'png');
+      $allowed_exs = array('jpg', 'jpeg', 'png', 'jiff');
 
 
       /** 
@@ -103,7 +102,7 @@ if (isset($_POST['upload'])) {
         # inserting imge name into database
         $sql  = "INSERT INTO college_images (clz_id, img_name) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([1, $new_img_name]);
+        $stmt->execute([$clz_id, $new_img_name]);
 
 
         # move uploaded image to 'uploads' folder
@@ -135,23 +134,6 @@ if (isset($_POST['upload'])) {
     }
   }
 }
-
-// if (!isset($_SESSION['email'])) {
-//   header('location:../loginpage.php');
-//   die();
-// } else {
-//   // $_SESSION['current_user'] = $_COOKIE['current_user'];
-//   // $_SESSION['email'] = $_COOKIE['email'];
-//   $temp_email = $_SESSION['email'];
-
-//   $sql = "SELECT * FROM students WHERE email= '$temp_email'";
-//   $result = $conn->query($sql);
-
-//   if ($result->num_rows > 0) {
-//     $row = mysqli_fetch_array($result);
-//   } else {
-//   }
-// }
 
 $sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
 $result = $conn->query($sql);
@@ -188,20 +170,20 @@ if ($result->num_rows > 0) {
       // Password change form data
       $oldPassword = $_POST['oldPassword'];
       $password = $_POST['password'];
-    
+
       // Check user credentials
       $passwordVerify = false;
       $sql = "SELECT * FROM login WHERE `email`='$prev_email' AND password='$oldPassword'";
       $result = $conn->query($sql);
-    
+
       if ($result->num_rows > 0) {
         $passwordVerify = true;   //old password is correct
       } else {
         $passwordUpdateMessage = "Invalid old password";
       }
-    
+
       if ($passwordVerify) {
-    
+
         $sql = "UPDATE `login` SET `password`='$password' WHERE `email` = '$prev_email'";
         if ($conn->query($sql) === TRUE) {  // change password successfull
           $_SESSION['password_click'] = true;
@@ -257,6 +239,7 @@ if ($result->num_rows > 0) {
   <link rel="stylesheet" href="css/framework.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
@@ -465,28 +448,28 @@ if ($result->num_rows > 0) {
 
 
             <input style="display: inline;" type="checkbox" id="faculty1" name="faculty[]" value="BBA" <?php if (in_array("BBA", $selected_faculties)) {
-                                                                                echo "checked";
-                                                                              } ?>>
+                                                                                                          echo "checked";
+                                                                                                        } ?>>
             <label>BBA</label><br>
             <input style="display: inline;" type="checkbox" id="faculty2" name="faculty[]" value="BCA" <?php if (in_array("BCA", $selected_faculties)) {
-                                                                                echo "checked";
-                                                                              } ?>>
+                                                                                                          echo "checked";
+                                                                                                        } ?>>
             <label>BCA</label><br>
             <input style="display: inline;" type="checkbox" id="faculty3" name="faculty[]" value="BPH" <?php if (in_array("BPH", $selected_faculties)) {
-                                                                                echo "checked";
-                                                                              } ?>>
+                                                                                                          echo "checked";
+                                                                                                        } ?>>
             <label>BPH</label><br>
             <input style="display: inline;" type="checkbox" id="faculty4" name="faculty[]" value="BBS" <?php if (in_array("BBS", $selected_faculties)) {
-                                                                                echo "checked";
-                                                                              } ?>>
+                                                                                                          echo "checked";
+                                                                                                        } ?>>
             <label>BBS</label><br>
             <input style="display: inline;" type="checkbox" id="faculty5" name="faculty[]" value="Engineering" <?php if (in_array("Engineering", $selected_faculties)) {
-                                                                                        echo "checked";
-                                                                                      } ?>>
+                                                                                                                  echo "checked";
+                                                                                                                } ?>>
             <label>Engineering</label><br>
             <input style="display: inline;" type="checkbox" id="faculty6" name="faculty[]" value="BALLB" <?php if (in_array("BALLB", $selected_faculties)) {
-                                                                                  echo "checked";
-                                                                                } ?>>
+                                                                                                            echo "checked";
+                                                                                                          } ?>>
             <label>BALLB</label><br>
 
             <label for="" class="fs-14 c-gray mb-10 d-block mt-20 ">Top Facilities in your College</label>
@@ -515,7 +498,7 @@ if ($result->num_rows > 0) {
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15 ">Description of your College</label>
             <!-- <input type="textbox" class="c-gray p-10 rad-6 fs-14 " placeholder="Description of your College"> -->
 
-            <textarea name="description" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"><?php echo $row['description'];?></textarea>
+            <textarea name="description" id="" class="c-gray p-10 rad-6 fs-14 f-width" placeholder="your thought"><?php echo $row['description']; ?></textarea>
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
 
             <!-- </div> -->
@@ -565,13 +548,10 @@ if ($result->num_rows > 0) {
                 <div id="error-message" class="error-message">
                   <span id="confirmPasswordError" class="error"></span>
                 </div>
-
-
-
-
                 <div class="btn">
                   <div class="inner"></div>
                   <button type="submit" name="changePassword">Confirm</button>
+
                 </div>
 
                 <div class="data">
@@ -587,33 +567,33 @@ if ($result->num_rows > 0) {
             <h2 class="mb-20">Social Info</h2>
             <p class=" c-gray">General Information About Your Account</p>
             <form action="settings.php" method="post">
-            <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
+              <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
               <div class="instagram rad-6 mb-20 mt-25 bg-f6 d-flex ">
                 <div class="icon  flex-center">
                   <i class="fa-brands fa-instagram c-gray "></i>
                 </div>
-                <input type="text" name="instagram" value="<?php echo $row['instagram'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="instagram" value="<?php echo $row['instagram']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="facebook rad-6 mb-20 bg-f6 d-flex">
                 <div class="icon  flex-center">
                   <i class="fa-brands fa-facebook c-gray "></i>
                 </div>
-                <input type="text" name="facebook" value="<?php echo $row['facebook'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="facebook" value="<?php echo $row['facebook']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="linkedin rad-6 mb-20 bg-f6 d-flex">
                 <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-linkedin c-gray "></i>
                 </div> -->
-                <input type="text" name="website" value="<?php echo $row['website'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="website" value="<?php echo $row['website']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="youtube rad-6 mb-20 bg-f6 d-flex">
                 <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-youtube c-gray "></i>
                 </div> -->
-                <input type="text" name="email" value="<?php echo $row['email'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="email" name="email" value="<?php echo $row['email']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6" required>
               </div>
               <button type="submit" name="update_social" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update Social Info</button>
 

@@ -21,6 +21,18 @@ if ($result22->num_rows > 0) {
 
 $result = $conn->query($sql);
 
+if (isset($_GET['search'])) {
+   $filtervalues = $_GET['search'];
+   $sql12 = "SELECT * FROM students WHERE CONCAT(name,email,phone,address) LIKE '%$filtervalues%' and std_id IN (" . $std_ids . ")";
+   $student1 = $conn->query($sql12);
+
+   if ($student1->num_rows > 0) {
+      $result = $student1;
+   }
+
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
    if (isset($_POST['delete'])) {
@@ -239,6 +251,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          ?>
          <h1 class="p-relative mt-10">Students Applied for Admission</h1>
 
+         <form action="" method="GET">
+
+<div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; position: absolute; top: 35px; right: 20px;">
+   <input name="search" type="text" value="<?php if (isset($_GET['search'])) {
+                                                echo $_GET['search'];
+                                             } ?>" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+   <button type="submit" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none; ">
+      Search
+   </button>
+</div>
+</form>
+
          <div class="header_fixed">
 
 
@@ -258,6 +282,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                </thead>
                <tbody>
                   <?php
+                     if (isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $sql12 = "SELECT * FROM students WHERE CONCAT(name,email,phone,address) LIKE '%$filtervalues%' ";
+
+                        $student1 = $conn->query($sql12);
+
+                        if ($student1->num_rows > 0) {
+                           $result = $student1;
+                        }
+
+                     }
+
                   $i = 1;
                   while ($row = $result->fetch_assoc()) {
 

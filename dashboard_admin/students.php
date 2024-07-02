@@ -28,8 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $sql1 = "DELETE FROM `students` WHERE std_id = $std_id";
       $sql2 = "DELETE FROM `student_images` WHERE std_id = $std_id";
       $sql3 = "DELETE FROM `liked_colleges` WHERE std_id = $std_id";
+      $sql4 = "DELETE FROM `gyan_glide_reviews` WHERE std_id = $std_id";
+      $sql5 = "DELETE FROM `login` WHERE std_id = $std_id";
 
-      if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) { // update data into students table
+      if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE && $conn->query($sql4) === TRUE && $conn->query($sql5) === TRUE) { // update data into students table
          $updated_message = "User Deleted Successfully";
          header("Location: students.php");
       } else {

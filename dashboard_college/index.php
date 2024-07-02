@@ -117,6 +117,7 @@ if ($college_image_data->num_rows > 0) {
         <div class="skills bg-white p-20 rad-6 mt-20 ml-20 mr-20">
           <h2>Faculties</h2>
           <?php
+          $faculty_text = "";
           foreach ($selected_faculties as $faculty) {
             if (!strcmp($faculty,"BBA")){
               $faculty_text = "Bachelors in Business Administration(BBA)";

@@ -30,7 +30,7 @@ if (isset($_POST['upload_main'])) {
         crating array that stores allowed
         to upload image extensions.
      **/
-    $allowed_exs = array('jpg', 'jpeg', 'png');
+    $allowed_exs = array('jpg', 'jpeg', 'png', 'jiff');
 
 
     /** 
@@ -44,11 +44,11 @@ if (isset($_POST['upload_main'])) {
       /** 
              renaming the image name with std id
        **/
-      $new_img_name = $clz_id . '.' . $img_ex_lc;
+      $new_img_name = uniqid('IMG-', true) . '.' . $img_ex_lc;
 
 
 
-      $sql = "SELECT * FROM college_main_images WHERE clz_id= $clz_id";
+      $sql = "SELECT main_img FROM college_main_images WHERE clz_id= $clz_id";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
           // $college_image = mysqli_fetch_array($result);
@@ -123,7 +123,7 @@ if (isset($_POST['upload_logo'])) {
         crating array that stores allowed
         to upload image extensions.
      **/
-    $allowed_exs = array('jpg', 'jpeg', 'png');
+    $allowed_exs = array('jpg', 'jpeg', 'png', 'jiff');
 
 
     /** 
@@ -137,9 +137,9 @@ if (isset($_POST['upload_logo'])) {
       /** 
              renaming the image name with std id
        **/
-      $new_img_name = $clz_id . '.' . $img_ex_lc;
+      $new_img_name = uniqid('IMG-', true) . '.' . $img_ex_lc;
 
-      $sql = "SELECT * FROM college_main_images WHERE clz_id= $clz_id";
+      $sql = "SELECT logo FROM college_main_images WHERE clz_id= $clz_id";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
         // $college_image = mysqli_fetch_array($result);

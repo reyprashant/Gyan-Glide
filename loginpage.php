@@ -62,13 +62,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             } else {
 
-                $sql = "SELECT `std_id` FROM students WHERE email='$email'";
+                $sql = "SELECT * FROM students WHERE email='$email'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     $row = mysqli_fetch_array($result);
-                    $_SESSION['std_id'] =  $row['std_id'];
-                    header('location:dashboard_student/index.php');
-                    die();
+                    if($row['status'] == 1){
+                        $_SESSION['std_id'] =  $row['std_id'];
+                        header('location:dashboard_student/index.php');
+                        die();
+                    }else {
+                        $_SESSION['loginerror'] = true;
+                    }
                 }
             }
 
