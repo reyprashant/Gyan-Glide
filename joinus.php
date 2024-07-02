@@ -57,32 +57,14 @@ $conn->close();
         <a href="loginpage.php" target="_self"><button class="getstarted">GET STARTED</button></a>
     </div>
 
-    <div class="formcontent" style="display: flex; align-items: center; justify-content: space-around;">
-        <img src="images/joinus.png" alt="joinus" style="width: 400px;">
-
-        <!-- College Information Form -->
-        <form action="#" method="post">
-            <label for="collegeName">College Name:</label><br>
-            <input type="text" id="collegeName" name="collegeName" required><br><br>
-
-            <label for="collegeAddress">College Address:</label><br>
-            <input type="text" id="collegeAddress" name="collegeAddress" required><br><br>
-
-            <label for="collegeSiteLink">College Website Link:</label><br>
-            <input type="text" id="collegeSiteLink" name="collegeSiteLink" required><br><br>
-
-            <label for="representativePhone">Representative's Phone Number:</label><br>
-            <input type="text" id="representativePhone" name="representativePhone" placeholder="XXX-XXX-XXXX" pattern="[0-9]{1}[0-9]{9}" required><br><br>
-
-            <label for="additionalInfo">Additional Information:</label><br>
-            <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Provide any additional details about the college (e.g., programs offered, campus life, unique features)"></textarea><br><br>
-
-            <input type="submit" value="Submit" name = "submit">
-            <input type="button" value="Cancel" onclick="window.location.href='index.html';">
-            <div id="error-message" class="error-message">
-                    <span><?php echo $successMsg; ?></span>
-                    </div>
-        </form>
+    <div class="formcontent" style="display: flex; align-items: center; justify-content: space-between;">
+        <img src="images/joinus.png" alt="joinus" style="width: 400px; margin-left:100px; margin-right:300px;">
+        <div class="content-container">
+            <div class="content">
+                <h1>Join us as College or any Educational Institute</h1>
+                <p style="text-align: justify">You can also have a Gyan-Glide account where you can put your college information, show your institutes ambience and many more. Your information should be valid enough as we will review it and only then your infos are displayed to students. Go through our <a href="terms.html">terms & conditions</a> once.</p>
+                <a href="loginpage.php" style="width: 200px;"><button class="btn">Joinus</button></a>
+            </div>
     </div>
 </div>
 
