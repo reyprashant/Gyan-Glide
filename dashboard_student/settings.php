@@ -43,7 +43,7 @@ if (!isset($_SESSION['std_id'])) {
 }
 
 //for password change
-
+$passwordUpdateMessage = "";
 
 
 
@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prev_email = $_POST['prev_email'];
-
+    
     if (isset($_POST['changePassword'])) {
       // Password change form data
       $oldPassword = $_POST['oldPassword'];
@@ -371,7 +371,7 @@ if ($result->num_rows > 0) {
               <div class="text">
                 Change your password
               </div>
-              <form action="#" id="changePasswordForm" method="post">
+              <form action="settings.php" id="changePasswordForm" method="post">
                 <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
                 <div class="data">
                   <label>Old Password</label>
