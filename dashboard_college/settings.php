@@ -6,11 +6,47 @@ if (!isset($_SESSION['clz_id'])) {
   header('location:../index.php');
   die();
 }
-include_once 'data_uploader.php';
 
 $clz_id = $_SESSION['clz_id'];
 
+include_once 'data_uploader.php';
 
+
+if (isset($_POST['update_college'])) {
+  // $prev_email = $_POST['prev_email'];
+// update form data
+$name = $_POST['college_name'];
+// $email = $_POST['email'];
+// $phone = $_POST['phone'];
+$address = $_POST['address'];
+$estd = $_POST['estd'];
+$certification = $_POST['certification'];
+$college_type = $_POST['college_type'];
+$description = $_POST['description'];
+$chk = "";
+if (isset($_POST['faculty'])) {
+  $faculty = $_POST['faculty'];
+  $faculties = implode(", ", $faculty);
+}
+if (isset($_POST['facility'])) {
+  $facility = $_POST['facility'];
+  $facilities = implode(", ", $facility);
+}
+
+//sql query for update
+$sql = "UPDATE `college_info` SET `name`='$name',
+    `address`='$address',`estd`='$estd',
+    `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities',`description`='$description' WHERE `clz_id` = $clz_id";
+     
+if ($conn->query($sql) === TRUE) { // update data into college_info table
+  // $_SESSION['email'] = $email;
+  $updated_message = "General Info Updated Successfully";
+  echo '<script>alert("Inserted Successfully")</script>';
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+}
 
 if (isset($_POST['upload'])) {
   $images = $_FILES['images'];
@@ -121,6 +157,7 @@ $sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   $row = mysqli_fetch_array($result);
+  $prev_email = $row['email'];
 } else {
   //nothing
 }
@@ -147,28 +184,53 @@ if ($result->num_rows > 0) {
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    if (isset($_POST['changePassword'])) {
+      // Password change form data
+      $oldPassword = $_POST['oldPassword'];
+      $password = $_POST['password'];
+    
+      // Check user credentials
+      $passwordVerify = false;
+      $sql = "SELECT * FROM login WHERE `email`='$prev_email' AND password='$oldPassword'";
+      $result = $conn->query($sql);
+    
+      if ($result->num_rows > 0) {
+        $passwordVerify = true;   //old password is correct
+      } else {
+        $passwordUpdateMessage = "Invalid old password";
+      }
+    
+      if ($passwordVerify) {
+    
+        $sql = "UPDATE `login` SET `password`='$password' WHERE `email` = '$prev_email'";
+        if ($conn->query($sql) === TRUE) {  // change password successfull
+          $_SESSION['password_click'] = true;
+          header('location: settings.php');
+        } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+      }
+    }
+
     if (isset($_POST['update_social'])) {
+      $prev_email = $_POST['prev_email'];
       // update social data
       $facebook = $_POST['facebook'];
       $instagram = $_POST['instagram'];
-      $linkedIn = $_POST['linkedIn'];
-      $github = $_POST['github'];
+      $website = $_POST['website'];
+      $email = $_POST['email'];
 
       //sql query for update
-      $sql = "UPDATE `students` SET `facebook`='$facebook',`instagram`='$instagram',
-        `linkedIn`='$linkedIn',`github`='$github' WHERE `email` = '$temp_email'";
+      $sql = "UPDATE `college_info` SET `facebook`='$facebook',`instagram`='$instagram',`website`='$website',`email`='$instagram' WHERE `clz_id` = '$clz_id'";
+      $sql2 = "UPDATE `login` SET `email`='$email' WHERE `email`='$prev_email'";
 
       // update data into students table
-      if ($conn->query($sql) === TRUE) {
+      if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
         $updated_message = "Social Info Updated Successfully";
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
     }
-
-    $sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
-    $result = $conn->query($sql);
-    $row = mysqli_fetch_array($result);
   }
 } else {
   // $result->num_rows = 0
@@ -476,7 +538,7 @@ if ($result->num_rows > 0) {
               <div class="text">
                 Change your password
               </div>
-              <form action="#" id="changePasswordForm" method="post">
+              <form action="settings.php" id="changePasswordForm" method="post">
                 <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
                 <div class="data">
                   <label>Old Password</label>
@@ -521,34 +583,37 @@ if ($result->num_rows > 0) {
           <div class="social-info bg-white p-20 rad-6 ">
             <h2 class="mb-20">Social Info</h2>
             <p class=" c-gray">General Information About Your Account</p>
-            <form action="">
+            <form action="settings.php" method="post">
+            <input type="hidden" name="prev_email" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $row['email']; ?>">
               <div class="instagram rad-6 mb-20 mt-25 bg-f6 d-flex ">
                 <div class="icon  flex-center">
                   <i class="fa-brands fa-instagram c-gray "></i>
                 </div>
-                <input type="text" value="Instagram username" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="instagram" value="<?php echo $row['instagram'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="facebook rad-6 mb-20 bg-f6 d-flex">
                 <div class="icon  flex-center">
                   <i class="fa-brands fa-facebook c-gray "></i>
                 </div>
-                <input type="text" value="facebook username" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="facebook" value="<?php echo $row['facebook'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="linkedin rad-6 mb-20 bg-f6 d-flex">
                 <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-linkedin c-gray "></i>
                 </div> -->
-                <input type="text" value="website url" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="website" value="<?php echo $row['website'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
 
               <div class="youtube rad-6 mb-20 bg-f6 d-flex">
                 <!-- <div class="icon  flex-center">
                   <i class="fa-brands fa-youtube c-gray "></i>
                 </div> -->
-                <input type="text" value="email address" class="c-gray p-10 rad-6 fs-14 bg-f6">
+                <input type="text" name="email" value="<?php echo $row['email'];?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
+              <button type="submit" name="update_social" style="background-color: teal; color: white; border-radius: 6px; font-size: 1px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update Social Info</button>
+
             </form>
 
             <form method="post" action="settings.php" enctype="multipart/form-data">

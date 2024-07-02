@@ -2,45 +2,6 @@
 
 $clz_id = $_SESSION['clz_id'];
 
-$sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-  $row = mysqli_fetch_array($result);
-} else {
-  $email = $row['email'];
-  $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
-}
-
-if (isset($_POST['changePassword'])) {
-  // Password change form data
-  $oldPassword = $_POST['oldPassword'];
-  $password = $_POST['password'];
-
-  // Check user credentials
-  $passwordVerify = false;
-  $sql = "SELECT * FROM login WHERE `email`='$prev_email' AND password='$oldPassword'";
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-    $passwordVerify = true;   //old password is correct
-  } else {
-    $passwordUpdateMessage = "Invalid old password";
-  }
-
-  if ($passwordVerify) {
-
-    $sql = "UPDATE `login` SET `password`='$password' WHERE `email` = '$prev_email'";
-    if ($conn->query($sql) === TRUE) {  // change password successfull
-      $_SESSION['password_click'] = true;
-      header('location: settings.php');
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-  }
-}
-
-
-
   ///image upload
 if (isset($_POST['upload_main'])) {
 
@@ -226,38 +187,3 @@ if (isset($_POST['upload_logo'])) {
   }
 }
 
-if (isset($_POST['update_college'])) {
-    // $prev_email = $_POST['prev_email'];
-  // update form data
-  $name = $_POST['college_name'];
-  // $email = $_POST['email'];
-  // $phone = $_POST['phone'];
-  $address = $_POST['address'];
-  $estd = $_POST['estd'];
-  $certification = $_POST['certification'];
-  $college_type = $_POST['college_type'];
-  $description = $_POST['description'];
-  $chk = "";
-  if (isset($_POST['faculty'])) {
-    $faculty = $_POST['faculty'];
-    $faculties = implode(", ", $faculty);
-  }
-  if (isset($_POST['facility'])) {
-    $facility = $_POST['facility'];
-    $facilities = implode(", ", $facility);
-  }
-
-  //sql query for update
-  $sql = "UPDATE `college_info` SET `name`='$name',
-      `address`='$address',`estd`='$estd',
-      `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities',`description`='$description' WHERE `clz_id` = $clz_id";
-       
-  if ($conn->query($sql) === TRUE) { // update data into college_info table
-    // $_SESSION['email'] = $email;
-    $updated_message = "General Info Updated Successfully";
-    echo '<script>alert("Inserted Successfully")</script>';
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-
-}
