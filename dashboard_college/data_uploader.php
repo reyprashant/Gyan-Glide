@@ -1,6 +1,16 @@
 <?php
 
 $clz_id = $_SESSION['clz_id'];
+
+$sql = "SELECT * FROM college_info WHERE clz_id= $clz_id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  $row = mysqli_fetch_array($result);
+} else {
+  $email = $row['email'];
+  $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
+}
+
 if (isset($_POST['changePassword'])) {
   // Password change form data
   $oldPassword = $_POST['oldPassword'];
@@ -217,7 +227,7 @@ if (isset($_POST['upload_logo'])) {
 }
 
 if (isset($_POST['update_college'])) {
-    $prev_email = $_POST['prev_email'];
+    // $prev_email = $_POST['prev_email'];
   // update form data
   $name = $_POST['college_name'];
   // $email = $_POST['email'];
@@ -240,8 +250,7 @@ if (isset($_POST['update_college'])) {
   $sql = "UPDATE `college_info` SET `name`='$name',
       `address`='$address',`estd`='$estd',
       `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities' WHERE `clz_id` = $clz_id";
-        $sql1 = "UPDATE `students` SET `email`='$email' where `email` = '$prev_email'";
-
+       
   if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) { // update data into college_info table
     // $_SESSION['email'] = $email;
     $updated_message = "General Info Updated Successfully";
