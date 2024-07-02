@@ -451,7 +451,7 @@ if ($result->num_rows > 0) {
             <!-- <input type="submit" value="save" class="c-white bg-blue p-5 rad-6 bg-blue d-block fit-width fs-14"> -->
 
             <!-- </div> -->
-            <button type="submit" name="update_college">Update General Info</button>
+            <button type="submit" name="update_college" style="background-color: teal; color: white; border-radius: 6px; font-size: 1px; display: block; width: fit-content; text-decoration: none; margin-top:10px">Update General Info</button>
           </form>
 
         </div>
@@ -465,7 +465,7 @@ if ($result->num_rows > 0) {
               <!-- <p class="c-gray fs-14 mt-5">Last Change On 25/10/2021</p> -->
             </div>
             <input type="checkbox" id="show">
-            <label for="show"><span class="rad-6 c-white bg-blue p-5 ">Change</span></label>
+            <label for="show"><span class="rad-6 c-white bg-blue p-5" style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">Change</span></label>
 
             <div class="popup">
               <label for="show" class="close-btn fas fa-times" title="close"></label>
@@ -558,7 +558,7 @@ if ($result->num_rows > 0) {
               ?>
               <label for="" class=" fs-14 c-gray mb-10 d-block mt-20 ">Upload picture of your college </label>
               <input type="file" id="main_img" name="main_img" accept="image/*">
-              <button type="submit" name="upload_main">Upload</button>
+              <button type="submit" name="upload_main" >Upload</button>
             </form>
 
             <form method="post" action="settings.php" enctype="multipart/form-data">
