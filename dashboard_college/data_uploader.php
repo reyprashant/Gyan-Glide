@@ -251,7 +251,7 @@ if (isset($_POST['update_college'])) {
       `address`='$address',`estd`='$estd',
       `certification`='$certification',`college_type`='$college_type',`faculties`='$faculties',`facilities`='$facilities' WHERE `clz_id` = $clz_id";
        
-  if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) { // update data into college_info table
+  if ($conn->query($sql) === TRUE) { // update data into college_info table
     // $_SESSION['email'] = $email;
     $updated_message = "General Info Updated Successfully";
     echo '<script>alert("Inserted Successfully")</script>';
