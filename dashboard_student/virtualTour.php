@@ -120,7 +120,6 @@ $college = $conn->query($sql);
             <?php
             $i++;
             }
-            die();
             ?>
 
           </div>
