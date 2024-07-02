@@ -59,7 +59,7 @@ if ($college_image_data->num_rows > 0) {
   <title>Profile</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="profile page d-flex">
     <?php
     require_once 'dashboard_navbar.php';

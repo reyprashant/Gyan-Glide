@@ -22,7 +22,7 @@ if (!isset($_SESSION['std_id'])) {
   <title>Scholarship</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="admission page d-flex">
     <?php
     require_once 'dashboard_navbar.php';

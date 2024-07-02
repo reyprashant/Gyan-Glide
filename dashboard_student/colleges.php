@@ -53,7 +53,7 @@ $std_id = $_SESSION['std_id'];
                         }
             }
 </style>
-<body>
+<body style="background-color: rgb(173, 255, 255);">
 
     <div class="courses page d-flex">
         <?php
@@ -67,7 +67,7 @@ $std_id = $_SESSION['std_id'];
             <h1 class="p-relative mt-10">Colleges</h1>
             <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0;">
     <input type="text" placeholder="Search..." style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; outline: none;">
-    <button style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007BFF; color: white; border-radius: 4px; cursor: pointer; outline: none;">Search</button>
+    <button style="padding: 10px 20px; margin-left: 10px; border: none; background-color: teal; color: white; border-radius: 4px; cursor: pointer; outline: none;">Search</button>
 </div>
             <div class="container grid">
                 <?php
@@ -126,7 +126,7 @@ $std_id = $_SESSION['std_id'];
                         <?
 
                         ?>
-                        <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="logo" class="f-width" style="height:66%">
+                        <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="logo" class="f-width" style="height:65%">
                         <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="image" class="p-absolute">
 
                         <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
@@ -171,9 +171,9 @@ $std_id = $_SESSION['std_id'];
                             </div>
                         </div>
                         <div class="info between-flex p-10 p-relative p-10">
-                            <h5 class="p-5 bg-blue c-white rad-6" >
+                            <h5 class="p-5  c-white rad-6" >
                             <!-- style="position: relative; bottom: 5px;" -->
-                                <button id="openPopupBtn<?php echo $clz_id ?>" class="openPopupBtn p-5 bg-blue c-white rad-6">
+                                <button id="openPopupBtn<?php echo $clz_id ?>" class="openPopupBtn p-5 bg-blue c-white rad-6" style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">
                                     College Info
                                 </button>
                             </h5>

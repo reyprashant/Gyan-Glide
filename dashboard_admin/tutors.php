@@ -14,7 +14,7 @@
   <title>Files</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
   <div class="files page d-flex">
     <?php
     include_once 'dashboard_navbar.php';

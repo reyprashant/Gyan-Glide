@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Admission</title>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
 
     <div class="courses page d-flex">
         <?php

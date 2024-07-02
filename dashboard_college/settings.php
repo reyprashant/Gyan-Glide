@@ -337,7 +337,7 @@ if ($result->num_rows > 0) {
   </style>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
 
   <div class="page settings d-flex">
     <?php

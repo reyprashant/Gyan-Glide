@@ -295,7 +295,7 @@ if ($result->num_rows > 0) {
   </style>
 </head>
 
-<body>
+<body style="background-color: rgb(173, 255, 255);">
 
   <div class="page settings d-flex">
     <?php
@@ -348,7 +348,7 @@ if ($result->num_rows > 0) {
             <label for="" class="fs-14 c-gray mb-10 d-block mt-15">About Me</label>
             <textarea name="bio" class="c-gray p-10 rad-6 fs-14 f-width" value=""><?php echo $row['bio']; ?></textarea>
 
-            <input type="submit" name="update_user" value="Update General Info" class="rad-6 c-white bg-blue p-5" style="margin:15px; position: relative;left: 30%">
+            <input type="submit" name="update_user" value="Update General Info" class="rad-6 c-white bg-blue p-5" style="margin:15px; position: relative;left: 30%;background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">
 
           </form>
         </div>
@@ -363,7 +363,7 @@ if ($result->num_rows > 0) {
               <!-- <p class="c-gray fs-14 mt-5">Last Change On 25/10/2021</p> -->
             </div>
             <input type="checkbox" id="show">
-            <label for="show"><span class="rad-6 c-white bg-blue p-5 ">Change</span></label>
+            <label for="show"><span class="rad-6 c-white bg-blue p-5 " style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">Change</span></label>
 
             <div class="popup">
               <label for="show" class="close-btn fas fa-times" title="close"></label>
@@ -447,7 +447,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <input type="text" name="github" value="<?php echo $row['github']; ?>" class="c-gray p-10 rad-6 fs-14 bg-f6">
               </div>
-              <input type="submit" name="update_social" value="Update Social Info" class="rad-6 c-white bg-blue p-5">
+              <input type="submit" name="update_social" value="Update Social Info" class="rad-6 c-white bg-blue p-5" style="background-color: teal; color: white; border-radius: 6px; font-size: 14px; display: block; width: fit-content; text-decoration: none;">
             </form>
           </div>
 
