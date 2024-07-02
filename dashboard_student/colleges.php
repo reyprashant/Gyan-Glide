@@ -107,6 +107,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 35%;
         }
     }
+
+    @media screen and (max-width: 960px) {
+        .rating_stars {
+            position: relative;
+            left:0px;
+            top: 0px;
+        }
+    }
 </style>
 
 <body style="background-color: rgb(173, 255, 255);">
@@ -211,8 +219,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ?>
                     <div class="course rad-6 bg-white p-relative" style="padding:7px;">
                         <button? ?>
-                            <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="logo" class="f-width" style="height:65%">
-                            <img src="../image_upload/clz_main/<?php echo $clz_img ?>" alt="image" class="p-absolute">
+                            <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="image" class="f-width" style="height:65%">
+                            <img src="../image_upload/clz_main/<?php echo $clz_logo ?>" alt="logo" class="p-absolute">
 
                             <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                                 <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
@@ -275,7 +283,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         // $prev_message = "";
                                         $new_review = true;
                                     }
-
+                                    $total_rating = 0;
+                                    $sql = "SELECT * from college_rating Where clz_id = $clz_id";
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($rated = mysqli_fetch_assoc($result)) {
+                                            $total_rating = $total_rating + $rated['rating'];
+                                        }
+                                    }
 
 
                                     ?>
@@ -308,17 +323,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     </button>
                                                 </form>
 
-                                                <h1><?php echo $colleges_row['name']; ?> (★ 4.0 )</h1>
-                                                <form action="colleges.php" method="post">
+                                                <h1><?php echo $colleges_row['name']; ?> (★ <?php echo $total_rating; ?> )</h1>
+
+                                                <form class = "rating_stars" style="position:absolute; bottom: 55px; right: 270px;" action="colleges.php" method="post">
                                                     <input type="hidden" name="clz_id" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $colleges_row['clz_id']; ?>">
                                                     <input type="hidden" name="new_review" class="c-gray p-10 rad-6 fs-14 f-width" value="<?php echo $new_review; ?>">
                                                     <div class="rateyo" id="rating" data-rateyo-rating="<?php echo $prev_rating; ?>" data-rateyo-num-stars="5" data-rateyo-score="3">
                                                     </div>
                                                     <!-- <span class='result'>0</span> -->
                                                     <input type="hidden" name="rating" value="<?php echo $prev_rating; ?>">
-                                                    <div><input type="submit" name="add_review" value="Rate" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; width: fit-content; text-decoration: none; margin-top: 10px"> </div>
+                                                    <input type="submit" name="add_review" value="Give Rating" style="background-color: teal; color: white; border-radius: 6px; font-size: 15px; display: block; text-decoration: none; margin-top: 10px; padding:6px">
 
                                                 </form>
+                                                
+
 
 
 
