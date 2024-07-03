@@ -144,6 +144,16 @@ if (isset($_POST['upload'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Rubik:wght@300;400;600;900&family=Work+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
   <title>Dashboard</title>
+<style>
+      @media screen and (max-width: 570px) {
+        .imginput {
+            position: relative;
+            left: 0px;
+            top : 0px;
+        }
+    }
+</style>
+
 </head>
 
 <body style="background-color: rgb(173, 255, 255);">
@@ -209,8 +219,8 @@ if (isset($_POST['upload'])) {
                 // 	echo "</p>";
                 // }
                 ?>
-                <input type="file" name="image" id="">
-                <button type="submit" name="upload">Upload</button>
+                <input class="imginput" style="position: relative; left: 60px;" type="file" name="image" id="">
+                <button class= "imginput1" style="position: relative; top: 33px; right: 177px;" type="submit" name="upload">Upload</button>
               </form>
             </div>
             <div class="progress p-relative mt-10"><span class="rad-6" style="width:70%;"></span></div>

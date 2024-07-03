@@ -146,6 +146,11 @@ if ($college_image_data->num_rows > 0) {
             
             <?php
           }
+          $statusvalue = $row['status'];
+          $dis = 'none';
+          if ($row['status']){
+            $dis = 'flex';
+          }
           ?>
         </div>
         <div class="activities bg-white rad-6 mt-20 p-20 mr-20">
@@ -168,7 +173,7 @@ if ($college_image_data->num_rows > 0) {
             </div>
           </div>
 
-          <div class="activity p-10 d-flex align-center f-width">
+          <div class="activity p-10 d-flex align-center f-width" style="display:<?php echo $dis;?>;">
             <img src="images/activity-03.png" class="flex-center" alt="">
             <div>
               <div class="text between-flex c-black">
