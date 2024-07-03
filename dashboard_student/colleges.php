@@ -164,6 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         $clz_main_img = mysqli_fetch_assoc($clz_images);
                         $clz_logo = $clz_main_img['logo'];
+                        // echo "<script>alert('{$clz_logo}')</script>";
                         $clz_img = $clz_main_img['main_img'];
                     } else {
                         $clz_logo = 'default.jpg';
@@ -219,8 +220,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ?>
                     <div class="course rad-6 bg-white p-relative" style="padding:7px;">
                         <button? ?>
-                            <img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="image" class="f-width" style="height:65%">
-                            <img src="../image_upload/clz_main/<?php echo $clz_logo ?>" alt="logo" class="p-absolute">
+                            <img src="../image_upload/clz_main/<?php echo $clz_img ?>" alt="image" class="f-width" style="height:65%">
+                            <img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="logo" class="p-absolute">
 
                             <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>">
                                 <i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i>
@@ -246,9 +247,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 echo "<p>N/A</p>";
                                                 echo "<p>N/A</p>";
                                             } else {
-                                                foreach ($faculties as $faculty) {
-                                                    echo "<p>$faculty</p>";
-                                                }
+                                                // foreach ($faculties as $faculty) {
+                                                    $fac = $colleges_row['faculties'];
+                                                    echo "<span>$fac; </span>";
+                                                // }
                                             }
                                             ?>
                                         </div>
@@ -308,7 +310,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <div class="heart" id="<?php echo $colleges_row['clz_id']; ?>"><i class="fa-<?php echo $heart_shape; ?> fa-heart" onclick="replaceClass(this)"></i></div>
 
                                             </div>
-                                            <div class="collegeimg" style="background-image: url('../image_upload/clz_logo/<?php echo $clz_img ?>'); background-size:contain; align-self:center;">
+                                            <div class="collegeimg" style="background-image: url('../image_upload/clz_main/<?php echo $clz_img ?>'); background-size:contain; align-self:center;">
                                                 <!-- <img src="../image_upload/clz_logo/" alt="college_image" class="popup-image"> -->
                                                 <div><img src="../image_upload/clz_logo/<?php echo $clz_logo ?>" alt="logo" class="collegelogo"></div>
                                                 <!-- <div><img src="../image_upload/clz_logo/<?php echo $clz_img ?>" alt="main" class="collegelogo"></div> -->
@@ -471,7 +473,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
-        for (let i = 1; i < 1000; i++) {
+        for (let i = 7; i < 1000; i++) {
             document.getElementById("openPopupBtn" + i).addEventListener("click", function() {
                 document.getElementById("overlay" + i).style.display = "flex";
             });

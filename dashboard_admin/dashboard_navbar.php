@@ -20,12 +20,12 @@
       <li>
         <img class = "gyan_logo" src="../images/logo.png" alt="logo" style="width: 548px; height:auto; align-self: center; margin-top: -115px; margin-left: -192px; margin-bottom: -116px">
       </li>
-      <li>
+      <!-- <li>
         <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.php">
           <i class="fa-regular fa-chart-bar fa-fw"></i>
           <span>Dashboard</span>
         </a>
-      </li>
+      </li> -->
       <li>
         <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="colleges.php">
           <i class="fa-solid fa-graduation-cap fa-fw"></i>
@@ -38,7 +38,7 @@
           <span>Students</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutors.php">
           <i class="fa-solid fa-graduation-cap fa-fw"></i>
           <span>Tutors</span>
@@ -49,7 +49,7 @@
           <i class="fa-regular fa-circle-user fa-fw"></i>
           <span>Other Institutes</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </body>

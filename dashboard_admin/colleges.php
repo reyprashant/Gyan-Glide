@@ -306,7 +306,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                      if (isset($_GET['search'])) {
                         $filtervalues = $_GET['search'];
-                        $sql12 = "SELECT * FROM students WHERE CONCAT(name,email,phone,address) LIKE '%$filtervalues%' ";
+                        $sql12 = "SELECT * FROM college_info WHERE CONCAT(name,email,phone,address,faculties) LIKE '%$filtervalues%' ";
 
                         $college1 = $conn->query($sql12);
 
@@ -492,7 +492,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
-        for (let i = 1; i < 100; i++) {
+        for (let i = 7; i < 100; i++) {
             document.getElementById("openPopupBtn" + i).addEventListener("click", function() {
                 document.getElementById("overlay" + i).style.display = "flex";
             });

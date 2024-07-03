@@ -41,7 +41,7 @@ if (isset($_POST['update_college'])) {
   if ($conn->query($sql) === TRUE) { // update data into college_info table
     // $_SESSION['email'] = $email;
     $updated_message = "General Info Updated Successfully";
-    echo '<script>alert("Inserted Successfully")</script>';
+    // echo '<script>alert("Inserted Successfully")</script>';
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -203,7 +203,7 @@ if ($result->num_rows > 0) {
       $email = $_POST['email'];
 
       //sql query for update
-      $sql = "UPDATE `college_info` SET `facebook`='$facebook',`instagram`='$instagram',`website`='$website',`email`='$instagram' WHERE `clz_id` = '$clz_id'";
+      $sql = "UPDATE `college_info` SET `facebook`='$facebook',`instagram`='$instagram',`website`='$website',`email`='$email' WHERE `clz_id` = '$clz_id'";
       $sql2 = "UPDATE `login` SET `email`='$email' WHERE `email`='$prev_email'";
 
       // update data into students table

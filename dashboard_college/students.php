@@ -313,7 +313,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                      $sql = "SELECT * FROM student_images WHERE std_id= $std_id";
                      $image_data = $conn->query($sql);
                      if ($image_data->num_rows > 0) {
-                        $image_array = mysqli_fetch_array($college_image_data);
+                        $image_array = mysqli_fetch_array($image_data);
                         $image = $image_array['img_name'];
                      } else {
                         $image = 'default.jpg';
@@ -393,7 +393,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
    <script>
-      for (let i = 1; i < 100; i++) {
+      for (let i = 6; i < 100; i++) {
          document.getElementById("openPopupBtn" + i).addEventListener("click", function() {
             document.getElementById("overlay" + i).style.display = "flex";
          });

@@ -7,7 +7,15 @@ $_SESSION['edit_click'] = false;
 $_SESSION['password_click'] = false;
 $_SESSION['social_click'] = false;
 
-
+require './connectionSetup.php';
+$sql = "SELECT * from students";
+if ($result = mysqli_query($conn, $sql)) {
+$ccount = mysqli_num_rows( $result );
+ }
+$sql = "SELECT * from college_info";
+if ($result = mysqli_query($conn, $sql)) {
+$scount = mysqli_num_rows( $result );
+ }
 
 
 ?>
@@ -158,21 +166,25 @@ $_SESSION['social_click'] = false;
         <p style="text-align: center; font-size: 40px; font-weight: 900; margin-top: 100px;">You can count on us.</p>
         <div class="facts">
             <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
-            <span style="position: relative;top: 125px; left:110px; font-size:30px;">hello</span>
+            <span style="position: relative;top: 125px; left:110px; font-size:30px;"><?php echo $ccount;?>+</span>
                 <img class="to_display" src="images/stdregistered.png" alt="Students Registered">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">Students Registered</p>
             </div>
             <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
-            <span style="position: relative;top: 125px; left:155px; font-size: 30px; ">hello</span>
+            <span style="position: relative;top: 125px; left:155px; font-size: 30px; "><?php echo $scount; ?>+</span>
             <img
                     class="to_display" src="images/college_profiles.png" alt="College Profiles">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">College Profiles</p>
             </div>
-            <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;"><img
+            <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
+            <span style="position: relative;top: 125px; left:55px; font-size: 30px; "><?php echo "Coming soon"; ?>+</span>    
+            <img
                     class="to_display" src="images/discounts.png" alt="Discounts and Scholarships">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">Scholarships & Discounts</p>
             </div>
-            <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;"><img
+            <div style="display: flex; flex-direction: column; justify-content: center; align-content: center;">
+            <span style="position: relative;top: 125px; left:55px; font-size: 30px; "><?php echo "Coming soon"; ?>+</span>    
+            <img
                     class="to_display" src="images/time_savings.png" alt="Hours of Time savings">
                 <p style="text-align: center; font-size: larger; font-weight: 900;">Of Time Savings</p>
             </div>

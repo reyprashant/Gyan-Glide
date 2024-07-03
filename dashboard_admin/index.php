@@ -5,6 +5,7 @@ if (!isset($_SESSION['admin'])) {
   header('location:../index.php');
   die();
 }
+header('location: colleges.php');
 ?>
 
 

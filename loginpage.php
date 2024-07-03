@@ -113,7 +113,7 @@ $conn->close();
                             <input type="checkbox" id="logCheck">
                             <label for="logCheck" class="text">Remember me</label>
                         </div>
-                        <a href="#" class="text">Forgot password?</a>
+                        <!-- <a href="#" class="text">Forgot password?</a> -->
                     </div>
                     <div class="input-field button">
                         <input type="submit" name="login" id="login-form" value="Login">
